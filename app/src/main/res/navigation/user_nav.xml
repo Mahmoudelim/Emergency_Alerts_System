@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_nav"
+    app:startDestination="@id/home3">
+
+    <fragment
+        android:id="@+id/home3"
+        android:name="com.example.emergency_alert_system.user.home.home"
+        android:label="fragment_home2"
+        tools:layout="@layout/fragment_home2" >
+        <action
+            android:id="@+id/action_home3_to_medicine"
+            app:destination="@id/medicine" />
+        <action
+            android:id="@+id/action_home3_to_alerts"
+            app:destination="@id/alerts" />
+        <action
+            android:id="@+id/action_home3_to_editInfo"
+            app:destination="@id/editInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicine"
+        android:name="com.example.emergency_alert_system.user.medicines.Medicine"
+        android:label="fragment_medicine"
+        tools:layout="@layout/fragment_medicine" />
+    <fragment
+        android:id="@+id/alerts"
+        android:name="com.example.emergency_alert_system.user.Alerts.Alerts"
+        android:label="fragment_alerts"
+        tools:layout="@layout/fragment_alerts" />
+    <fragment
+        android:id="@+id/editInfo"
+        android:name="com.example.emergency_alert_system.user.EditInfo.EditInfo"
+        android:label="fragment_edit_info"
+        tools:layout="@layout/fragment_edit_info" />
+</navigation>

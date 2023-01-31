@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/emp_nav"
+    app:startDestination="@id/EMPHome">
+
+    <fragment
+        android:id="@+id/EMPHome"
+        android:name="com.example.emergency_alert_system.EMP.home.EMPHome"
+        android:label="EMPHome" >
+        <action
+            android:id="@+id/action_EMPHome_to_requestAcceptance"
+            app:destination="@id/requestAcceptance" />
+        <action
+            android:id="@+id/action_EMPHome_to_forwardRequest"
+            app:destination="@id/forwardRequest" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestAcceptance"
+        android:name="com.example.emergency_alert_system.EMP.RequestAcceptance.RequestAcceptance"
+        android:label="fragment_request_acceptance"
+        tools:layout="@layout/fragment_request_acceptance" />
+    <fragment
+        android:id="@+id/forwardRequest"
+        android:name="com.example.emergency_alert_system.EMP.ForwardRequest.ForwardRequest"
+        android:label="fragment_forward_request"
+        tools:layout="@layout/fragment_forward_request" />
+</navigation>

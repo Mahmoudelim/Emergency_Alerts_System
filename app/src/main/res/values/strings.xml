@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">EMAS</string>
+    <string name="started_title">Hello You</string>
+
+    <string name="started_sub_title">   Nice to meet you,Come Join our App
+    <br><b>Login</b> If you Already have an Account </br>
+    <br><b>Register</b> to get started with the App</br>
+    </string>
+    <string name="registration">Register</string>
+    <string name="login">Login</string>
+    <string name="registration_title">Create an Account</string>
+    <string name="register_sub_title"><font color="#246EE9"><b>Register</b></font> to get started with this App
+    </string>
+    <string name="register_end"><font color="#246EE9"><b>Login</b></font>  If you Already have Account</string>
+    <string name="hint_enterUserName">User Name...</string>
+    <string name="password">Password</string>
+    <string name="txt_powered_by">Powered By</string>
+    <string name="specializtion">Specializtion</string>
+    <string name="title_activity_user_dashboard">user_dashboard</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="hr">HR</string>
+    <string name="time">Time</string>
+    <string name="spo2">SPO2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
