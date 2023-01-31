@@ -37,7 +37,6 @@
                            android:id="@+id/imageView"
                            android:layout_width="60dp"
                            android:layout_height="60dp"
-
                            android:layout_marginStart="10dp"
                            android:layout_marginTop="30dp"
                            android:src="@drawable/c"
@@ -200,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="10dp"
-                    android:text="37"
+                    android:text="56%"
                     android:textSize="30sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/Spo_imageView"
@@ -209,7 +208,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Body Temperature"
+                    android:text="Blood O2"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"

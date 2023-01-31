@@ -3,36 +3,40 @@ package com.example.emergency_alert_system.user
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
+import android.view.ViewConfiguration
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.emergencyalertsystem.R
 import com.google.android.material.navigation.NavigationView
+import kotlinx.android.synthetic.main.activity_user_dachboard.*
 
 class UserDachboard : AppCompatActivity() {
-    lateinit var toogle :ActionBarDrawerToggle
-
+    lateinit var appBarConfiguration: AppBarConfiguration
+     lateinit var navController: NavController
+     lateinit var drawerLayout: DrawerLayout
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_dachboard)
-        val drawerLayout :DrawerLayout=findViewById(R.id.drawer_layout)
-        val navView :NavigationView=findViewById(R.id.nav_view)
-        toogle= ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close)
-        drawerLayout.addDrawerListener(toogle)
-        toogle.syncState()
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        navView.setNavigationItemSelectedListener {
-            when(it.itemId)
-            {
-             //   R.id.nav_home->this.findNavController(R.id.)
-                R.id.nav_medicine->this.findNavController(R.id.action_home3_to_medicine)
-                R.id.nav_Alerts->this.findNavController(R.id.action_home3_to_alerts)
-                R.id.nav_edit->this.findNavController(R.id.action_home3_to_editInfo)
-            }
-            true
-        }
+        navController=findNavController(R.id.user_nav_host_fragment)
+        drawerLayout=findViewById(R.id.drawer_layout)
+        nav_view.setupWithNavController(navController)
+        appBarConfiguration= AppBarConfiguration(navController.graph,drawerLayout)
+        setupActionBarWithNavController(navController,appBarConfiguration)
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController=findNavController(R.id.user_nav_host_fragment)
+        return navController.navigateUp(appBarConfiguration)|| super.onSupportNavigateUp()
     }
 }
