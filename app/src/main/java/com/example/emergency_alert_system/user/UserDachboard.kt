@@ -16,8 +16,9 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.emergencyalertsystem.R
-import com.google.android.material.navigation.NavigationView
+
 import kotlinx.android.synthetic.main.activity_user_dachboard.*
+import kotlinx.android.synthetic.main.activity_user_dachboard.view.*
 
 class UserDachboard : AppCompatActivity() {
     lateinit var appBarConfiguration: AppBarConfiguration
