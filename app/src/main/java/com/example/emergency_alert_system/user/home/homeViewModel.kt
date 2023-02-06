@@ -1,7 +1,7 @@
 package com.example.emergency_alert_system.user.home
 
 import androidx.lifecycle.ViewModel
-import com.example.emergency_alert_system.user.creation.user_vitaldata
+//import com.example.emergency_alert_system.user.creation.user_vitaldata
 import com.google.firebase.firestore.FirebaseFirestore
 
 class homeViewModel : ViewModel() {
@@ -10,7 +10,7 @@ class homeViewModel : ViewModel() {
     lateinit var pulserate:String
     var tempertuture:Int=0
     var pressure: Int=0
-    val user_vital_data= user_vitaldata(fullname,pulserate,tempertuture,pressure)
+    //val user_vital_data= user_vitaldata(fullname,pulserate,tempertuture,pressure)
 }
 /*
 fun reading_and_write_VITALDATA(username)

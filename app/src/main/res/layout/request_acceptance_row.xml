@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="100dp">
+
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="11/05/2020"
+        android:textSize="18sp"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/ic_calendar"
+        android:drawablePadding="5dp"
+        />
+
+    <TextView
+        android:id="@+id/patientname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:drawableLeft="@drawable/ic_person_pin"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="Ahmed Emad"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/disease"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Broken hand"
+        android:padding="5dp"
+        android:layout_marginLeft="5dp"
+        android:drawableLeft="@drawable/healthcareplus"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/patientrelatives1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Abdo"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:drawableLeft="@drawable/patientrelative"/>
+    <TextView
+       android:id="@+id/patientrelatives2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="7oda"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:drawableLeft="@drawable/patientrelative"/>
+    <TextView
+        android:id="@+id/patientrelatives3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ali"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:drawableLeft="@drawable/patientrelative"/>
+    <TextView
+        android:id="@+id/phonenumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="012241942"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:drawableLeft="@drawable/phone"/>
+</LinearLayout>

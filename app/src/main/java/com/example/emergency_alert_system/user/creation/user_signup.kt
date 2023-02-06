@@ -26,10 +26,10 @@ class user_signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_signup)
-        val userinfoo=user_general_info(fullname,email,phone_num,password,user_docname,relativies,relativesphonenum)
+       /* val userinfoo=user_general_info(fullname,email,phone_num,password,user_docname,relativies,relativesphonenum)
         val  usermedicaldata= user_midical_info(fullname,medicines,choronic)
         val user_location=user_location(fullname,streetname,naighbourrhood,buildingnumb, floornumb, flatingnumb)
-
+*/
 
     }
 
