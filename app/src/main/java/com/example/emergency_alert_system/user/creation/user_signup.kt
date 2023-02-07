@@ -2,6 +2,7 @@ package com.example.emergency_alert_system.user.creation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import com.example.emergencyalertsystem.R
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -22,14 +23,13 @@ class user_signup : AppCompatActivity() {
     lateinit var medicines: MutableList<String>
     lateinit var choronic: MutableList<String>
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_signup)
-       /* val userinfoo=user_general_info(fullname,email,phone_num,password,user_docname,relativies,relativesphonenum)
-        val  usermedicaldata= user_midical_info(fullname,medicines,choronic)
-        val user_location=user_location(fullname,streetname,naighbourrhood,buildingnumb, floornumb, flatingnumb)
-*/
+     //  val userinfoo=user_general_info(fullname,email,phone_num,password,user_docname,relativies,relativesphonenum)
+       // val  usermedicaldata= user_midical_info(fullname,medicines,choronic)
+        //val user_location=user_location(fullname,streetname,naighbourrhood,buildingnumb, floornumb, flatingnumb)
+
 
     }
 

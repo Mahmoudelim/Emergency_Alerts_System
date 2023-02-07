@@ -17,19 +17,22 @@ class doctor_Signup : AppCompatActivity() {
     var signupbtn = findViewById(R.id.dr_signup)as Button
     var db = FirebaseFirestore.getInstance()
     lateinit var doctorname: String
+    lateinit var email: String
+
     lateinit var specilization: String
     lateinit var qualification:String
-    lateinit var degree: String
+
     lateinit var password : String
-    lateinit var patientsname: MutableList<String>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        // binding = doctor_Signup.inflate(layoutInflater)
         //val view = binding.root
         setContentView(R.layout.activity_signup)
 
-        val doctor=Doctor(doctorname,specilization,
-            qualification,degree,password,patientsname)
+        val doctor=Doctor(doctorname,email,specilization,
+            qualification,password)
 
 
     }
