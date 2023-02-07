@@ -8,8 +8,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 class ep_Signup : AppCompatActivity() {
     var db = FirebaseFirestore.getInstance()
     lateinit var EPName: String
+    lateinit var email: String
     lateinit var phonenum1:Number
-    lateinit var phonenum2:Number
     lateinit var naighbourhood:String
     lateinit var streetname: String
     var buildingnum:Int=0
@@ -19,7 +19,7 @@ class ep_Signup : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup2)
-        val ep=Emergency_point(EPName, phonenum1, phonenum2, naighbourhood, streetname, buildingnum, mangername, numofamblunnce, numofbed)
+        val ep=Emergency_point(EPName,email, phonenum1, naighbourhood, streetname, buildingnum, mangername, numofamblunnce, numofbed)
     }
 
 }
