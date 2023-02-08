@@ -25,6 +25,13 @@
         <item name="cornerSize">10dp</item>
         <item name="color">@color/white</item>
     </style>
+    <style name="textInput_layout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="android:textColorHint">#808080</item>
+        <item name="hintTextColor">#808080</item>
+        <item name="startIconTint">@color/primaryColor</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+    </style>
 
     <style name="textInput_EditText" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="background">@drawable/text_field_background</item>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "610437980706",
+    "firebase_url": "https://emergency-alert-system-final-default-rtdb.firebaseio.com",
+    "project_id": "emergency-alert-system-final",
+    "storage_bucket": "emergency-alert-system-final.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610437980706:android:c4e9b9e60b4bc5c1b9e07b",
+        "android_client_info": {
+          "package_name": "com.example.emergencyalertsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610437980706-nbogc71oc13ko651nepa9ou2q6v718nf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAblJBvZ6-OZTm8g7HCtW1blTZySrphpQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610437980706-nbogc71oc13ko651nepa9ou2q6v718nf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

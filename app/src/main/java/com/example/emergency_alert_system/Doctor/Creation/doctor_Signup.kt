@@ -14,9 +14,9 @@ class doctor_Signup : AppCompatActivity() {
     private lateinit var binding: doctor_Signup
 
 
-    var signupbtn = findViewById(R.id.dr_signup)as Button
+   // var signupbtn = findViewById(R.id.)as Button
     var db = FirebaseFirestore.getInstance()
-    lateinit var doctorname: String
+    //lateinit var doctorname: String
     lateinit var email: String
 
     lateinit var specilization: String
@@ -31,8 +31,8 @@ class doctor_Signup : AppCompatActivity() {
         //val view = binding.root
         setContentView(R.layout.activity_signup)
 
-        val doctor=Doctor(doctorname,email,specilization,
-            qualification,password)
+      //  val doctor=Doctor(doctorname,email,specilization,
+        //    qualification,password)
 
 
     }

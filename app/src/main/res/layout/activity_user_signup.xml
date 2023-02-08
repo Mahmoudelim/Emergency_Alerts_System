@@ -1,9 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.emergency_alert_system.user.creation.user_signup">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:id="@+id/started_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Account ..."
+            android:layout_marginTop="30dp"
+            android:textColor="@color/primaryColor"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="51dp"
+            tools:layout_editor_absoluteY="39dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <EditText
+            android:id="@+id/user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/started_title"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/user_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_name"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/user_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_Email"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your Phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/user_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_phone"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your password"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:id="@+id/relatives"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_password"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Your Relatives"
+            android:textColor="@color/primaryColor"
+            android:textSize="36sp"
+            android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/first_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/relatives"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your first relative name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/first_relative_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/first_relative"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your first relative phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/second_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/first_relative_phone"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your first relative name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/second_relative_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/second_relative"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your second relative phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/third_relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/second_relative_phone"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your third relative name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/third_relative_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/third_relative"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your third relative phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <TextView
+            android:id="@+id/chronic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/third_relative_phone"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Your Chronic "
+            android:textColor="@color/primaryColor"
+            android:textSize="36sp"
+            android:textStyle="bold"/>
+        <CheckBox
+            android:id="@+id/diabetes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Diabetes"
+            android:checked="true"
+            app:layout_constraintTop_toBottomOf="@id/chronic"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <CheckBox
+            android:id="@+id/hd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="heart diseases"
+            android:checked="true"
+            app:layout_constraintTop_toBottomOf="@id/diabetes"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <CheckBox
+            android:id="@+id/bpd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="blood pressure diseases"
+            android:checked="true"
+            app:layout_constraintTop_toBottomOf="@id/hd"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
