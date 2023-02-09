@@ -90,6 +90,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textSize="20dp"
             />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/btn_style"
+            app:layout_constraintTop_toBottomOf="@id/EP_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            />
 
         <Button
             android:id="@+id/ep_signup"
