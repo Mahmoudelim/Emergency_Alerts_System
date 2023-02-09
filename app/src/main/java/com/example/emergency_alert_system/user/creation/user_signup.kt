@@ -35,16 +35,26 @@ class user_signup : AppCompatActivity() {
         // val  usermedicaldata= user_midical_info(fullname,medicines,choronic)
         //val user_location=user_location(fullname,streetname,naighbourrhood,buildingnumb, floornumb, flatingnumb)
 
-        val btn: ImageButton = findViewById(R.id.add_btn)
+        val btn: ImageButton = findViewById(R.id.add_btn1)
+        val  btn2: ImageButton = findViewById(R.id.add_btn2)
+        val btn3: ImageButton = findViewById(R.id.add_btn3)
         val editTxt1:EditText=findViewById(R.id.mid1)
         val editTxt2:EditText=findViewById(R.id.mid2)
         val editTxt3:EditText=findViewById(R.id.mid3)
         btn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                 editTxt1.visibility=View.VISIBLE
                  editTxt2.visibility=View.VISIBLE
-                 editTxt3.visibility=View.VISIBLE
+                 btn2.visibility=View.VISIBLE
+
             }
+
+        })
+        btn2.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                editTxt3.visibility=View.VISIBLE
+                btn3.visibility=View.VISIBLE
+            }
+
         })
     }
 }

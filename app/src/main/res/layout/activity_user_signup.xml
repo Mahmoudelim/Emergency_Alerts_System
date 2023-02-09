@@ -191,7 +191,7 @@
             />
         <TextView
             android:id="@+id/medicine"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/bpd"
             android:layout_marginTop="50dp"
@@ -200,32 +200,32 @@
             android:textColor="@color/primaryColor"
             android:textSize="36sp"
             android:textStyle="bold"/>
-        <ImageButton
-            android:id="@+id/add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="30dp"
-            android:src="@drawable/ic_baseline_add_24"
-           app:layout_constraintStart_toEndOf="@+id/medicine"
-            app:layout_constraintTop_toBottomOf="@id/bpd"
-
-        />
         <EditText
             android:id="@+id/mid1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/medicine"
             android:layout_marginTop="30dp"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="Enter your first medicine "
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"
+            android:visibility="visible"
             android:textSize="20dp"
+            />
+        <ImageButton
+            android:id="@+id/add_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintStart_toEndOf="@+id/mid1"
+            app:layout_constraintTop_toBottomOf="@id/medicine"
+
             />
         <EditText
             android:id="@+id/mid2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/mid1"
             android:layout_marginTop="30dp"
@@ -235,9 +235,21 @@
             android:visibility="gone"
             android:textSize="20dp"
             />
+        <ImageButton
+            android:id="@+id/add_btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintStart_toEndOf="@+id/mid2"
+            app:layout_constraintTop_toBottomOf="@id/mid1"
+
+            />
         <EditText
             android:id="@+id/mid3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/mid2"
             android:layout_marginTop="30dp"
@@ -246,6 +258,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="gone"
             android:textSize="20dp"
+            />
+        <ImageButton
+            android:id="@+id/add_btn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_baseline_add_24"
+            app:layout_constraintStart_toEndOf="@+id/mid3"
+            app:layout_constraintTop_toBottomOf="@id/mid2"
+            android:visibility="gone"
+
             />
 
 
