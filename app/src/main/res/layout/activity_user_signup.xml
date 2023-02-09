@@ -189,6 +189,66 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
+        <TextView
+            android:id="@+id/medicine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/bpd"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Your Medicine "
+            android:textColor="@color/primaryColor"
+            android:textSize="36sp"
+            android:textStyle="bold"/>
+        <ImageButton
+            android:id="@+id/add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/ic_baseline_add_24"
+           app:layout_constraintStart_toEndOf="@+id/medicine"
+            app:layout_constraintTop_toBottomOf="@id/bpd"
+
+        />
+        <EditText
+            android:id="@+id/mid1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/medicine"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your first medicine "
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/mid2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/mid1"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your second medicine "
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/mid3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/mid2"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your third medicine "
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone"
+            android:textSize="20dp"
+            />
+
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

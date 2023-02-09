@@ -1,8 +1,12 @@
 package com.example.emergency_alert_system.user.creation
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageButton
 import com.example.emergencyalertsystem.R
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -23,16 +27,26 @@ class user_signup : AppCompatActivity() {
     lateinit var medicines: MutableList<String>
     lateinit var choronic: MutableList<String>
 
+    @SuppressLint("WrongViewCast", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_signup)
-     //  val userinfoo=user_general_info(fullname,email,phone_num,password,user_docname,relativies,relativesphonenum)
-       // val  usermedicaldata= user_midical_info(fullname,medicines,choronic)
+        //  val userinfoo=user_general_info(fullname,email,phone_num,password,user_docname,relativies,relativesphonenum)
+        // val  usermedicaldata= user_midical_info(fullname,medicines,choronic)
         //val user_location=user_location(fullname,streetname,naighbourrhood,buildingnumb, floornumb, flatingnumb)
 
-
+        val btn: ImageButton = findViewById(R.id.add_btn)
+        val editTxt1:EditText=findViewById(R.id.mid1)
+        val editTxt2:EditText=findViewById(R.id.mid2)
+        val editTxt3:EditText=findViewById(R.id.mid3)
+        btn.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                 editTxt1.visibility=View.VISIBLE
+                 editTxt2.visibility=View.VISIBLE
+                 editTxt3.visibility=View.VISIBLE
+            }
+        })
     }
-
 }
 /*
   fun write_general_info(){
