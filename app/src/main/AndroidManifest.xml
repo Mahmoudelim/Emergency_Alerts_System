@@ -54,6 +54,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name="com.example.emergency_alert_system.user.creation.user_Login"
             android:exported="false">

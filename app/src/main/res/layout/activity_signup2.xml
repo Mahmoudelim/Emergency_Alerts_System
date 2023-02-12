@@ -80,7 +80,7 @@
             android:textSize="20dp"
             />
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/EP_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/building_number"
@@ -91,7 +91,17 @@
             android:textSize="20dp"
             />
 
-
+        <Button
+            android:id="@+id/ep_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/btn_style"
+            app:layout_constraintTop_toBottomOf="@id/EP_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

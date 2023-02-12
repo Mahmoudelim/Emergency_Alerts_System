@@ -36,9 +36,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        goToNext()
+    }
 
-
+        /*
         Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(object:PermissionListener{
+
             override fun onPermissionGranted(p0: PermissionGrantedResponse?) {
              goToNext()
             }
@@ -56,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         }).check()
     }
 
+
+         */
     private fun goToNext() {
         val signupBtn:Button=findViewById(R.id.register_btn)
         val btn: Button = findViewById(R.id.login_btn)
