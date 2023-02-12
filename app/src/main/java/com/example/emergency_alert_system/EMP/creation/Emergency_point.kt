@@ -1,8 +1,7 @@
 package com.example.emergency_alert_system.EMP.creation
 
-class Emergency_point(var EPName: String,
-                      var phonenum1:Number,var phonenum2:Number,
-                      var naighbourhood:String,var streetname: String,var buildingnum:Int
-                      ,mangername: String
-                      ,var numofamblunnce:Int,var numofbed:Int ) {
-}
+data class Emergency_point(val EPName: String, val email:String,
+                      val phonenum1:String,
+                      val naighbourhood:String,val streetname: String,val buildingnum:String
+                      , val passwords:String
+                      ,val numofamblunnce:Int,val numofbeds:Int )

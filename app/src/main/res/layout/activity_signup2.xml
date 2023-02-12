@@ -1,9 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.emergency_alert_system.EMP.creation.ep_Signup">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:id="@+id/started_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Account ..."
+            android:layout_marginTop="30dp"
+            android:textColor="@color/primaryColor"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="51dp"
+            tools:layout_editor_absoluteY="39dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <EditText
+            android:id="@+id/EP_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/started_title"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter Emergency point Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/EP_Email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/EP_name"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your Email"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/EP_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/EP_Email"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your Phone"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/EP_neghiporhood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:hint="Enter your neighborhood"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/EP_phone" />
+        <EditText
+            android:id="@+id/building_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/EP_neghiporhood"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your building_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/EP_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/building_number"
+            android:layout_marginTop="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="Enter your password"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            />
+
+        <Button
+            android:id="@+id/ep_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/btn_style"
+            app:layout_constraintTop_toBottomOf="@id/EP_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

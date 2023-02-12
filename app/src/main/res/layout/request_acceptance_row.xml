@@ -54,7 +54,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:layout_marginLeft="5dp"
-        android:drawableLeft="@drawable/patientrelative"/>
+       />
     <TextView
        android:id="@+id/patientrelatives2"
         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:layout_marginLeft="5dp"
-        android:drawableLeft="@drawable/patientrelative"/>
+/>
     <TextView
         android:id="@+id/patientrelatives3"
         android:layout_width="match_parent"
@@ -76,7 +76,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:layout_marginLeft="5dp"
-        android:drawableLeft="@drawable/patientrelative"/>
+      />
     <TextView
         android:id="@+id/phonenumber"
         android:layout_width="match_parent"

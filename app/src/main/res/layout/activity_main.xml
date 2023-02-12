@@ -43,41 +43,84 @@
         android:id="@+id/image_started"
         android:layout_width="320dp"
         android:layout_height="310dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="188dp"
         android:src="@drawable/image03"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/started_sub_title" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/register_btn"
+        style="@style/btn_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:text="Register"
-        android:layout_marginBottom="30dp"
-        style="@style/btn_style"
+        android:layout_marginBottom="1dp"
         android:background="@color/primaryColor"
+        android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="542dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_btn"
+        style="@style/btn_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
         android:background="@color/primaryColor"
+
+
+        android:text="Login"
         app:layout_constraintBottom_toTopOf="@+id/register_btn"
-        android:layout_marginBottom="20dp"
-        style="@style/btn_style"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_started" >
 
-        />
+        <RadioButton
+            android:id="@+id/user_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/doc_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <RadioButton
+            android:id="@+id/EP_radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Emergency point"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RadioGroup>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

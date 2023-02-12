@@ -16,7 +16,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.emergencyalertsystem.R
-
 import kotlinx.android.synthetic.main.activity_user_dachboard.*
 import kotlinx.android.synthetic.main.activity_user_dachboard.view.*
 

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.emergency_alert_system.user.creation.user_Login">
+    tools:context="com.example.emergency_alert_system.EMP.creation.EP_login">
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:text="User Login .."
+        android:text="Emergency Point Login .."
         android:textColor="@color/primaryColor"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/user_txt"
+        android:id="@+id/EP_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
-        android:id="@+id/user_txt2"
+        android:id="@+id/EP_txt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -40,10 +40,10 @@
         android:textStyle="bold"
         android:textSize="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_txt" />
+        app:layout_constraintTop_toBottomOf="@+id/EP_txt" />
 
     <EditText
-        android:id="@+id/user_editTextTextEmailAddress"
+        android:id="@+id/EP_editTextTextEmailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -52,24 +52,24 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/user_txt"
+        app:layout_constraintStart_toEndOf="@+id/EP_txt"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/user_editTextTextPassword"
+        android:id="@+id/EP_editTextTextPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="145dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/user_txt2"
-        app:layout_constraintTop_toBottomOf="@+id/user_editTextTextEmailAddress" />
+        app:layout_constraintStart_toEndOf="@+id/EP_txt2"
+        app:layout_constraintTop_toBottomOf="@+id/EP_editTextTextEmailAddress" />
 
     <Button
-        android:id="@+id/user_log"
+        android:id="@+id/EP_log"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
@@ -77,9 +77,11 @@
         android:layout_marginEnd="130dp"
         android:text="Login"
         style="@style/btn_style"
+        android:background="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_editTextTextPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/EP_editTextTextPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 

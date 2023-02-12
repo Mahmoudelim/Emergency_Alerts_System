@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/med_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:text="medicine name"
+        />
+    <TextView
+        android:id="@+id/med_doc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/med_name"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:text="assigned from"
+        />
+    <TextView
+        android:id="@+id/med_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/med_doc"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:text="time"
+        />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/med_time"
+        />
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
