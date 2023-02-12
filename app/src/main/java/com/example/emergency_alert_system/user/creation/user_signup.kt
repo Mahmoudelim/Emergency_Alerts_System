@@ -91,6 +91,7 @@ mAuth=FirebaseAuth.getInstance()
                 relativies.add(second_relative.text.toString().trim())
                 relativies.add(third_relative.text.toString().trim())
                 val relativesphonenum: MutableList<String> = mutableListOf("")
+                relativesphonenum.remove("")
                 relativesphonenum.add(first_relative_phone.text.toString().trim())
                 relativesphonenum.add(second_relative_phone.text.toString().trim())
                 relativesphonenum.add(third_relative_phone.text.toString().trim())
@@ -125,8 +126,6 @@ mAuth=FirebaseAuth.getInstance()
 
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                     if (task.isSuccessful){
-
-
                         val users=db.collection("USERS")
                         users.document(fullname).set(user_map)
                             .addOnSuccessListener {

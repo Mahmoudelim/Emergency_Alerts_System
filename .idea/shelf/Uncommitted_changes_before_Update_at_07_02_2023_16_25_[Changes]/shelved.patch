@@ -1,0 +1,29 @@
+Index: app/src/main/java/com/example/emergency_alert_system/user/creation/user_signup.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.emergency_alert_system.user.creation\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport com.example.emergencyalertsystem.R\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\n\r\nclass user_signup : AppCompatActivity() {\r\n    var db = FirebaseFirestore.getInstance()\r\n   lateinit var fullname: String\r\n    lateinit var email: String\r\n    lateinit var phone_num: String\r\n    lateinit var password : String\r\n    lateinit var user_docname:String\r\n   lateinit var relativies: MutableList<String>\r\n    lateinit  var relativesphonenum: MutableList<String>\r\n    lateinit var streetname:String\r\n    lateinit var naighbourrhood:String\r\n    var buildingnumb :Int=0\r\n    var floornumb :Int=0\r\n    var flatingnumb :Int=0\r\n    lateinit var medicines: MutableList<String>\r\n    lateinit var choronic: MutableList<String>\r\n\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_user_signup)\r\n        val userinfoo=user_general_info(fullname,email,phone_num,password,user_docname,relativies,relativesphonenum)\r\n        val  usermedicaldata= user_midical_info(fullname,medicines,choronic)\r\n        val user_location=user_location(fullname,streetname,naighbourrhood,buildingnumb, floornumb, flatingnumb)\r\n\r\n\r\n    }\r\n\r\n}\r\n/*\r\n  fun write_general_info(){\r\n   db.collection(\"user\")\r\n   .add(userinfoo)\r\n   .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {\r\n       @Override\r\n       public void onSuccess(DocumentReference documentReference) {\r\n           Log.d(TAG, \"DocumentSnapshot added with ID: \" + documentReference.getId());\r\n       }\r\n   })\r\n   .addOnFailureListener(new OnFailureListener() {\r\n       @Override\r\n       public void onFailure(@NonNull Exception e) {\r\n           Log.w(TAG, \"Error adding document\", e);\r\n       }\r\n   });\r\n}\r\n    */\r\n/* fun write_medical_data(){\r\n   db.collection(\"user\")\r\n   .add(usermedicaldata)\r\n   .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {\r\n       @Override\r\n       public void onSuccess(DocumentReference documentReference) {\r\n           Log.d(TAG, \"DocumentSnapshot added with ID: \" + documentReference.getId());\r\n       }\r\n   })\r\n   .addOnFailureListener(new OnFailureListener() {\r\n       @Override\r\n       public void onFailure(@NonNull Exception e) {\r\n           Log.w(TAG, \"Error adding document\", e);\r\n       }\r\n   });\r\n}\r\n /*\r\n    fun write_useraddres(){\r\n */\r\n    db.collection(\"user\")\r\n    .add(user_location)\r\n    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {\r\n        @Override\r\n        public void onSuccess(DocumentReference documentReference) {\r\n            Log.d(TAG, \"DocumentSnapshot added with ID: \" + documentReference.getId());\r\n        }\r\n    })\r\n    .addOnFailureListener(new OnFailureListener() {\r\n        @Override\r\n        public void onFailure(@NonNull Exception e) {\r\n            Log.w(TAG, \"Error adding document\", e);\r\n        }\r\n    });\r\n}\r\n     */\r\n/*\r\n   fun reading_and_write_VITALDATA()\r\n   //from package vitaldataclass reading\r\n   db.collection(\"user\")\r\n   .add(user_vitaldata)\r\n   .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {\r\n       @Override\r\n       public void onSuccess(DocumentReference documentReference) {\r\n           Log.d(TAG, \"DocumentSnapshot added with ID: \" + documentReference.getId());\r\n       }\r\n   })\r\n   .addOnFailureListener(new OnFailureListener() {\r\n       @Override\r\n       public void onFailure(@NonNull Exception e) {\r\n           Log.w(TAG, \"Error adding document\", e);\r\n       }\r\n   });\r\n\r\n    */\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/emergency_alert_system/user/creation/user_signup.kt b/app/src/main/java/com/example/emergency_alert_system/user/creation/user_signup.kt
+--- a/app/src/main/java/com/example/emergency_alert_system/user/creation/user_signup.kt	(revision 25c8ea20e9ea9095ec4cded4a690f544233b07b0)
++++ b/app/src/main/java/com/example/emergency_alert_system/user/creation/user_signup.kt	(date 1675555018516)
+@@ -2,6 +2,7 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
++import android.widget.Button
+ import com.example.emergencyalertsystem.R
+ import com.google.firebase.firestore.FirebaseFirestore
+ 
+@@ -29,8 +30,8 @@
+         val userinfoo=user_general_info(fullname,email,phone_num,password,user_docname,relativies,relativesphonenum)
+         val  usermedicaldata= user_midical_info(fullname,medicines,choronic)
+         val user_location=user_location(fullname,streetname,naighbourrhood,buildingnumb, floornumb, flatingnumb)
+-
+-
++        var signupbtn : Button
++        val createuser= CRUD_operations
+     }
+ 
+ }

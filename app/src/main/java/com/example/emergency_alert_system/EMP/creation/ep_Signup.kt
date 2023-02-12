@@ -8,10 +8,12 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.emergency_alert_system.MIddle_Layer.CRUD_operations
 import com.example.emergencyalertsystem.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ep_Signup : AppCompatActivity() {
 //edittext
+private lateinit var mAuth: FirebaseAuth
   lateinit var epname_text: EditText
     lateinit var   epemail_text: EditText
     lateinit var  epphone_text: EditText
@@ -26,7 +28,9 @@ lateinit var  signup:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_signup2)
+        mAuth=FirebaseAuth.getInstance()
      epname_text=findViewById(R.id.EP_name)
      epemail_text=findViewById(R.id.EP_Email)
      epnaighb_text=findViewById(R.id.EP_neghiporhood)
@@ -60,6 +64,10 @@ lateinit var  signup:Button
                  "buildingnum" to buildingnum,
                  "password" to pass
              )
+
+
+         mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener { task->
+             if (task.isSuccessful){
              val eps=db.collection("Emergency point")
              eps.document(EPName).set(ep_map)
                  .addOnSuccessListener {
@@ -68,11 +76,18 @@ lateinit var  signup:Button
                  .addOnFailureListener{
                      Toast.makeText(this@ep_Signup,"failed  added ep",Toast.LENGTH_SHORT).show()
                  }
+
          }
+             else {
+
+                     Toast.makeText(this@ep_Signup,"erroe auth EP"+ (task.exception!!.message.toString()), Toast.LENGTH_SHORT).show()
+
+                 }
+
 
      }
 
 
-    }
+    }}}
 
 

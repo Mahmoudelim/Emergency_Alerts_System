@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.emergency_alert_system.MIddle_Layer.CRUD_operations
 import com.example.emergencyalertsystem.R
+import com.google.firebase.auth.FirebaseAuth
 
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -25,7 +26,7 @@ class doctor_Signup : AppCompatActivity() {
     //Buttons
     lateinit var signup_btn:Button
     var db = FirebaseFirestore.getInstance()
-
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +40,7 @@ class doctor_Signup : AppCompatActivity() {
         doc_quali=findViewById(R.id.doc_qualification)
         doc_pass=findViewById(R.id.password)
         //val create_doctor :CRUD_operations? =null
-
+        mAuth=FirebaseAuth.getInstance()
 
         signup_btn.setOnClickListener{
 
@@ -56,6 +57,8 @@ class doctor_Signup : AppCompatActivity() {
                     "password" to password,
 
                 )
+            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
+                if (task.isSuccessful){
                 val doctors= db.collection("Doctor")
                 doctors.document(doctorname).set(doc)
                     .addOnSuccessListener {
@@ -66,6 +69,10 @@ class doctor_Signup : AppCompatActivity() {
                     }
 
             }
+                else {
+                    Toast.makeText(this@doctor_Signup,"erroe auth EP"+ (task.exception!!.message.toString()), Toast.LENGTH_SHORT).show()
+
+                }
 
 
       //  var doctor=Doctor(doctorname,email,specilization,
@@ -74,4 +81,4 @@ class doctor_Signup : AppCompatActivity() {
      // create_doctor!!.create_doctor( signup_btn,doctor)
     }
 
-}
+}}}
