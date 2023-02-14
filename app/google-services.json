@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "610437980706",
+    "firebase_url": "https://emergency-alert-system-final-default-rtdb.firebaseio.com",
     "project_id": "emergency-alert-system-final",
     "storage_bucket": "emergency-alert-system-final.appspot.com"
   },

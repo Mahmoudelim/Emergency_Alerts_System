@@ -25,4 +25,9 @@
         android:name="com.example.emergency_alert_system.user.EditInfo.EditInfo"
         android:label="fragment_edit_info"
         tools:layout="@layout/fragment_edit_info" />
+    <fragment
+        android:id="@+id/assign_doctor"
+        android:name="com.example.emergency_alert_system.user.AssignDoctor.assign_doctor"
+        android:label="fragment_assign_doctor"
+        tools:layout="@layout/fragment_assign_doctor" />
 </navigation>
