@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">EMAS</string>
-    <string name="started_title">Hello You</string>
+    <string name="started_title">EMAS</string>
     <string name="google_maps_api"></string>
     <string name="started_sub_title">   Nice to meet you,Come Join our App
     <br><b>Login</b> If you Already have an Account </br>

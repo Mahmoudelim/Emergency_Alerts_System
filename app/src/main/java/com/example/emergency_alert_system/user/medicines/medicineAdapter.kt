@@ -32,7 +32,7 @@ class medicineAdapter(var medicineList: List<medicine>):
     val medicine:medicine=medicineList[position]
         holder.medicineName.text=medicine.medicine_name
         holder.medicineTime.text=medicine.medicine_time.toString()
-        holder.attachedWith.text=medicine.assignedWith!!.doctorname
+        holder.attachedWith.text=medicine.assignedWith
 
     }
 

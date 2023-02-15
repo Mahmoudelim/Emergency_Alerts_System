@@ -19,8 +19,8 @@ class searchAdapter(var searcList: List<Doctor>) : RecyclerView.Adapter<searchAd
     }
 
     override fun onBindViewHolder(holder: searchViewHoldr, position: Int) {
-       val doctor:Doctor=searcList[position]
-        holder.doc.text=doctor.doctorname
+        holder.bind(searcList[position])
+
     }
 
     override fun getItemCount(): Int {
@@ -28,7 +28,9 @@ class searchAdapter(var searcList: List<Doctor>) : RecyclerView.Adapter<searchAd
     }
     class searchViewHoldr (itemView: View):RecyclerView.ViewHolder(itemView){
 
-        val doc : TextView =itemView.findViewById(R.id.doctor_name)
+        fun bind(Doc:Doctor){
+itemView.doctor_name.text=Doc.doctorname
+        }
 
 
     }

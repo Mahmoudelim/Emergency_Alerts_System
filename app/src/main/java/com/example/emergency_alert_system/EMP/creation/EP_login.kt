@@ -18,7 +18,6 @@ class EP_login : AppCompatActivity() {
     lateinit var Eppassword_text: EditText
     lateinit var login_ep: Button
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ep_login)

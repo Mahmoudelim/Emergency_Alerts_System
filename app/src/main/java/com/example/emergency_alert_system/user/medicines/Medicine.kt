@@ -35,6 +35,9 @@ class Medicine : Fragment() {
 
     private fun medicineFromFireStore() {
       // reterive medicine document for this user from fire store
+
+
+
     }
 
 
