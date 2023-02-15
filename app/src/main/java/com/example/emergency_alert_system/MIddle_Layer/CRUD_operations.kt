@@ -28,7 +28,7 @@ class CRUD_operations {
             override fun onClick(v: View?) {
 
                 val doctors= db.collection("Doctor")
-                doctors.document(doctor.doctorname).set(doctor)
+                //doctors.document(doctor.doctorname).set(doctor)
 
             }
 

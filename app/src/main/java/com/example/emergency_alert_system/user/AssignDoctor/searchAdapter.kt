@@ -12,7 +12,12 @@ import kotlinx.android.synthetic.main.search_row.view.*
 
 class searchAdapter(var searcList: List<Doctor>) : RecyclerView.Adapter<searchAdapter.searchViewHoldr>() {
 
+    class searchViewHoldr (itemView: View):RecyclerView.ViewHolder(itemView){
 
+        fun bind(Doc:Doctor){
+            itemView.doctor_name.text=Doc.doctorname
+        }
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): searchViewHoldr {
        val view=LayoutInflater.from(parent.context).inflate(R.layout.search_row,parent,false)
         return searchViewHoldr(view)
@@ -26,12 +31,7 @@ class searchAdapter(var searcList: List<Doctor>) : RecyclerView.Adapter<searchAd
     override fun getItemCount(): Int {
         return searcList.size
     }
-    class searchViewHoldr (itemView: View):RecyclerView.ViewHolder(itemView){
 
-        fun bind(Doc:Doctor){
-itemView.doctor_name.text=Doc.doctorname
-        }
 
 
     }
-}

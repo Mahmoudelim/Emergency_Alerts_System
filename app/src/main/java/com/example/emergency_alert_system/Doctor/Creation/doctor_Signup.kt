@@ -27,7 +27,7 @@ class doctor_Signup : AppCompatActivity() {
     lateinit var signup_btn:Button
     var db = FirebaseFirestore.getInstance()
     private lateinit var mAuth: FirebaseAuth
-
+var dooc:Doctor=Doctor()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        // binding = doctor_Signup.inflate(layoutInflater)
@@ -49,18 +49,17 @@ class doctor_Signup : AppCompatActivity() {
                 val  specilization=doc_special.text.toString()
                 val   qualification=doc_quali.text.toString()
                 val   password=doc_pass.text.toString()
-                val doc= hashMapOf(
-                    "Name" to doctorname,
-                    "email" to email,
-                    "spicialization" to specilization,
-                    "qualifications" to qualification,
-                    "password" to password,
+            dooc.doctorname = doctorname
+            dooc.email = email
+            dooc.specilization = specilization
+            dooc.qualification= qualification
+            dooc.password = password
 
-                )
+
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                 if (task.isSuccessful){
                 val doctors= db.collection("Doctor")
-                doctors.document(doctorname).set(doc)
+                doctors.document(doctorname).set(dooc)
                     .addOnSuccessListener {
                         Toast.makeText(this@doctor_Signup,"successfuly added the doc", Toast.LENGTH_SHORT).show()
                     }

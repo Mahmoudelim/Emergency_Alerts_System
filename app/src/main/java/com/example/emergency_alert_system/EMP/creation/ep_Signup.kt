@@ -20,6 +20,7 @@ private lateinit var mAuth: FirebaseAuth
     lateinit var  epnaighb_text: EditText
     lateinit var  epbuildingnum_text: EditText
     lateinit var   eppass_text: EditText
+    var ep:Emergency_point=Emergency_point()
 lateinit var  signup:Button
     lateinit var create_ep:CRUD_operations
     var db = FirebaseFirestore.getInstance()
@@ -56,20 +57,20 @@ lateinit var  signup:Button
              val streetname=""
        //  val ep:Emergency_point
              val buildingnum=epbuildingnum_text.text.toString().trim()
-             val ep_map= hashMapOf(
-                 "EPName" to EPName,
-                 "email" to email,
-                 "phone num" to phonenum1,
-                 "naighbourhood" to naighbourhood,
-                 "buildingnum" to buildingnum,
-                 "password" to pass
-             )
+
+                 ep.EPName =EPName
+                 ep.email = email
+                 ep.phonenum1 = phonenum1
+                 ep.naighbourhood = naighbourhood
+                ep.buildingnum = buildingnum
+                 ep.passwords = pass
+
 
 
          mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener { task->
              if (task.isSuccessful){
              val eps=db.collection("Emergency point")
-             eps.document(EPName).set(ep_map)
+             eps.document(EPName).set(ep)
                  .addOnSuccessListener {
                      Toast.makeText(this@ep_Signup,"successfuly added the ep", Toast.LENGTH_SHORT).show()
                  }

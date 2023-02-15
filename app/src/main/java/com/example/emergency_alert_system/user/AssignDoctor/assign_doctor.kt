@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.fragment_assign_doctor.*
 class assign_doctor : Fragment() {
     lateinit var recyclerView: RecyclerView
   lateinit var firestore:FirebaseFirestore
-  private var searchList:List<Doctor> =ArrayList()
+  private var searchList:MutableList<Doctor> = mutableListOf()
   private val searchAdapter=searchAdapter(searchList)
   lateinit var doctor:Doctor
     override fun onCreateView(
@@ -49,7 +49,7 @@ class assign_doctor : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                // get value from text
                 val searchText:String= doc_search.text.toString().trim()
-                searcInFirestore(searchText.toLowerCase())
+                searcInFirestore(searchText)
 
             }
 
