@@ -48,7 +48,7 @@ var dooc:Doctor=Doctor()
                 val   password=doc_pass.text.toString()
             dooc.Name = doctorname
             dooc.email = email
-            dooc.specilization = specilization
+            dooc.spicialization = specilization
             dooc.qualification= qualification
             dooc.password = password
 
