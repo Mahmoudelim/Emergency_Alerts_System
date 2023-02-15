@@ -25,13 +25,13 @@ class medicineAdapter(var medicineList: List<medicine>):
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): medicineViewHolder {
         val view= LayoutInflater.from(parent.context).inflate(R.layout.medicine_card,parent,false)
-        return medicineAdapter.medicineViewHolder(view)
+        return medicineViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: medicineViewHolder, position: Int) {
     val medicine:medicine=medicineList[position]
         holder.medicineName.text=medicine.medicine_name
-        holder.medicineTime.text=medicine.medicine_time.toString()
+        holder.medicineTime.text=medicine.medicine_time
         holder.attachedWith.text=medicine.assignedWith
 
     }

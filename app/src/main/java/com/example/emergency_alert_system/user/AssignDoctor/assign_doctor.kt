@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,38 +38,25 @@ class assign_doctor : Fragment() {
         return inflater.inflate(R.layout.fragment_assign_doctor, container, false)
         firestore=FirebaseFirestore.getInstance()
         //recyclerView control
-        doctors_recycle.hasFixedSize()
-        doctors_recycle.layoutManager=LinearLayoutManager(this.context)
-        doctors_recycle.adapter=searchAdapter
 
-        //searchView
-        doc_search.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
+        val text: String=doc_search.text.toString()
+        betn.setOnClickListener(object :View.OnClickListener {
+            override fun onClick(v: View?) {
+            searcInFirestore(text)
+            Toast.makeText(context,"tmam",Toast.LENGTH_SHORT)
+            }})
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-               // get value from text
-                val searchText:String= doc_search.text.toString().trim()
-                searcInFirestore(searchText)
 
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-
-            }
-
-        })
     }
-
     @SuppressLint("NotifyDataSetChanged")
     private fun searcInFirestore(searchText: String) {
-      firestore.collection("Doctor".trim())
+      firestore.collection("Doctor")
+          .orderBy("Name").startAt(searchText)
          .get().addOnCompleteListener{
               if (it.isSuccessful)
               {
-                   searchList=it.result!!.toObjects(Doctor::class.java)
-                   searchAdapter.searcList=searchList
-                   searchAdapter.notifyDataSetChanged()
+                   searchtext.text=it.result!!.toObjects(Doctor::class.java).toString()
+
 
               }
               else{

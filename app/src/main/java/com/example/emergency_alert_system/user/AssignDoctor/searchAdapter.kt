@@ -3,8 +3,6 @@ package com.example.emergency_alert_system.user.AssignDoctor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Doctor.Creation.Doctor
 import com.example.emergencyalertsystem.R
@@ -15,7 +13,7 @@ class searchAdapter(var searcList: List<Doctor>) : RecyclerView.Adapter<searchAd
     class searchViewHoldr (itemView: View):RecyclerView.ViewHolder(itemView){
 
         fun bind(Doc:Doctor){
-            itemView.doctor_name.text=Doc.doctorname
+            itemView.doctor_name.text=Doc.Name
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): searchViewHoldr {

@@ -1,14 +1,11 @@
 package com.example.emergency_alert_system.Doctor.Creation
 
 import android.os.Bundle
-import android.view.View
-import android.view.View.inflate
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 
 import androidx.appcompat.app.AppCompatActivity
-import com.example.emergency_alert_system.MIddle_Layer.CRUD_operations
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
 
@@ -49,7 +46,7 @@ var dooc:Doctor=Doctor()
                 val  specilization=doc_special.text.toString()
                 val   qualification=doc_quali.text.toString()
                 val   password=doc_pass.text.toString()
-            dooc.doctorname = doctorname
+            dooc.Name = doctorname
             dooc.email = email
             dooc.specilization = specilization
             dooc.qualification= qualification
