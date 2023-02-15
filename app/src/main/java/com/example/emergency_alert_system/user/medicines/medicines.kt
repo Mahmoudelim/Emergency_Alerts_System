@@ -9,12 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.emergency_alert_system.user.creation.user_general_info
 import com.example.emergency_alert_system.user.model.medicine
 import com.example.emergencyalertsystem.R
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -35,7 +33,7 @@ class medicines : Fragment() {
     lateinit var medicineAdapter: medicineAdapter
     lateinit var firestore: FirebaseFirestore
 
-
+var us:user_general_info=user_general_info()
     lateinit var medName:Array<String>
     lateinit var medTime:Array<String>
     lateinit var assWith:Array<String>
@@ -88,58 +86,13 @@ class medicines : Fragment() {
         recyclerView.adapter=medicineAdapter
 
     }
-    private fun dummyData(){
-        medicineList= arrayListOf<medicine>()
-        medName= arrayOf(
-            "qwe",
-            "qaz",
-            "tgrf",
-            "ggtttb",
-            "er5t",
-            "Wwert",
-            "efgt",
-            "DRTjuk",
-            "dcsx",
-            "yyy"
-        )
-        medTime= arrayOf(
-            "1 pm",
-            "2 pm",
-            "3 pm",
-            "4 pm",
-            "5 pm",
-            "6 pm",
-            "7 pm",
-            "8 pm",
-            "9 pm",
-            "10 pm"
-        )
-        assWith= arrayOf(
-            "me",
-            "me",
-            "me",
-            "me",
-            "me",
-            "me",
-            "me",
-            "me",
-            "me",
-            "me",
 
-            )
-        for(i in medName.indices ){
-            val medicine=medicine(medName[i],medTime[i],assWith[i])
-            medicineList!!.add(medicine)
-        }
-
-
-    }
     private fun medicineFromFireStore() {
         // reterive medicine document for this user from fire store
         firestore=FirebaseFirestore.getInstance()
-        firestore.collection("medicines".trim())
-            .orderBy("medicine_name".trim()).
-            addSnapshotListener(object: com.google.firebase.firestore.EventListener<QuerySnapshot> {
+        firestore.collection("USERS".trim())
+                //document("${us.username?.trim()}:medical info ")
+            .addSnapshotListener(object: EventListener<QuerySnapshot> {
                 override fun onEvent(
                     value: QuerySnapshot?,
                     error: FirebaseFirestoreException?
