@@ -34,9 +34,7 @@ class medicines : Fragment() {
     lateinit var firestore: FirebaseFirestore
 
 var us:user_general_info=user_general_info()
-    lateinit var medName:Array<String>
-    lateinit var medTime:Array<String>
-    lateinit var assWith:Array<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {

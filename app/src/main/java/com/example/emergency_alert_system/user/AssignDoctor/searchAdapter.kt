@@ -14,6 +14,7 @@ class searchAdapter(var searcList: List<Doctor>) : RecyclerView.Adapter<searchAd
 
         fun bind(Doc:Doctor){
             itemView.doctor_name.text=Doc.Name
+            itemView.doctor_specialization.text=Doc.spicialization
         }
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): searchViewHoldr {
