@@ -1,6 +1,7 @@
 package com.example.emergency_alert_system
 
 import android.Manifest
+import android.app.NotificationManager
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -15,10 +16,14 @@ import com.example.emergency_alert_system.Doctor.Creation.doctor_Signup
 import com.example.emergency_alert_system.Doctor.Creation.doctor_login
 import com.example.emergency_alert_system.EMP.creation.EP_login
 import com.example.emergency_alert_system.EMP.creation.ep_Signup
+import com.example.emergency_alert_system.notifications.AlertNotificationService
 import com.example.emergency_alert_system.user.UserDachboard
+import com.example.emergency_alert_system.user.creation.user
 import com.example.emergency_alert_system.user.creation.user_Login
 import com.example.emergency_alert_system.user.creation.user_signup
+import com.example.emergency_alert_system.user.model.Alert
 import com.example.emergencyalertsystem.R
+import com.google.android.filament.Box
 //import com.firebase.ui.auth.AuthUI
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.DexterBuilder.Permission
@@ -37,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         goToNext()
+
     }
 
         /*
@@ -62,6 +68,7 @@ class MainActivity : AppCompatActivity() {
 
          */
     private fun goToNext() {
+            val service=AlertNotificationService(applicationContext)
         val signupBtn:Button=findViewById(R.id.register_btn)
         val btn: Button = findViewById(R.id.login_btn)
         val radio :RadioGroup=findViewById(R.id.radio_group)
@@ -72,6 +79,11 @@ class MainActivity : AppCompatActivity() {
                     if (text=="user") {
                         val intent = Intent(this@MainActivity, user_Login::class.java)
                         startActivity(intent);
+                        service.showNotification(
+                            user("mahmoud"),
+                            Alert("critical","his heart rate in dangerous case"))
+
+
                     }
                     else if (text=="doctor")
                     {

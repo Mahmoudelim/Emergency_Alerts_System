@@ -1,13 +1,139 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.emergency_alert_system.user.EditInfo.EditInfo">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+    android:id="@+id/editInfo_txt"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:text="Edit Your Personnel Info ..."
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:textSize="30sp"
+    android:textColor="@color/primaryColor"
+    android:textStyle="bold"
+    />
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_filledTextField"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+       android:layout_margin="20dp"
+        android:hint="Edit Your Name"
+        app:layout_constraintTop_toBottomOf="@+id/editInfo_txt"
+        >
 
-</FrameLayout>
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/email_filledTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="Edit Your Email"
+        app:layout_constraintTop_toBottomOf="@+id/name_filledTextField"
+        >
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/email_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+    android:id="@+id/password_filledTextField"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:hint="Edit Your password"
+    app:layout_constraintTop_toBottomOf="@+id/email_filledTextField"
+    >
+
+    <!--this is the actual edit text which takes the input-->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/password_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phone_filledTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="Edit Your phone"
+        app:layout_constraintTop_toBottomOf="@+id/password_filledTextField"
+        >
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/location_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Edit Your Address ..."
+       app:layout_constraintTop_toBottomOf="@+id/phone_filledTextField"
+        android:textSize="30sp"
+        android:textColor="@color/primaryColor"
+        android:textStyle="bold"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/neighborhood_filledTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="Edit Your Neighborhood"
+        app:layout_constraintTop_toBottomOf="@+id/location_txt"
+        >
+
+    <!--this is the actual edit text which takes the input-->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/neighborhood_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/building_number_filledTextField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:hint="Edit Your building number"
+        app:layout_constraintTop_toBottomOf="@+id/neighborhood_filledTextField"
+        >
+
+        <!--this is the actual edit text which takes the input-->
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/building_number_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
