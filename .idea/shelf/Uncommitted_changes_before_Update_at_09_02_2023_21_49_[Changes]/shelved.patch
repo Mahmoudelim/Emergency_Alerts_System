@@ -1,0 +1,149 @@
+Index: app/src/main/java/com/example/emergency_alert_system/MIddle_Layer/CRUD_operations.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.emergency_alert_system.MIddle_Layer\r\n\r\nimport android.widget.Button\r\nimport com.example.emergency_alert_system.Doctor.Creation.Doctor\r\nimport com.example.emergency_alert_system.EMP.creation.Emergency_point\r\nimport com.example.emergency_alert_system.user.creation.*\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\n\r\nclass CRUD_operations {\r\n    var db = FirebaseFirestore.getInstance()\r\n    fun create_user( btn:Button,\r\n                     user1:user_general_info,\r\n                     user2:user_midical_info,\r\n                     user3:user_location,\r\n                     user4:user_vitaldata\r\n    ){\r\n        val user= db.collection(\"User\")\r\n        user.document(user1.fullname).set(user1)\r\n        user.document(\"  ${user1.fullname}:medical info \").set(user2)\r\n        user.document(\"  ${user1.fullname}:Address \").set(user3)\r\n        user.document(\"  ${user1.fullname}:vital Data \").set(user4)\r\n\r\n    }\r\n    fun create_doctor( btn:Button,\r\n                       doctor: Doctor\r\n                     ){\r\n\r\n        val doctors= db.collection(\"Doctor\")\r\n        doctors.document(doctor.doctorname).set(doctor)\r\n    }\r\n    //when user request\r\n    fun add_to_doc_waitinglist(  patientname:String ,doctorname: String ){\r\n        lateinit var waiting_patient: MutableList<String>\r\n        waiting_patient.add(patientname)\r\n        val doctors= db.collection(\"Doctor\")\r\n        doctors.document(\"$doctorname  waiting list\").set(waiting_patient)\r\n    }\r\n    fun add_to_doc_patiente_list(patientname:String ,doctorname: String ){\r\n        lateinit var  patientslist: MutableList<String>\r\n        patientslist.add(patientname)\r\n        val doctors= db.collection(\"Doctor\")\r\n        doctors.document(\"$doctorname  patientes list\" ).set(patientslist)\r\n    }\r\n    fun create_ep(btn: Button,ep:Emergency_point ){\r\n\r\n        val eps=db.collection(\"Emergency point\")\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/emergency_alert_system/MIddle_Layer/CRUD_operations.kt b/app/src/main/java/com/example/emergency_alert_system/MIddle_Layer/CRUD_operations.kt
+--- a/app/src/main/java/com/example/emergency_alert_system/MIddle_Layer/CRUD_operations.kt	(revision 8edaa85c6f898941f4bfc2280dc7fbb45f243808)
++++ b/app/src/main/java/com/example/emergency_alert_system/MIddle_Layer/CRUD_operations.kt	(date 1675803931805)
+@@ -35,6 +35,7 @@
+         val doctors= db.collection("Doctor")
+         doctors.document("$doctorname  waiting list").set(waiting_patient)
+     }
++    //request approved
+     fun add_to_doc_patiente_list(patientname:String ,doctorname: String ){
+         lateinit var  patientslist: MutableList<String>
+         patientslist.add(patientname)
+@@ -45,7 +46,13 @@
+ 
+         val eps=db.collection("Emergency point")
+     }
++fun Alert1_usermedicalinfo(username:String):user_midical_info{
++    val docRef = db.collection("User").document("  $username:medical info ")
++    docRef.get().addOnSuccessListener { documentSnapshot ->
++        val user1 = documentSnapshot.
+ 
++    return
++}
+ 
+ 
+ 
+Index: app/src/main/java/com/example/emergency_alert_system/EMP/creation/ep_Signup.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.emergency_alert_system.EMP.creation\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport com.example.emergencyalertsystem.R\r\nimport com.google.firebase.firestore.FirebaseFirestore\r\n\r\nclass ep_Signup : AppCompatActivity() {\r\n    var db = FirebaseFirestore.getInstance()\r\n    lateinit var EPName: String\r\n    lateinit var email: String\r\n    lateinit var phonenum1:Number\r\n    lateinit var naighbourhood:String\r\n    lateinit var streetname: String\r\n    var buildingnum:Int=0\r\n    lateinit  var mangername: String\r\n     var numofamblunnce:Int=0\r\n     var numofbed:Int=0\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_signup2)\r\n        val ep=Emergency_point(EPName,email, phonenum1, naighbourhood, streetname, buildingnum, mangername, numofamblunnce, numofbed)\r\n    }\r\n\r\n}\r\n/*\r\n  db.collection(\"Emergency_point\")\r\n  .add(ep)\r\n  .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {\r\n      @Override\r\n      public void onSuccess(DocumentReference documentReference) {\r\n          Log.d(TAG, \"DocumentSnapshot added with ID: \" + documentReference.getId());\r\n      }\r\n  })\r\n  .addOnFailureListener(new OnFailureListener() {\r\n      @Override\r\n      public void onFailure(@NonNull Exception e) {\r\n          Log.w(TAG, \"Error adding document\", e);\r\n      }\r\n  });\r\n\r\n   */
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/emergency_alert_system/EMP/creation/ep_Signup.kt b/app/src/main/java/com/example/emergency_alert_system/EMP/creation/ep_Signup.kt
+--- a/app/src/main/java/com/example/emergency_alert_system/EMP/creation/ep_Signup.kt	(revision 8edaa85c6f898941f4bfc2280dc7fbb45f243808)
++++ b/app/src/main/java/com/example/emergency_alert_system/EMP/creation/ep_Signup.kt	(date 1675784383558)
+@@ -23,20 +23,3 @@
+     }
+ 
+ }
+-/*
+-  db.collection("Emergency_point")
+-  .add(ep)
+-  .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+-      @Override
+-      public void onSuccess(DocumentReference documentReference) {
+-          Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+-      }
+-  })
+-  .addOnFailureListener(new OnFailureListener() {
+-      @Override
+-      public void onFailure(@NonNull Exception e) {
+-          Log.w(TAG, "Error adding document", e);
+-      }
+-  });
+-
+-   */
+\ No newline at end of file
+Index: app/src/google-services.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/google-services.json b/app/src/google-services.json
+new file mode 100644
+--- /dev/null	(date 1675800626969)
++++ b/app/src/google-services.json	(date 1675800626969)
+@@ -0,0 +1,40 @@
++{
++  "project_info": {
++    "project_number": "610437980706",
++    "firebase_url": "https://emergency-alert-system-final-default-rtdb.firebaseio.com",
++    "project_id": "emergency-alert-system-final",
++    "storage_bucket": "emergency-alert-system-final.appspot.com"
++  },
++  "client": [
++    {
++      "client_info": {
++        "mobilesdk_app_id": "1:610437980706:android:c4e9b9e60b4bc5c1b9e07b",
++        "android_client_info": {
++          "package_name": "com.example.emergencyalertsystem"
++        }
++      },
++      "oauth_client": [
++        {
++          "client_id": "610437980706-nbogc71oc13ko651nepa9ou2q6v718nf.apps.googleusercontent.com",
++          "client_type": 3
++        }
++      ],
++      "api_key": [
++        {
++          "current_key": "AIzaSyAblJBvZ6-OZTm8g7HCtW1blTZySrphpQU"
++        }
++      ],
++      "services": {
++        "appinvite_service": {
++          "other_platform_oauth_client": [
++            {
++              "client_id": "610437980706-nbogc71oc13ko651nepa9ou2q6v718nf.apps.googleusercontent.com",
++              "client_type": 3
++            }
++          ]
++        }
++      }
++    }
++  ],
++  "configuration_version": "1"
++}
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'com.android.application'\r\n    id 'org.jetbrains.kotlin.android'\r\n    id 'kotlin-android-extensions'\r\n    id 'com.google.gms.google-services'\r\n}\r\n\r\nandroid {\r\n    namespace 'com.example.emergencyalertsystem'\r\n    compileSdk 33\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.emergencyalertsystem\"\r\n        minSdk 23\r\n        targetSdk 33\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = '1.8'\r\n    }\r\n    buildFeatures {\r\n        viewBinding true\r\n    }\r\n\r\n}\r\nallprojects{\r\n    repositories {\r\n\r\n\r\n\r\n    }\r\n}\r\ndependencies {\r\n\r\n    implementation 'androidx.core:core-ktx:1.7.0'\r\n    implementation 'androidx.appcompat:appcompat:1.6.0'\r\n    implementation 'com.google.android.material:material:1.6.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'\r\n    implementation 'de.hdodenhof:circleimageview:3.1.0'\r\n    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'\r\n    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'\r\n    implementation 'androidx.gridlayout:gridlayout:1.0.0'\r\n    implementation 'androidx.cardview:cardview:1.0.0'\r\n    implementation 'androidx.annotation:annotation:1.5.0'\r\n    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'\r\n    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'\r\n    implementation 'com.google.firebase:firebase-firestore:24.4.2'\r\n    implementation 'com.google.android.gms:play-services-maps:18.1.0'\r\n    implementation 'com.google.android.gms:play-services-location:21.0.1'\r\n    implementation 'com.firebaseui:firebase-ui-database:4.3.1'\r\n    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'\r\n    implementation 'com.github.d-max:spots-dialog:1.1@aar'\r\n    implementation 'com.github.mancj:MaterialSearchBar:0.8.2'\r\n    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'\r\n    implementation 'io.reactivex.rxjava2:rxjava:2.1.7'\r\n    implementation 'com.squareup.retrofit2.adapter-rxjava2:2.3.0'\r\n    implementation 'com.squareup.retrofit2.converter-gson:2.3.0'\r\n    implementation 'io.paperdb:paperdb:2.6'\r\n    testImplementation 'junit:junit:4.13.2'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.3'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'\r\n}\r\napply plugin:'com.google.gms.google-services'
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 8edaa85c6f898941f4bfc2280dc7fbb45f243808)
++++ b/app/build.gradle	(date 1675800342698)
+@@ -1,7 +1,6 @@
+ plugins {
+     id 'com.android.application'
+     id 'org.jetbrains.kotlin.android'
+-    id 'kotlin-android-extensions'
+     id 'com.google.gms.google-services'
+ }
+ 
+@@ -21,8 +20,14 @@
+ 
+ 
+     buildTypes {
++        debug{
++            debuggable true
++            shrinkResources true
++            minifyEnabled true
++        }
+         release {
+-            minifyEnabled false
++            minifyEnabled true
++            shrinkResources true
+             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+         }
+     }

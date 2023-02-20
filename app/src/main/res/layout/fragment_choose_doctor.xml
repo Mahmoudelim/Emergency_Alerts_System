@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.emergency_alert_system.user.AssignDoctor.choose_doctor">
+
+    <EditText
+        android:drawableLeft="@drawable/ic_baseline_search_24"
+        android:id="@+id/doct_search"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/searchview"
+        android:backgroundTint="@color/colorGrey88"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:hint="Enter Doctor Name"
+        android:iconifiedByDefault="false"
+        />
+    <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/doctors_recycle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+        tools:listitem="@layout/search_row"
+    />
+
+</LinearLayout>

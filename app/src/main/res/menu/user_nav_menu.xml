@@ -11,7 +11,7 @@
             android:icon="@drawable/ic_baseline_home_24"
             />
         <item
-            android:id="@+id/medicine"
+            android:id="@+id/medicines2"
             android:title="Medicine"
             />
         <item
@@ -21,6 +21,10 @@
         <item
             android:id="@+id/editInfo"
             android:title="Edit"
+            />
+        <item
+            android:id="@+id/choose_doctor"
+            android:title="Assign Doctor"
             />
 
 

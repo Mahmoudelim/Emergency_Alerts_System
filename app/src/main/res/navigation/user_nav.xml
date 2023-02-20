@@ -11,11 +11,6 @@
         android:label="fragment_home2"
         tools:layout="@layout/fragment_home2" />
     <fragment
-        android:id="@+id/medicine"
-        android:name="com.example.emergency_alert_system.user.medicines.Medicine"
-        android:label="fragment_medicine"
-        tools:layout="@layout/fragment_medicine" />
-    <fragment
         android:id="@+id/alerts"
         android:name="com.example.emergency_alert_system.user.Alerts.Alerts"
         android:label="fragment_alerts"
@@ -25,4 +20,14 @@
         android:name="com.example.emergency_alert_system.user.EditInfo.EditInfo"
         android:label="fragment_edit_info"
         tools:layout="@layout/fragment_edit_info" />
+    <fragment
+        android:id="@+id/medicines2"
+        android:name="com.example.emergency_alert_system.user.medicines.medicines"
+        android:label="fragment_medicines"
+        tools:layout="@layout/fragment_medicines" />
+    <fragment
+        android:id="@+id/choose_doctor"
+        android:name="com.example.emergency_alert_system.user.AssignDoctor.choose_doctor"
+        android:label="fragment_choose_doctor"
+        tools:layout="@layout/fragment_choose_doctor" />
 </navigation>

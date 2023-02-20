@@ -5,7 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.emergency_alert_system.Doctor.model.waitingList
+import com.example.emergency_alert_system.user.medicines.medicineAdapter
+import com.example.emergency_alert_system.user.model.medicine
 import com.example.emergencyalertsystem.R
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +27,10 @@ class WatingList : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    lateinit var recyclerView: RecyclerView
+    var watingList: ArrayList<waitingList>?=null
+    lateinit var waitingListAdapter: waitingListAdapter
+    lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,5 +66,22 @@ class WatingList : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        watingList= arrayListOf<waitingList>()
+        watingListFromFireStore()
+        watingList!!.add(waitingList("",""))
+        val layoutManager= LinearLayoutManager(context)
+        recyclerView=view.findViewById(R.id.waitingList_recycle)
+        recyclerView.layoutManager=layoutManager
+        recyclerView.setHasFixedSize(true)
+        waitingListAdapter=waitingListAdapter(watingList!!)
+        recyclerView.adapter=waitingListAdapter
+    }
+
+    private fun watingListFromFireStore() {
+        TODO("Not yet implemented")
     }
 }

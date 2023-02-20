@@ -17,17 +17,7 @@ class CRUD_operations {
                      user3:user_location,
                      user4:user_vitaldata
     ){
-        btn.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                val user= db.collection("User")
-                user.document(user1.fullname).set(user1)
-                user.document("  ${user1.fullname}:medical info ").set(user2)
-                user.document("  ${user1.fullname}:Address ").set(user3)
-                user.document("  ${user1.fullname}:vital Data ").set(user4)
 
-            }
-
-        })
 
     }
     fun create_doctor( btn:Button,
@@ -38,7 +28,7 @@ class CRUD_operations {
             override fun onClick(v: View?) {
 
                 val doctors= db.collection("Doctor")
-                doctors.document(doctor.doctorname).set(doctor)
+                //doctors.document(doctor.doctorname).set(doctor)
 
             }
 

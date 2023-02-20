@@ -8,16 +8,19 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.emergency_alert_system.MIddle_Layer.CRUD_operations
 import com.example.emergencyalertsystem.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ep_Signup : AppCompatActivity() {
 //edittext
+private lateinit var mAuth: FirebaseAuth
   lateinit var epname_text: EditText
     lateinit var   epemail_text: EditText
     lateinit var  epphone_text: EditText
     lateinit var  epnaighb_text: EditText
     lateinit var  epbuildingnum_text: EditText
     lateinit var   eppass_text: EditText
+    var ep:Emergency_point=Emergency_point()
 lateinit var  signup:Button
     lateinit var create_ep:CRUD_operations
     var db = FirebaseFirestore.getInstance()
@@ -26,7 +29,9 @@ lateinit var  signup:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_signup2)
+        mAuth=FirebaseAuth.getInstance()
      epname_text=findViewById(R.id.EP_name)
      epemail_text=findViewById(R.id.EP_Email)
      epnaighb_text=findViewById(R.id.EP_neghiporhood)
@@ -52,27 +57,38 @@ lateinit var  signup:Button
              val streetname=""
        //  val ep:Emergency_point
              val buildingnum=epbuildingnum_text.text.toString().trim()
-             val ep_map= hashMapOf(
-                 "EPName" to EPName,
-                 "email" to email,
-                 "phone num" to phonenum1,
-                 "naighbourhood" to naighbourhood,
-                 "buildingnum" to buildingnum,
-                 "password" to pass
-             )
+
+                 ep.EPName =EPName
+                 ep.email = email
+                 ep.phonenum1 = phonenum1
+                 ep.naighbourhood = naighbourhood
+                ep.buildingnum = buildingnum
+                 ep.passwords = pass
+
+
+
+         mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener { task->
+             if (task.isSuccessful){
              val eps=db.collection("Emergency point")
-             eps.document(EPName).set(ep_map)
+             eps.document(EPName).set(ep)
                  .addOnSuccessListener {
                      Toast.makeText(this@ep_Signup,"successfuly added the ep", Toast.LENGTH_SHORT).show()
                  }
                  .addOnFailureListener{
                      Toast.makeText(this@ep_Signup,"failed  added ep",Toast.LENGTH_SHORT).show()
                  }
+
          }
+             else {
+
+                     Toast.makeText(this@ep_Signup,"erroe auth EP"+ (task.exception!!.message.toString()), Toast.LENGTH_SHORT).show()
+
+                 }
+
 
      }
 
 
-    }
+    }}}
 
 
