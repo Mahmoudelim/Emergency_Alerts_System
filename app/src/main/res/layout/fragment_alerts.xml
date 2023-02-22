@@ -8,5 +8,6 @@
        android:id="@+id/alerts"
        android:layout_width="match_parent"
        android:layout_height="match_parent"
+       tools:listitem="@layout/alerts_card"
 />
 </androidx.constraintlayout.widget.ConstraintLayout>
