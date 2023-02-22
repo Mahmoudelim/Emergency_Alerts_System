@@ -151,7 +151,7 @@
                     android:ems="10"
                     android:layout_marginTop="20dp"
                     android:hint="Enter your first relative phone"
-                    android:inputType="textPersonName"
+                    android:inputType="phone"
                     android:paddingLeft="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
@@ -166,7 +166,7 @@
                     android:background="@drawable/editfield"
                     android:ems="10"
                     android:hint="Enter your second relative name"
-                    android:inputType="phone"
+                    android:inputType="textPersonName"
                     android:paddingLeft="20dp"
                     android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
@@ -238,11 +238,13 @@
                     android:textStyle="bold"
                     />
 
+
                 <CheckBox
                     android:id="@+id/diabetes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Diabetes"
+                    android:buttonTint="@color/teal_700"
                     android:checked="false"
                     app:layout_constraintTop_toBottomOf="@id/chronic"
                     android:layout_marginTop="10dp"
@@ -256,6 +258,7 @@
                     android:layout_height="wrap_content"
                     android:text="heart diseases"
                     android:textColor="@color/black"
+                    android:buttonTint="@color/teal_700"
 
                     android:checked="false"
                     app:layout_constraintTop_toBottomOf="@id/diabetes"
@@ -269,6 +272,7 @@
                     android:layout_height="wrap_content"
                     android:text="blood pressure diseases"
                     android:textColor="@color/black"
+                    android:buttonTint="@color/teal_700"
 
                     android:checked="false"
                     app:layout_constraintTop_toBottomOf="@id/hd"
@@ -297,10 +301,10 @@
                     app:layout_constraintStart_toStartOf="parent"
                     android:hint="Enter your first medicine "
                     android:textColorHint="@android:color/darker_gray"
-
+                     android:textColor="@color/black"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:visibility="visible"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     />
                 <ImageButton
                     android:id="@+id/add_btn1"
@@ -320,21 +324,21 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/mid1"
                     android:layout_marginTop="30dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="120dp"
                     android:textColor="@color/black"
-
+android:textColorHint="@color/white_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     android:hint="Enter your second medicine "
                     app:layout_constraintEnd_toEndOf="parent"
                     android:visibility="gone"
-                    android:textSize="20dp"
+                    android:textSize="16dp"
                     />
                 <ImageButton
                     android:id="@+id/add_btn2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="250dp"
                     android:visibility="gone"
                     android:src="@drawable/ic_baseline_add_24"
                     app:layout_constraintStart_toEndOf="@+id/mid2"
@@ -347,20 +351,21 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/mid2"
                     android:layout_marginTop="30dp"
+                    android:layout_marginRight="120dp"
                     android:textColor="@color/black"
-
+                    android:textColorHint="@color/white_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     android:hint="Enter your third medicine "
                     app:layout_constraintEnd_toEndOf="parent"
                     android:visibility="gone"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     />
                 <ImageButton
                     android:id="@+id/add_btn3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="250dp"
                     android:src="@drawable/ic_baseline_add_24"
                     app:layout_constraintStart_toEndOf="@+id/mid3"
                     app:layout_constraintTop_toBottomOf="@id/mid2"
