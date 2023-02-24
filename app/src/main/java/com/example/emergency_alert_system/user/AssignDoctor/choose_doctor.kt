@@ -35,7 +35,7 @@ class choose_doctor : Fragment() {
     lateinit var recyclerView: RecyclerView
     lateinit var firestore: FirebaseFirestore
     private var searchList:MutableList<Doctor> = mutableListOf()
-    private val searchAdapter=searchAdapter(searchList)
+    var searchAdapter=searchAdapter(searchList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +78,15 @@ class choose_doctor : Fragment() {
         //recycler
         doctors_recycle.hasFixedSize()
         doctors_recycle.layoutManager= LinearLayoutManager(this.context)
+        //searchAdapter=searchAdapter(searchList)
         doctors_recycle.adapter=searchAdapter
+       searchAdapter.setOnItemClickListner(object : searchAdapter.onItemClickListner{
+           override fun onClick(position: Int) {
+               val doc_name: String? =searchList[position].Name
+               Toast.makeText(context,"you clicked on item no $doc_name",Toast.LENGTH_SHORT).show()
+           }
+
+       } )
 
         //searchView
         doct_search.addTextChangedListener(object : TextWatcher {

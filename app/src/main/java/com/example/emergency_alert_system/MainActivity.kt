@@ -23,7 +23,7 @@ import com.example.emergency_alert_system.user.creation.user_Login
 import com.example.emergency_alert_system.user.creation.user_signup
 import com.example.emergency_alert_system.user.model.Alert
 import com.example.emergencyalertsystem.R
-import com.google.android.filament.Box
+
 //import com.firebase.ui.auth.AuthUI
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.DexterBuilder.Permission
