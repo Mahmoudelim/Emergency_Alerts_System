@@ -10,6 +10,7 @@ class homeViewModel : ViewModel() {
     lateinit var pulserate:String
     var tempertuture:Int=0
     var pressure: Int=0
+    var cuurent_user:String=""
     //val user_vital_data= user_vitaldata(fullname,pulserate,tempertuture,pressure)
 }
 /*

@@ -45,6 +45,7 @@ var usermedical:user_midical_info= user_midical_info()
         setContentView(R.layout.activity_user_signup)
 
 mAuth=FirebaseAuth.getInstance()
+        val uid=mAuth.currentUser?.uid
         diabetes=findViewById(R.id.diabetes)
         heart_d=findViewById(R.id.hd)
         blood_press=findViewById(R.id.bpd)
@@ -103,6 +104,10 @@ mAuth=FirebaseAuth.getInstance()
                // val flatingnumb :Int=0
                 val medicines: MutableList<medicine>
                 medicines=mutableListOf()
+                mymedicines.username=fullname
+                //mymedicines2.username=fullname
+                //mymedicines3.username=fullname
+
                 mymedicines.medicine_name =medicine_1.text.toString().trim()
                 mymedicines.assignedWith="ME"
                 mymedicines.medicine_time="22 PM"
@@ -112,7 +117,6 @@ mAuth=FirebaseAuth.getInstance()
                 mymedicines3.medicine_name =medicine_3.text.toString().trim()
                 mymedicines3.assignedWith="ME"
                 mymedicines3.medicine_time="21 PM"
-
                 medicines.add(mymedicines)
                 medicines.add(mymedicines2)
                 medicines.add(mymedicines3)
@@ -128,20 +132,22 @@ mAuth=FirebaseAuth.getInstance()
                 if(blood_press.isChecked) {
                     choronic.add("blood pressure disease")
                 }
-user.username=fullname
+user.username=fullname.trim()
                 user.email = email
                 user.phone_num = phone_num
                 user.password = password
                 user.relatives = relativies
                 user.relativesphonenum= relativesphonenum
-
-                usermedical.choronic=choronic
+//usermedical.username=fullname
+            //    usermedical.choronic=choronic
                 usermedical.medicines= medicines
 
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                     if (task.isSuccessful){
                         val users=db.collection("USERS")
-                        users.document(user.username!!).set(user)
+                        val usersmedicalpath=db.collection("USERS MEDICAL INFO")
+                         val uid2=mAuth.uid
+                        users.document(uid2!!).set(user)
                             .addOnSuccessListener {
                                 Toast.makeText(this@user_signup,"successfuly added the user", Toast.LENGTH_SHORT).show()
                             }
@@ -149,7 +155,7 @@ user.username=fullname
                                 Toast.makeText(this@user_signup,"failed  added user", Toast.LENGTH_SHORT).show()
                             }
 
-                        users.document("  ${user.username}:medical info ").set(usermedical)
+                        usersmedicalpath.document("${user.username}:medical info ".trim()).set(usermedical)
                             .addOnSuccessListener {
                                 Toast.makeText(this@user_signup,"successfuly added the user medical_info", Toast.LENGTH_SHORT).show()
                             }
@@ -162,8 +168,14 @@ user.username=fullname
                         Toast.makeText(this@user_signup,"erroe auth user"+ (task.exception!!.message.toString()), Toast.LENGTH_SHORT).show()
 
                     }
-                }
 
+                }
+// retriveing medicine              }
+// waiting list
+//    approved
+// rejected
+// activiate alert2
+// acctivate alert1
 
 
 

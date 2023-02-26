@@ -1,17 +1,25 @@
 package com.example.emergency_alert_system.Doctor.WatingList
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.emergency_alert_system.Doctor.Creation.doctor_login
 import com.example.emergency_alert_system.Doctor.model.waitingList
+import com.example.emergency_alert_system.MIddle_Layer.Request
+import com.example.emergency_alert_system.user.creation.user_midical_info
 import com.example.emergency_alert_system.user.medicines.medicineAdapter
 import com.example.emergency_alert_system.user.model.medicine
 import com.example.emergencyalertsystem.R
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.*
+import kotlinx.android.synthetic.main.waiting_list_card.*
+import java.util.Objects
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,7 +36,7 @@ class WatingList : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var recyclerView: RecyclerView
-    var watingList: ArrayList<waitingList>?=null
+    var watingList: MutableList<String?>?=null
     lateinit var waitingListAdapter: waitingListAdapter
     lateinit var firestore: FirebaseFirestore
 
@@ -70,18 +78,72 @@ class WatingList : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        watingList= arrayListOf<waitingList>()
-        watingListFromFireStore()
-        watingList!!.add(waitingList("",""))
+        watingList= arrayListOf<String?>()
+        //watingListFromFireStore()
+         var request_deticion:Request=Request()
+        var mAuth: FirebaseAuth
+        mAuth= FirebaseAuth.getInstance()
+        firestore=FirebaseFirestore.getInstance()
+        val UID =mAuth.currentUser!!.uid
+        val docref=firestore.collection("/Doctor").document(UID).get().addOnSuccessListener { document ->
+            val nm: String? = document.data!!["name"].toString().trim()
+
+            val mylist =  firestore.collection("/Doctor:$nm  _Request_list")
+                .get().addOnSuccessListener {
+                    for(doc in it){
+                        val taskmodel:String= doc.data!!["usern"].toString()
+                        watingList!!.add(taskmodel)}
+
+
+
         val layoutManager= LinearLayoutManager(context)
+
         recyclerView=view.findViewById(R.id.waitingList_recycle)
         recyclerView.layoutManager=layoutManager
         recyclerView.setHasFixedSize(true)
         waitingListAdapter=waitingListAdapter(watingList!!)
         recyclerView.adapter=waitingListAdapter
-    }
+        waitingListAdapter.setOnItemClickListner(object:waitingListAdapter.onItemClickListner{
+                        override fun onClick(position: Int) {
+                           val pname= (watingList as ArrayList<String?>)[position]
+                           request_deticion.approved(pname!!,nm!!)
+                            Toast.makeText(context , " $pname",Toast.LENGTH_SHORT).show()
+                        }
 
-    private fun watingListFromFireStore() {
-        TODO("Not yet implemented")
+                    })
+                  /*  button.setOnClickListener {
+                        request_deticion.approved(pname!!,nm!!)
+                        Toast.makeText(context , " $pname",Toast.LENGTH_SHORT).show()
+                    }
+
+
+                   */
     }
-}
+/*
+   private fun watingListFromFireStore() {
+       var mAuth: FirebaseAuth
+       mAuth= FirebaseAuth.getInstance()
+       firestore=FirebaseFirestore.getInstance()
+       val UID =mAuth.currentUser!!.uid
+       val docref=firestore.collection("/Doctor").document(UID).get().addOnSuccessListener { document ->
+           val nm: String = document.data!!["name"].toString().trim()
+
+           val mylist =  firestore.collection("/Doctor:$nm  _Request_list")
+               .get().addOnSuccessListener {
+                   for(doc in it){
+                       val taskmodel:String= doc.data!!["usern"].toString()
+                       watingList!!.add(taskmodel)}
+
+
+         }
+
+
+
+
+
+ */
+
+
+
+
+    }}}

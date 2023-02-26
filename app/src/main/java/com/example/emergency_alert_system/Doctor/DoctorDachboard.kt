@@ -11,6 +11,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.emergencyalertsystem.R
+import kotlinx.android.synthetic.main.activity_doctor_dachboard.*
 import kotlinx.android.synthetic.main.activity_user_dachboard.*
 
 class DoctorDachboard : AppCompatActivity() {
@@ -23,7 +24,7 @@ class DoctorDachboard : AppCompatActivity() {
         setContentView(R.layout.activity_doctor_dachboard)
         navController=findNavController(R.id.doc_nav_host_fragment)
         drawerLayout=findViewById(R.id.drawer2_layout)
-        nav_view.setupWithNavController(navController)
+        nav2_view.setupWithNavController(navController)
         appBarConfiguration= AppBarConfiguration(navController.graph,drawerLayout)
         setupActionBarWithNavController(navController,appBarConfiguration)
 

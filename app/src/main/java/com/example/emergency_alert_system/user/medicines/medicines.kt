@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.emergency_alert_system.user.creation.user_Login
 import com.example.emergency_alert_system.user.creation.user_general_info
 import com.example.emergency_alert_system.user.model.medicine
 import com.example.emergencyalertsystem.R
@@ -31,8 +32,9 @@ class medicines : Fragment() {
     lateinit var recyclerView: RecyclerView
      var medicineList: ArrayList<medicine>?=null
     lateinit var medicineAdapter: medicineAdapter
-    lateinit var firestore: FirebaseFirestore
-
+    var db = FirebaseFirestore.getInstance()
+    var username:String=""
+     var user:user_Login= user_Login()
 var us:user_general_info=user_general_info()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +77,10 @@ var us:user_general_info=user_general_info()
         super.onViewCreated(view, savedInstanceState)
         medicineList= arrayListOf<medicine>()
         medicineFromFireStore()
-        medicineList!!.add(medicine("aa","aa","aa"))
+
+        username=user!!.getcurrentuser().toString().trim()
+
+
         val layoutManager=LinearLayoutManager(context)
         recyclerView=view.findViewById(R.id.medicines_recycler)
         recyclerView.layoutManager=layoutManager
@@ -87,9 +92,9 @@ var us:user_general_info=user_general_info()
 
     private fun medicineFromFireStore() {
         // reterive medicine document for this user from fire store
-        firestore=FirebaseFirestore.getInstance()
-        firestore.collection("USERS".trim())
-                //document("${us.username?.trim()}:medical info ")
+        var medicine:medicine=medicine()
+        db.collection("USERS MEDICAL INFO".trim()).whereEqualTo("username".trim(), username.trim())
+
             .addSnapshotListener(object: EventListener<QuerySnapshot> {
                 override fun onEvent(
                     value: QuerySnapshot?,
@@ -104,9 +109,13 @@ var us:user_general_info=user_general_info()
 
                     for(dc: DocumentChange in value?.documentChanges!!)
                     {
-                        if (dc.type== DocumentChange.Type.ADDED)
-                        {
-                            medicineList!!.add(dc.document.toObject(medicine::class.java))
+                        if (dc.type== DocumentChange.Type.ADDED){
+                            medicine.medicine_name= dc.document!!.data["medicine_name"].toString()
+                        medicine.assignedWith=dc.document!!.data["assignedWith"].toString()
+                        medicine.medicine_time=dc.document!!.data["medicine_time"].toString()
+                       // medicine.username=""
+                        medicineList!!.add(medicine )
+                           // medicineList!!.add(dc.document.toObject(medicine::class.java))
                         }
                     }
                     medicineAdapter.notifyDataSetChanged()

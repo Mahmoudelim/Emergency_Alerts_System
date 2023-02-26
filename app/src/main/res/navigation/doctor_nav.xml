@@ -8,23 +8,12 @@
         android:id="@+id/home2"
         android:name="com.example.emergency_alert_system.Doctor.home.home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_home2_to_myPatient"
-            app:destination="@id/myPatient" />
-        <action
-            android:id="@+id/action_home2_to_watingList"
-            app:destination="@id/watingList" />
-    </fragment>
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/myPatient"
         android:name="com.example.emergency_alert_system.Doctor.myPatients.myPatient"
         android:label="fragment_my_patient"
-        tools:layout="@layout/fragment_my_patient" >
-        <action
-            android:id="@+id/action_myPatient_to_medicineRecommendation"
-            app:destination="@id/medicineRecommendation" />
-    </fragment>
+        tools:layout="@layout/fragment_my_patient" />
     <fragment
         android:id="@+id/watingList"
         android:name="com.example.emergency_alert_system.Doctor.WatingList.WatingList"

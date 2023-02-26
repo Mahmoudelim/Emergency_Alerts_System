@@ -33,6 +33,8 @@ class searchAdapter(var searcList: List<Doctor>) : RecyclerView.Adapter<searchAd
             }
         }
     }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): searchViewHoldr {
        val view=LayoutInflater.from(parent.context).inflate(R.layout.search_row,parent,false)
         return searchViewHoldr(view,mlistner)

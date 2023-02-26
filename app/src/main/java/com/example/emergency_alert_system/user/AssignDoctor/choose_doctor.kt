@@ -1,4 +1,6 @@
 package com.example.emergency_alert_system.user.AssignDoctor
+import com.example.emergency_alert_system.user.AssignDoctor.searchAdapter
+
 
 import android.content.ContentValues
 import android.os.Bundle
@@ -13,7 +15,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Doctor.Creation.Doctor
+import com.example.emergency_alert_system.MIddle_Layer.Request
+import com.example.emergency_alert_system.user.creation.user_Login
 import com.example.emergencyalertsystem.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_assign_doctor.*
 import kotlinx.android.synthetic.main.fragment_choose_doctor.*
@@ -29,14 +34,17 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class choose_doctor : Fragment() {
-    // TODO: Rename and change types of parameters
+   // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     lateinit var recyclerView: RecyclerView
     lateinit var firestore: FirebaseFirestore
     private var searchList:MutableList<Doctor> = mutableListOf()
     var searchAdapter=searchAdapter(searchList)
-
+    private var req:Request= Request()
+    private var currentuser:user_Login= user_Login()
+    private var cur:String=currentuser.getcurrentuser()
+    private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -76,17 +84,33 @@ class choose_doctor : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //recycler
+        mAuth=FirebaseAuth.getInstance()
         doctors_recycle.hasFixedSize()
         doctors_recycle.layoutManager= LinearLayoutManager(this.context)
         //searchAdapter=searchAdapter(searchList)
         doctors_recycle.adapter=searchAdapter
-       searchAdapter.setOnItemClickListner(object : searchAdapter.onItemClickListner{
-           override fun onClick(position: Int) {
-               val doc_name: String? =searchList[position].Name
-               Toast.makeText(context,"you clicked on item no $doc_name",Toast.LENGTH_SHORT).show()
-           }
+        searchAdapter.setOnItemClickListner(object : searchAdapter.onItemClickListner{
+            override fun onClick(position: Int) {
+               // val nm:String?=null
+                mAuth= FirebaseAuth.getInstance()
+                firestore=FirebaseFirestore.getInstance()
+                val UID =mAuth.currentUser!!.uid
+                val docref=firestore.collection("USERS".trim()).document(UID).get().addOnSuccessListener { document ->
 
-       } )
+                    val nm: String? = document.data!!["username".trim()].toString()
+
+
+                    val doc_name: String? = searchList[position].Name
+                    Toast.makeText(
+                        context,
+                        "you clicked on item no $doc_name && user $nm",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    req.create_request(doc_name, nm)
+                }
+            }
+
+        } )
 
         //searchView
         doct_search.addTextChangedListener(object : TextWatcher {
@@ -106,11 +130,12 @@ class choose_doctor : Fragment() {
 
         })
 
+
     }
     private fun searcInFirestore(searchText: String) {
         firestore=FirebaseFirestore.getInstance()
         firestore.collection("Doctor")
-            .orderBy("Name").startAt(searchText).endAt("$searchText\uf8ff")
+            .orderBy("name").startAt(searchText).endAt("$searchText\uf8ff")
             .get().addOnCompleteListener{
                 if (it.isSuccessful)
                 {

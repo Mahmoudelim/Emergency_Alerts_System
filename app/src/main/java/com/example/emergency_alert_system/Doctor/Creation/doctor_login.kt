@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.example.emergency_alert_system.Doctor.DoctorDachboard
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class doctor_login : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
@@ -31,11 +32,18 @@ class doctor_login : AppCompatActivity() {
                 val password=doctorpassword_text.text.toString().trim()
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task->
                     if (task.isSuccessful){
-                        Toast.makeText(this@doctor_login,"success login doc", Toast.LENGTH_SHORT).show()
+                        var mAuth2: FirebaseAuth
+                        var firestore2: FirebaseFirestore
+                        mAuth2= FirebaseAuth.getInstance()
+                        firestore2=FirebaseFirestore.getInstance()
+                        val UID =mAuth2.currentUser!!.uid
+                        val docref=firestore2.collection("/Doctor").document(UID).get().addOnSuccessListener { document ->
+                            val nm: String = document.data!!["name"].toString()
+                            Toast.makeText(this@doctor_login,"success login doc ${nm}", Toast.LENGTH_SHORT).show()
 val intent= Intent(this@doctor_login,DoctorDachboard().javaClass)
                          startActivity(intent)
                        finish()
-                    }
+                    }}
                     else{
                         Toast.makeText(this@doctor_login,"erroe login doc"+ (task.exception!!.message.toString()), Toast.LENGTH_SHORT).show()
                     }
@@ -43,4 +51,16 @@ val intent= Intent(this@doctor_login,DoctorDachboard().javaClass)
             }
         })
     }
-}
+     fun getdocnam():String?{
+         var mAuth2: FirebaseAuth
+var curr :String?=null
+         var firestore2: FirebaseFirestore
+         mAuth2= FirebaseAuth.getInstance()
+         firestore2=FirebaseFirestore.getInstance()
+         val UID =mAuth.currentUser!!.uid
+         val docref=firestore2.collection("/Doctor").document(UID).get().addOnSuccessListener { document ->
+             val nm: String = document.data!!["name"].toString()
+curr=nm
+         }
+return curr
+}}
