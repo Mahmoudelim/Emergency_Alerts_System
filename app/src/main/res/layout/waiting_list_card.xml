@@ -31,7 +31,7 @@
         />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/approve_btn"
         style="@style/btn_style"
 
         android:layout_marginStart="90dp"
@@ -44,12 +44,12 @@
         android:textAllCaps="false"
         android:textColor="#FFF"
         android:text="Accept"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/decline_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/patient_name" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/decline_btn"
 
         android:layout_width="105dp"
         android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
         android:layout_marginEnd="40dp"
         android:text="Decline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/approve_btn"
         app:layout_constraintTop_toBottomOf="@+id/patient_name" />
 
     <View
@@ -72,7 +72,7 @@
         android:layout_height="1dp"
         android:layout_margin="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/approve_btn"
         android:background="#0000FF"
         />
 

@@ -25,6 +25,7 @@ class waitingListAdapter (var waitingList: List<String?>): RecyclerView.Adapter<
     }
     class waitingListViewHolder (itemView: View,listner: onItemClickListner):RecyclerView.ViewHolder(itemView) {
         val patientName: TextView =itemView.findViewById(R.id.patient_name)
+
         init {
             itemView.setOnClickListener{
                 listner.onClick(adapterPosition)

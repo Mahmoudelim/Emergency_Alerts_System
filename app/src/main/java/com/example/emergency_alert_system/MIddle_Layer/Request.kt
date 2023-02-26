@@ -3,6 +3,7 @@ package com.example.emergency_alert_system.MIddle_Layer
 import android.widget.Button
 import android.widget.Toast
 import com.example.emergency_alert_system.Doctor.Creation.Doctor
+import com.example.emergency_alert_system.Doctor.model.Mypatients
 import com.example.emergency_alert_system.user.creation.user
 import com.example.emergency_alert_system.user.model.medicine
 import com.google.firebase.firestore.FirebaseFirestore
@@ -39,6 +40,9 @@ class Request( var uid:String?=null ,var status:String ?=null,var usern: String?
          val User:user=user()
         User.fullname=username
          var Patients: MutableList<String> ?=null
+        val patient:Mypatients= Mypatients()
+        patient.PATIENTS= arrayListOf()
+        patient.PATIENTS!!.add(username!!)
        //update stutus on user side
         db.collection("User_Request").document("$username:requests").update("status" ,"Approved")
 //uid doc user
@@ -48,21 +52,25 @@ class Request( var uid:String?=null ,var status:String ?=null,var usern: String?
                 for (document in documents) {
                    val id= document.id
                     db.collection("USERS").document(id).update("user_docname",doc_name)
+
                 }
             }
+            val doctor=db.collection("Doctor:$doc_name _Request_list".trim())
+            doctor.document("request$username").delete()
         }
 
 
         // add patient to my patient list
 
 
+
         if (username != null) {
-            db.collection("Doctor").document("$doc_name PATIENTS").set(User)
+            db.collection("Doctor patients").document("$doc_name PATIENTS").set( patient)
         }
         //move patient to list  of patients in doctor view
         }
 
-        fun rejected(username:String,doc_name: String){
+        fun rejected(username:String?,doc_name: String?){
             var db = FirebaseFirestore.getInstance()
             //remove from  doc waiting list view &db
            //update in db of user

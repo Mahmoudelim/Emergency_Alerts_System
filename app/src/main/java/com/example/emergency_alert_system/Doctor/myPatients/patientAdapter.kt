@@ -6,11 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Doctor.WatingList.waitingListAdapter
+import com.example.emergency_alert_system.Doctor.model.Mypatients
 import com.example.emergency_alert_system.Doctor.model.waitingList
 import com.example.emergency_alert_system.user.creation.user
 import com.example.emergencyalertsystem.R
 
-class patientAdapter(var patientList: List<user>): RecyclerView.Adapter<patientAdapter.patientViewHolder>() {
+class patientAdapter(var patientList: List<Mypatients>): RecyclerView.Adapter<patientAdapter.patientViewHolder>() {
     class patientViewHolder (itemView: View): RecyclerView.ViewHolder(itemView) {
         val patientName: TextView =itemView.findViewById(R.id.patientname)
     }
@@ -21,8 +22,8 @@ class patientAdapter(var patientList: List<user>): RecyclerView.Adapter<patientA
     }
 
     override fun onBindViewHolder(holder: patientViewHolder, position: Int) {
-        val patientList: user =patientList[position]
-        holder.patientName.text=patientList.fullname
+        val patientList: Mypatients =patientList[position]
+        holder.patientName.text=patientList.PATIENTS.toString()
 
     }
 

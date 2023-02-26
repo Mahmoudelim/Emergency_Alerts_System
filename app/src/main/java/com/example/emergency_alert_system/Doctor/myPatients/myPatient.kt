@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.emergency_alert_system.Doctor.model.Mypatients
 import com.example.emergencyalertsystem.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,4 +60,21 @@ class myPatient : Fragment() {
                 }
             }
     }
+  private fun getpatientlist(){
+      var mAuth: FirebaseAuth
+      mAuth= FirebaseAuth.getInstance()
+      var firestore:FirebaseFirestore
+      firestore= FirebaseFirestore.getInstance()
+      val UID =mAuth.currentUser!!.uid
+      val docref=firestore.collection("/Doctor").document(UID).get().addOnSuccessListener { document ->
+          val nm: String? = document.data!!["name"].toString().trim()
+      firestore.collection("Doctor patients").document("$nm PATIENTS").get().addOnCompleteListener { task ->
+          if (task.isSuccessful) {
+             val document = task.result as Mypatients
+          }
+
+      }
+      }
+}
+
 }

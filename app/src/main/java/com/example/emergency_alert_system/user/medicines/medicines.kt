@@ -93,36 +93,10 @@ var us:user_general_info=user_general_info()
     private fun medicineFromFireStore() {
         // reterive medicine document for this user from fire store
         var medicine:medicine=medicine()
-        db.collection("USERS MEDICAL INFO".trim()).whereEqualTo("username".trim(), username.trim())
+        db.collection("USERS MEDICAL INFO").whereEqualTo("username", username.trim())
 
-            .addSnapshotListener(object: EventListener<QuerySnapshot> {
-                override fun onEvent(
-                    value: QuerySnapshot?,
-                    error: FirebaseFirestoreException?
-                ){
-                    if (error!=null)
-                    {
-                        Log.e("FireStore Error",error.message.toString())
-                        Toast.makeText(context,"Error", Toast.LENGTH_SHORT)
-                        return
-                    }
 
-                    for(dc: DocumentChange in value?.documentChanges!!)
-                    {
-                        if (dc.type== DocumentChange.Type.ADDED){
-                            medicine.medicine_name= dc.document!!.data["medicine_name"].toString()
-                        medicine.assignedWith=dc.document!!.data["assignedWith"].toString()
-                        medicine.medicine_time=dc.document!!.data["medicine_time"].toString()
-                       // medicine.username=""
-                        medicineList!!.add(medicine )
-                           // medicineList!!.add(dc.document.toObject(medicine::class.java))
-                        }
-                    }
-                    medicineAdapter.notifyDataSetChanged()
-                    Toast.makeText(context,"sucsses", Toast.LENGTH_SHORT)
 
-                }
-            })
 
     }
 }

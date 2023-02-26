@@ -104,7 +104,7 @@ mAuth=FirebaseAuth.getInstance()
                // val flatingnumb :Int=0
                 val medicines: MutableList<medicine>
                 medicines=mutableListOf()
-                mymedicines.username=fullname
+
                 //mymedicines2.username=fullname
                 //mymedicines3.username=fullname
 
@@ -132,6 +132,7 @@ mAuth=FirebaseAuth.getInstance()
                 if(blood_press.isChecked) {
                     choronic.add("blood pressure disease")
                 }
+                usermedical.username=fullname.trim()
 user.username=fullname.trim()
                 user.email = email
                 user.phone_num = phone_num
