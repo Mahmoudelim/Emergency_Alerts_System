@@ -1,5 +1,6 @@
 package com.example.emergency_alert_system.EMP.home
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,13 +52,18 @@ class RequestAdapter(var AlertList: MutableList<Alert?>):RecyclerView.Adapter<Re
     }
 
     override fun onBindViewHolder(holder: AlertViewHolder, position: Int) {
+
+
         val Alert:Alert? =AlertList[position]
         holder.Alert_name.text=Alert!!.user_name
         holder.age.text=Alert!!.user_age.toString()
         holder.street_name.text=Alert!!.street_name
         holder.acceptBtn.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
-               v!!.findNavController().navigate(R.id.action_home4_to_requestAcceptance)
+                val bundle=Bundle()
+                bundle.putString("key",holder.Alert_name.toString())
+               v!!.findNavController().navigate(R.id.action_home4_to_requestAcceptance,bundle)
+
 
             }
         })
