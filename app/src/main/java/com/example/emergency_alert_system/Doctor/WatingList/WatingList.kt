@@ -104,25 +104,14 @@ class WatingList : Fragment() {
         recyclerView.adapter=waitingListAdapter
         waitingListAdapter.setOnItemClickListner(object:waitingListAdapter.onItemClickListner{
                         override fun onClick(position: Int) {
-                          val pname2= (watingList as ArrayList<String?>)[position].toString()
+                            val pname2:String?= (watingList as ArrayList<String?>)[position].toString()
+                            request_deticion.approved(pname2,nm)
                             Toast.makeText(context, " and ", Toast.LENGTH_SHORT).show()
                         }
 
                     })
 
-                    approve_btn.setOnClickListener(object :View.OnClickListener{
-                        override fun onClick(v: View?) {
-                            Toast.makeText( context,"Added to your patients DR:", Toast.LENGTH_SHORT).show()
-                        }
-                    })
 
-
-
-                   decline_btn.setOnClickListener(object :View.OnClickListener{
-                        override fun onClick(v: View?) {
-                            Toast.makeText( context,"Removed to your patients DR:", Toast.LENGTH_SHORT).show()
-                        }
-                    })
 
 
     }

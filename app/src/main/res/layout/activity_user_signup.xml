@@ -74,25 +74,26 @@
                     android:id="@+id/user_name"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
                     android:background="@drawable/editfield"
                     android:ems="10"
                     android:hint="Name"
                     android:inputType="textPersonName"
                     android:paddingLeft="20dp"
-                    android:layout_marginTop="30dp"
                     android:textColor="@color/black"
                     android:textColorHint="@android:color/darker_gray"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <EditText
                     android:id="@+id/user_Email"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/editfield"
                     android:ems="10"
                     android:hint="Email"
-                    android:layout_marginTop="20dp"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="20dp"
                     android:textColor="@color/black"
@@ -100,6 +101,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <EditText
                     android:id="@+id/user_phone"
                     android:layout_width="match_parent"
@@ -117,6 +119,71 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/naighbourhood"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/editfield"
+                    android:ems="10"
+                    android:hint="naighbourhood:"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/stretname"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/editfield"
+                    android:ems="10"
+                    android:hint="Street name"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/Buildnum"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/editfield"
+                    android:ems="10"
+                    android:hint="Building Number"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/flatnum"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/editfield"
+                    android:ems="10"
+                    android:hint="Flat Number"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -225,6 +292,7 @@
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/SignUp_Email"
                     app:layout_constraintTop_toBottomOf="@+id/SignUp_Email" />
+                  />
                 <TextView
                     android:id="@+id/chronic"
                     android:layout_width="match_parent"
@@ -326,12 +394,13 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginRight="120dp"
                     android:textColor="@color/black"
-android:textColorHint="@color/white_gray"
+                    android:textColorHint="@color/white_gray"
                     app:layout_constraintStart_toStartOf="parent"
                     android:hint="Enter your second medicine "
                     app:layout_constraintEnd_toEndOf="parent"
                     android:visibility="gone"
                     android:textSize="16dp"
+
                     />
                 <ImageButton
                     android:id="@+id/add_btn2"
@@ -372,6 +441,8 @@ android:textColorHint="@color/white_gray"
                     android:visibility="gone"
 
                     />
+
+
                 <EditText
                     android:id="@+id/user_password"
                     android:layout_width="match_parent"

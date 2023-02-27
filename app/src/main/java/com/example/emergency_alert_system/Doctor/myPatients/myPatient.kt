@@ -1,13 +1,22 @@
 package com.example.emergency_alert_system.Doctor.myPatients
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.emergency_alert_system.Doctor.WatingList.waitingListAdapter
 import com.example.emergency_alert_system.Doctor.model.Mypatients
+import com.example.emergency_alert_system.user.creation.user_midical_info
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
@@ -24,7 +33,9 @@ class myPatient : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
+    var patientList: MutableList<String>?=null
+    lateinit var recyclerView: RecyclerView
+     lateinit var ptientlistadapter:patientAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -60,21 +71,48 @@ class myPatient : Fragment() {
                 }
             }
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        patientList= arrayListOf<String>()
+        val layoutManager= LinearLayoutManager(context)
+        recyclerView=view.findViewById(R.id.patientrecycle)
+        recyclerView.layoutManager=layoutManager
+        recyclerView.setHasFixedSize(true)
+        ptientlistadapter= patientAdapter(patientList!!)
+        recyclerView.adapter=ptientlistadapter
+getpatientlist()
+    }
   private fun getpatientlist(){
-      var mAuth: FirebaseAuth
-      mAuth= FirebaseAuth.getInstance()
+      var mAuth:FirebaseAuth
       var firestore:FirebaseFirestore
-      firestore= FirebaseFirestore.getInstance()
+      mAuth= FirebaseAuth.getInstance()
+      firestore=FirebaseFirestore.getInstance()
       val UID =mAuth.currentUser!!.uid
-      val docref=firestore.collection("/Doctor").document(UID).get().addOnSuccessListener { document ->
-          val nm: String? = document.data!!["name"].toString().trim()
-      firestore.collection("Doctor patients").document("$nm PATIENTS").get().addOnCompleteListener { task ->
-          if (task.isSuccessful) {
-             val document = task.result as Mypatients
-          }
+      val currentdocref=firestore.collection("Doctor".trim()).document(UID).get().addOnSuccessListener { document ->
+
+          val nm: String? = document.data!!["name".trim()].toString()
+      val docref= firestore.collection("/Doctor patients").document("/$nm PATIENTS")
+          docref.addSnapshotListener(EventListener<DocumentSnapshot> { documentSnapshot, e ->
+
+              if (e != null) {
+                  Log.w(ContentValues.TAG, "Listen failed.", e)
+                  return@EventListener
+              }
+
+              if (documentSnapshot != null && documentSnapshot.exists()) {
+
+                  docref.get().addOnSuccessListener { documentSnapshot ->
+                      val userInfo = documentSnapshot.toObject(Mypatients::class.java)
+                      if (userInfo != null) {
+                          userInfo.PATIENTS!!.forEach {
+                              Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
+                              patientList!!.add(it)
+
+                          }
+
+
 
       }
-      }
-}
 
-}
+
+}}})}}}

@@ -23,7 +23,7 @@ class Request( var uid:String?=null ,var status:String ?=null,var usern: String?
         req.doocname=doc_name
         val users=db.collection("User_Request".trim())
 
-        if (username != null) {
+        if (username != null && doc_name !=null) {
             users.document("$username:requests").set(req)
             val doctor=db.collection("Doctor:$doc_name _Request_list".trim())
             doctor.document("request$username").set(req)

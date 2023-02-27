@@ -4,10 +4,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.emergency_alert_system.Doctor.myPatients.myPatient">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycle"
+        android:id="@+id/patientrecycle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        tools:listitem="@layout/patient_card"
         />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

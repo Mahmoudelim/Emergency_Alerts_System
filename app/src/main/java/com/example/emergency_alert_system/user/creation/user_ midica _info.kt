@@ -2,7 +2,7 @@ package com.example.emergency_alert_system.user.creation
 
 import com.example.emergency_alert_system.user.model.medicine
 
- data class user_midical_info(var username:String?=null,
+  class user_midical_info(var username:String?=null,
  var medicines: MutableList<medicine>?=null,
  var choronic: MutableList<String>?=null
  ) {

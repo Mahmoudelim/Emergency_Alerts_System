@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.user.creation.user_midical_info
 import com.example.emergency_alert_system.user.model.medicine
+
 import com.example.emergencyalertsystem.R
 import kotlinx.android.synthetic.main.medicine_card.view.*
 import kotlinx.android.synthetic.main.search_row.view.*

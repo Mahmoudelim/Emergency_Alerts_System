@@ -1,6 +1,7 @@
 package com.example.emergency_alert_system.user.creation
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -34,6 +35,15 @@ class user_signup : AppCompatActivity() {
     lateinit var userfirst_relative_num:EditText
     lateinit var usersecond_relative_num:EditText
     lateinit var userthird_relative_num:EditText
+
+    //address
+    lateinit var naighbourhood:EditText
+    lateinit var sigin:TextView
+    lateinit var buildingnum_text:EditText
+    lateinit var streetname_text:EditText
+    lateinit var flatnum_text:EditText
+
+
 var usermedical:user_midical_info= user_midical_info()
     var  mymedicines : medicine=medicine()
     var  mymedicines2 : medicine=medicine()
@@ -46,6 +56,14 @@ var usermedical:user_midical_info= user_midical_info()
 
 mAuth=FirebaseAuth.getInstance()
         val uid=mAuth.currentUser?.uid
+//sign in
+        sigin=findViewById(R.id.toSignIn)
+
+        //address
+        flatnum_text=findViewById(R.id.flatnum)
+        streetname_text=findViewById(R.id.stretname)
+        buildingnum_text=findViewById(R.id.Buildnum)
+        naighbourhood=findViewById(R.id.naighbourhood)
         diabetes=findViewById(R.id.diabetes)
         heart_d=findViewById(R.id.hd)
         blood_press=findViewById(R.id.bpd)
@@ -67,6 +85,10 @@ mAuth=FirebaseAuth.getInstance()
         userthird_relative_text=findViewById(R.id.third_relative)
         userthird_relative_num=findViewById(R.id.third_relative_phone)
 
+        sigin.setOnClickListener {
+            val myIntent = Intent(this,user_Login::class.java)
+            startActivity(myIntent)
+        }
         btn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
                 medicine_2.visibility=View.VISIBLE
@@ -82,7 +104,6 @@ mAuth=FirebaseAuth.getInstance()
             }
 
         })
-
         signup.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
                 val fullname=username_text.text.toString().trim()
@@ -97,11 +118,17 @@ mAuth=FirebaseAuth.getInstance()
                 relativesphonenum.add(first_relative_phone.text.toString().trim())
                 relativesphonenum.add(second_relative_phone.text.toString().trim())
                 relativesphonenum.add(third_relative_phone.text.toString().trim())
-               // val streetname:String
-               // val naighbourrhood:String
-               // val buildingnumb :Int=0
-               // val floornumb :Int=0
-               // val flatingnumb :Int=0
+                val streetname:String=streetname_text.text.toString()
+                val naighbourrhood:String=naighbourhood.text.toString()
+                val buildingnumb :String=buildingnum_text.text.toString()
+                val flatingnumb :String=flatnum_text.text.toString()
+                val addr:user_location= user_location()
+                addr.username=fullname
+                addr.buildingnumb=buildingnumb
+                addr.flatingnumb=flatingnumb
+                addr.naighbourrhood=naighbourrhood
+                addr.streetname=streetname
+
                 val medicines: MutableList<medicine>
                 medicines=mutableListOf()
 
@@ -133,20 +160,22 @@ mAuth=FirebaseAuth.getInstance()
                     choronic.add("blood pressure disease")
                 }
                 usermedical.username=fullname.trim()
-user.username=fullname.trim()
+                user.username=fullname.trim()
                 user.email = email
                 user.phone_num = phone_num
                 user.password = password
                 user.relatives = relativies
                 user.relativesphonenum= relativesphonenum
-//usermedical.username=fullname
-            //    usermedical.choronic=choronic
+               usermedical.choronic=choronic
                 usermedical.medicines= medicines
 
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                     if (task.isSuccessful){
+                        //val myIntent2:Intent = Intent(this@user_signup,user_Login::javaClass)
+                        //startActivity(myIntent2)
                         val users=db.collection("USERS")
                         val usersmedicalpath=db.collection("USERS MEDICAL INFO")
+                        val useraddresspath=db.collection("USERS Adresses")
                          val uid2=mAuth.uid
                         users.document(uid2!!).set(user)
                             .addOnSuccessListener {
@@ -162,6 +191,14 @@ user.username=fullname.trim()
                             }
                             .addOnFailureListener{
                                 Toast.makeText(this@user_signup,"failed  added user medical info", Toast.LENGTH_SHORT).show()
+                            }
+
+                        useraddresspath.document("${user.username}:Address ".trim()).set(addr)
+                            .addOnSuccessListener {
+                                Toast.makeText(this@user_signup,"successfuly added the user address", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener{
+                                Toast.makeText(this@user_signup,"failed  added user addres", Toast.LENGTH_SHORT).show()
                             }
 
                     }
@@ -184,6 +221,7 @@ user.username=fullname.trim()
             }
 
         })
+
 
     }
 }
