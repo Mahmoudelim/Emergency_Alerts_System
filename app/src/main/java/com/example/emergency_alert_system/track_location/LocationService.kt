@@ -8,6 +8,7 @@ import android.os.IBinder
 import androidx.core.app.NotificationCompat
 import com.example.emergencyalertsystem.R
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -18,6 +19,7 @@ import kotlinx.coroutines.flow.onEach
 import java.security.Provider.Service
 
 class LocationService :android.app.Service() {
+    lateinit var firestore:FirebaseFirestore
     private val serviceScope= CoroutineScope(SupervisorJob() + Dispatchers.IO)
     private lateinit var locationClient: user_Location
     override fun onBind(intent: Intent?): IBinder? {
@@ -47,26 +49,23 @@ class LocationService :android.app.Service() {
     }
 
     private fun start() {
-       val notification=NotificationCompat.Builder(this,"location").setContentTitle("Tracking Location")
-           .setContentText("Location:null")
-           .setSmallIcon(R.drawable.app_icon)
-           .setOngoing(true)
-        val notificationManager=getSystemService(Context.NOTIFICATION_SERVICE)as NotificationManager
+        firestore=FirebaseFirestore.getInstance()
 
 
 
-        locationClient.getLocationUpdate(1000L)
+
+        locationClient.getLocationUpdate(1800000L)
             .catch { e ->e.printStackTrace()}
             .onEach { location ->
-                val lat=location.latitude.toString().takeLast(3)
-                val long=location.longitude.toString().takeLast(3)
-                val updatedNotification=notification.setContentText(
-                    "Location:($lat , $long)"
-                )
-                notificationManager.notify(1,updatedNotification.build())
+                val lat=location.latitude.toString()
+                val long=location.longitude.toString()
+
+                val location:CurrentLocation=CurrentLocation(lat,long)
+                firestore.collection("USERS").add(location)
+
             }
             .launchIn(serviceScope)
-        startForeground(1,notification.build())
+
     }
 
     override fun onDestroy() {
