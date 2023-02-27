@@ -91,7 +91,7 @@ getpatientlist()
       val currentdocref=firestore.collection("Doctor".trim()).document(UID).get().addOnSuccessListener { document ->
 
           val nm: String? = document.data!!["name".trim()].toString()
-      val docref= firestore.collection("/Doctor patients").document("/$nm PATIENTS")
+       val docref= firestore.collection("/Doctor patients").document("/$nm PATIENTS")
           docref.addSnapshotListener(EventListener<DocumentSnapshot> { documentSnapshot, e ->
 
               if (e != null) {

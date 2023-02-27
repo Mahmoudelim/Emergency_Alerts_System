@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Doctor.WatingList.waitingListAdapter
@@ -32,7 +34,7 @@ class home : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var recyclerView: RecyclerView
-    var RequestsList: MutableList<Alert?>?=null
+  lateinit  var RequestsList: ArrayList<Alert?>
     lateinit var RequestAdapter: RequestAdapter
     lateinit var firestore: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,6 +83,7 @@ class home : Fragment() {
         RequestAdapter= RequestAdapter(RequestsList!!)
         recyclerView.adapter=RequestAdapter
         RequetsFromFirestore()
+
     }
 
     private fun RequetsFromFirestore() {
@@ -97,7 +100,7 @@ class home : Fragment() {
                     {
                         if (dc.type==DocumentChange.Type.ADDED)
                         {
-                            RequestsList!!.add(dc.document.toObject(Alert::class.java))
+                            RequestsList.add(dc.document.toObject(Alert::class.java))
 
                         }
                     }

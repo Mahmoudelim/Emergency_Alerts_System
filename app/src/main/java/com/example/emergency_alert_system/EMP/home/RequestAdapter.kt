@@ -3,7 +3,9 @@ package com.example.emergency_alert_system.EMP.home
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.EMP.model.Alert
 import com.example.emergencyalertsystem.R
@@ -28,6 +30,8 @@ class RequestAdapter(var AlertList: MutableList<Alert?>):RecyclerView.Adapter<Re
         val Alert_name :TextView=itemView.findViewById(R.id.alert_name)
        val street_name :TextView=itemView.findViewById(R.id.street_name)
        val age :TextView=itemView.findViewById(R.id.alert_patient_age)
+        val acceptBtn:Button=itemView.findViewById(R.id.acceptButton)
+        val forwardBtn:Button=itemView.findViewById(R.id.forwardRequest)
 
         init {
             itemView.setOnClickListener {
@@ -51,6 +55,17 @@ class RequestAdapter(var AlertList: MutableList<Alert?>):RecyclerView.Adapter<Re
         holder.Alert_name.text=Alert!!.user_name
         holder.age.text=Alert!!.user_age.toString()
         holder.street_name.text=Alert!!.street_name
+        holder.acceptBtn.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+               v!!.findNavController().navigate(R.id.action_home4_to_requestAcceptance)
+
+            }
+        })
+        holder.forwardBtn.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                v!!.findNavController().navigate(R.id.action_home4_to_forwardRequest)
+            }
+        })
 
     }
 
