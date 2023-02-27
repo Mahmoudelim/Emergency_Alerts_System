@@ -1,6 +1,7 @@
 package com.example.emergency_alert_system
 
 import android.Manifest
+import android.app.Activity
 import android.app.NotificationManager
 import android.content.Intent
 import android.os.Build
@@ -12,11 +13,13 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.example.emergency_alert_system.Doctor.Creation.doctor_Signup
 import com.example.emergency_alert_system.Doctor.Creation.doctor_login
 import com.example.emergency_alert_system.EMP.creation.EP_login
 import com.example.emergency_alert_system.EMP.creation.ep_Signup
 import com.example.emergency_alert_system.notifications.AlertNotificationService
+import com.example.emergency_alert_system.track_location.LocationService
 import com.example.emergency_alert_system.user.UserDachboard
 import com.example.emergency_alert_system.user.creation.user
 import com.example.emergency_alert_system.user.creation.user_Login
@@ -40,6 +43,16 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+
+            )
+        ,
+            0
+        )
         setContentView(R.layout.activity_main)
         goToNext()
 
@@ -79,10 +92,10 @@ class MainActivity : AppCompatActivity() {
                     if (text=="user") {
                         val intent = Intent(this@MainActivity, user_Login::class.java)
                         startActivity(intent);
-                        service.showNotification(
-                            user("mahmoud"),
-                            Alert("critical","his heart rate in dangerous case"))
-
+                       Intent(applicationContext,LocationService::class.java).apply {
+                           action=LocationService.ActionStart
+                           startService(this)
+                       }
 
                     }
                     else if (text=="doctor")

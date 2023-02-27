@@ -21,9 +21,14 @@ class myApp :Application(){
             "Alert Notifications",
             NotificationManager.IMPORTANCE_DEFAULT
             )
-            channel.description="This used for alerts from relatives"
+            val channel2=NotificationChannel(
+              "location",
+                "Location",
+                NotificationManager.IMPORTANCE_HIGH
+            )
+            channel2.description="This used for tracking location"
             val notificationManager=getSystemService(Context.NOTIFICATION_SERVICE)as NotificationManager
-            notificationManager.createNotificationChannel(channel)
+            notificationManager.createNotificationChannel(channel2)
         }
 
     }

@@ -1,7 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.example.emergency_alert_system.EMP.RequestAcceptance.RequestAcceptance">
 
@@ -16,6 +17,9 @@
         android:gravity="center_vertical"
         android:drawableLeft="@drawable/ic_calendar"
         android:drawablePadding="5dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
     <TextView
@@ -28,7 +32,11 @@
         android:gravity="center_vertical"
         android:padding="5dp"
         android:text="Ahmed Emad"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@+id/date"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
 
     <TextView
         android:id="@+id/disease"
@@ -40,32 +48,78 @@
         android:drawableLeft="@drawable/healthcareplus"
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/patientname"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <TextView
-        android:id="@+id/patientrelatives1"
+        android:id="@+id/relatives"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Relatives"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/disease" />
+
+    <TextView
+        android:layout_margin="10dp"
+        android:id="@+id/relativeName1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Abdo"
         android:textSize="16sp"
         android:padding="5dp"
-        android:drawablePadding="5dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@id/relatives"
+        app:layout_constraintStart_toStartOf="parent"
         />
     <TextView
-        android:id="@+id/patientrelatives2"
+        android:id="@+id/phone1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="012241942"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:drawableLeft="@drawable/phone"
+        app:layout_constraintTop_toBottomOf="@id/relativeName1"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/relativesName2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="7oda"
         android:textSize="16sp"
         android:padding="5dp"
-        android:drawablePadding="5dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/phone1"
+        app:layout_constraintStart_toStartOf="parent"
         />
     <TextView
-        android:id="@+id/patientrelatives3"
+        android:id="@+id/phone2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="012241942"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:drawablePadding="5dp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:drawableLeft="@drawable/phone"
+        app:layout_constraintTop_toBottomOf="@+id/relativesName2"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <TextView
+        android:id="@+id/relative3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ali"
@@ -73,8 +127,9 @@
         android:padding="5dp"
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="5dp"
-        />
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/phone2"
+        app:layout_constraintStart_toStartOf="parent"/>
     <TextView
         android:id="@+id/phonenumber"
         android:layout_width="match_parent"
@@ -84,7 +139,99 @@
         android:padding="5dp"
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
-        android:layout_marginLeft="5dp"
-        android:drawableLeft="@drawable/phone"/>
+        android:layout_marginLeft="10dp"
+        android:drawableLeft="@drawable/phone"
+        app:layout_constraintTop_toBottomOf="@+id/relative3"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Location"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/ST_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonenumber"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/neighborhood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Neighborhood :"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/location"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1000 Maskn"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/location"
+        app:layout_constraintStart_toEndOf="@id/neighborhood"
+        />
+    <TextView
+        android:id="@+id/ST_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Street Name :"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/neighborhood"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ahmed Essmat"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/neighborhood"
+        app:layout_constraintStart_toEndOf="@id/ST_name"
+        />
+    <TextView
+        android:id="@+id/building_number1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="building number :"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/ST_name"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="14"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/ST_name"
+        app:layout_constraintStart_toEndOf="@id/building_number1"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
