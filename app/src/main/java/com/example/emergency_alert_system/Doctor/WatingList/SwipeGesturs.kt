@@ -1,0 +1,20 @@
+package com.example.emergency_alert_system.Doctor.WatingList
+
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
+
+abstract class SwipeGesturs:ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+
+    override fun onMove(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        target: RecyclerView.ViewHolder
+    ): Boolean {
+        return false
+
+    }
+
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+    }
+}

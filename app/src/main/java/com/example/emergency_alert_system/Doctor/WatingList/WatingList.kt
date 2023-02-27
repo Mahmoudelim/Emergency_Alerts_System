@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.MIddle_Layer.Request
@@ -80,7 +81,8 @@ class WatingList : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         watingList= arrayListOf<String?>()
       //  val btn:Button=findViewbyId<Button>
-         var request_deticion:Request=Request()
+        var name_patient:String
+        var request_deticion:Request=Request()
         var mAuth: FirebaseAuth
         mAuth= FirebaseAuth.getInstance()
         firestore=FirebaseFirestore.getInstance()
@@ -102,14 +104,31 @@ class WatingList : Fragment() {
         recyclerView.setHasFixedSize(true)
         waitingListAdapter=waitingListAdapter(watingList!!)
         recyclerView.adapter=waitingListAdapter
-        waitingListAdapter.setOnItemClickListner(object:waitingListAdapter.onItemClickListner{
+
+         waitingListAdapter.setOnItemClickListner(object:waitingListAdapter.onItemClickListner{
                         override fun onClick(position: Int) {
-                            val pname2:String?= (watingList as ArrayList<String?>)[position].toString()
-                            request_deticion.approved(pname2,nm)
-                            Toast.makeText(context, " and ", Toast.LENGTH_SHORT).show()
+                          val pname2= (watingList as ArrayList<String?>)[position].toString()
+                            Toast.makeText(context, "$pname2 ", Toast.LENGTH_SHORT).show()
+                            pname=pname2
+
                         }
 
                     })
+                    fun deleteItem(i:Int){
+                        request_deticion.rejected(pname,nm)
+
+                    }
+                    val swipeGesturs=object :SwipeGesturs(){
+                        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                            super.onSwiped(viewHolder, direction)
+                            if(direction==ItemTouchHelper.LEFT)
+                            {
+                                deleteItem(viewHolder.adapterPosition)
+                            }
+                        }
+                    }
+                    val touchHelper=ItemTouchHelper(swipeGesturs)
+                    touchHelper.attachToRecyclerView(recyclerView)
 
 
 

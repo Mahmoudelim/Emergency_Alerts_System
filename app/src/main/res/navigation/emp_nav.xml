@@ -3,19 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/emp_nav"
-    app:startDestination="@id/EMPHome">
+    app:startDestination="@id/home4">
 
-    <fragment
-        android:id="@+id/EMPHome"
-        android:name="com.example.emergency_alert_system.EMP.home.EMPHome"
-        android:label="EMPHome" >
-        <action
-            android:id="@+id/action_EMPHome_to_requestAcceptance"
-            app:destination="@id/requestAcceptance" />
-        <action
-            android:id="@+id/action_EMPHome_to_forwardRequest"
-            app:destination="@id/forwardRequest" />
-    </fragment>
     <fragment
         android:id="@+id/requestAcceptance"
         android:name="com.example.emergency_alert_system.EMP.RequestAcceptance.RequestAcceptance"
@@ -26,4 +15,16 @@
         android:name="com.example.emergency_alert_system.EMP.ForwardRequest.ForwardRequest"
         android:label="fragment_forward_request"
         tools:layout="@layout/fragment_forward_request" />
+    <fragment
+        android:id="@+id/home4"
+        android:name="com.example.emergency_alert_system.EMP.home.home"
+        android:label="fragment_home3"
+        tools:layout="@layout/fragment_home3" >
+        <action
+            android:id="@+id/action_home4_to_requestAcceptance"
+            app:destination="@id/requestAcceptance" />
+        <action
+            android:id="@+id/action_home4_to_forwardRequest"
+            app:destination="@id/forwardRequest" />
+    </fragment>
 </navigation>
