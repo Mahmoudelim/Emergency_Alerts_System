@@ -6,18 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.emergency_alert_system.Doctor.WatingList.waitingListAdapter
-import com.example.emergency_alert_system.EMP.model.Alert
+import com.example.emergency_alert_system.EMP.model.Alerts
 import com.example.emergencyalertsystem.R
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +27,7 @@ class home : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var recyclerView: RecyclerView
-  lateinit  var RequestsList: ArrayList<Alert?>
+  var RequestsList: ArrayList<Alerts>?= null
     lateinit var RequestAdapter: RequestAdapter
     lateinit var firestore: FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,38 +68,41 @@ class home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       RequestsList= arrayListOf()
+       RequestsList= arrayListOf<Alerts>()
+        val alert=Alerts("Mahmoud selim","22","sakn masr")
+        RequestsList!!.add(alert)
         val layoutManager= LinearLayoutManager(context)
         recyclerView=view.findViewById(R.id.requests_recycler)
         recyclerView.layoutManager=layoutManager
         recyclerView.setHasFixedSize(true)
         RequestAdapter= RequestAdapter(RequestsList!!)
         recyclerView.adapter=RequestAdapter
+
         RequetsFromFirestore()
 
     }
-
     private fun RequetsFromFirestore() {
         firestore=FirebaseFirestore.getInstance()
-        firestore.collection("EP_Request").addSnapshotListener(
-            object : EventListener<QuerySnapshot>{
+        firestore.collection("EP_Request".trim()).addSnapshotListener(
+            object : EventListener<QuerySnapshot> {
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                     if (error!=null)
                     {
                         Toast.makeText(context, "fire store error", Toast.LENGTH_SHORT).show()
                         return
                     }
-                    for (dc :DocumentChange in value?.documentChanges!!)
+                    for (dc : DocumentChange in value?.documentChanges!!)
                     {
                         if (dc.type==DocumentChange.Type.ADDED)
                         {
-                            RequestsList.add(dc.document.toObject(Alert::class.java))
+                            RequestsList!!.add(dc.document.toObject(Alerts::class.java))
 
                         }
                     }
-                     RequestAdapter.notifyDataSetChanged()
+                    RequestAdapter.notifyDataSetChanged()
                 }
             })
 
     }
+
 }

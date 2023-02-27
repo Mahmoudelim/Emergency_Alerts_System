@@ -1,10 +1,16 @@
 package com.example.emergency_alert_system.EMP.RequestAcceptance
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.findNavController
 import com.example.emergencyalertsystem.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,6 +34,8 @@ class RequestAcceptance : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
     }
 
     override fun onCreateView(
@@ -56,5 +64,19 @@ class RequestAcceptance : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+       val userName :String=requireArguments().getString("userName".trim()).toString()
+        Toast.makeText(context,"$userName",Toast.LENGTH_SHORT).show()
+        var AlertName =view.findViewById<TextView>(R.id.patientname)
+        AlertName.setText(userName)
+        val button = view.findViewById<Button>(R.id.toMedical)
+        button.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                v?.findNavController()?.navigate(R.id.action_requestAcceptance_to_medicalInfoForAcceptance)
+            }
+        })
     }
 }

@@ -9,7 +9,11 @@
         android:id="@+id/requestAcceptance"
         android:name="com.example.emergency_alert_system.EMP.RequestAcceptance.RequestAcceptance"
         android:label="fragment_request_acceptance"
-        tools:layout="@layout/fragment_request_acceptance" />
+        tools:layout="@layout/fragment_request_acceptance" >
+        <action
+            android:id="@+id/action_requestAcceptance_to_medicalInfoForAcceptance"
+            app:destination="@id/medicalInfoForAcceptance" />
+    </fragment>
     <fragment
         android:id="@+id/forwardRequest"
         android:name="com.example.emergency_alert_system.EMP.ForwardRequest.ForwardRequest"
@@ -27,4 +31,9 @@
             android:id="@+id/action_home4_to_forwardRequest"
             app:destination="@id/forwardRequest" />
     </fragment>
+    <fragment
+        android:id="@+id/medicalInfoForAcceptance"
+        android:name="com.example.emergency_alert_system.EMP.Medical_Info.medicalInfoForAcceptance"
+        android:label="fragment_medical_info_for_acceptance"
+        tools:layout="@layout/fragment_medical_info_for_acceptance" />
 </navigation>

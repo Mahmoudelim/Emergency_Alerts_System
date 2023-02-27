@@ -2,6 +2,10 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Base application theme. -->
 
+    <style name="menu_style">
+        <item name="android:actionMenuTextColor">@color/black</item>
+
+    </style>
 
     <style name="btn_style">
         <item name="background">@drawable/btn_background</item>

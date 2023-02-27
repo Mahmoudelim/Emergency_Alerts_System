@@ -27,6 +27,7 @@
      app:headerLayout="@layout/nav_header"
      app:menu="@menu/user_nav_menu"
      android:layout_gravity="start"
+     style="@style/menu_style"
      />
 
 </androidx.drawerlayout.widget.DrawerLayout>

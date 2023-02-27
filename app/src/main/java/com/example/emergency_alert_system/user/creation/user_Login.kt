@@ -34,13 +34,11 @@ class user_Login : AppCompatActivity() {
 
 
         login_user=findViewById(R.id.user_log)
-        login_user2=findViewById(R.id.user_log2)
+
        useremail_text=findViewById(R.id.user_editTextTextEmailAddress)
         userpassword_text=findViewById( R.id.user_editTextTextPassword)
 
-        login_user2.setOnClickListener {
-            getcurrentuser()
-        }
+
         login_user.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
                 val email=useremail_text.text.toString().trim()

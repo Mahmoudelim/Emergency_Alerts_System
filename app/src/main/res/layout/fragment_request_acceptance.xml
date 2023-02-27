@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/patientname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:drawableLeft="@drawable/ic_person_pin"
@@ -229,6 +229,18 @@
         android:layout_margin="10dp"
         app:layout_constraintTop_toBottomOf="@id/ST_name"
         app:layout_constraintStart_toEndOf="@id/building_number1"
+        />
+
+    <Button
+        android:id="@+id/toMedical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/building_number1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="30dp"
+        style="@style/btn_style"
+        android:background="@drawable/btn_background"
+        android:text="medical Info"
         />
 
 

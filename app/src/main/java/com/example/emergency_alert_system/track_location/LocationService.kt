@@ -6,8 +6,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
+import com.example.emergency_alert_system.user.creation.user_Login
 import com.example.emergencyalertsystem.R
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -50,6 +52,7 @@ class LocationService :android.app.Service() {
 
     private fun start() {
         firestore=FirebaseFirestore.getInstance()
+        var mAuth: FirebaseAuth
 
 
 
@@ -61,8 +64,17 @@ class LocationService :android.app.Service() {
                 val long=location.longitude.toString()
 
                 val location:CurrentLocation=CurrentLocation(lat,long)
-                firestore.collection("USERS").add(location)
+                var firestore:FirebaseFirestore
+                mAuth= FirebaseAuth.getInstance()
+                firestore=FirebaseFirestore.getInstance()
+                val UID =mAuth.currentUser!!.uid
+                val userref=firestore.collection("USERS".trim()).document(UID).get().addOnSuccessListener { document ->
+                    val nm = document.data!!["username".trim()].toString()
 
+                    firestore.collection("USERS Adresses").document("$nm:Address")
+                        .update("longitude", "$long", "latitude", "$lat")
+                      firestore.collection("USERS Adresses").add(location)
+                }
             }
             .launchIn(serviceScope)
 

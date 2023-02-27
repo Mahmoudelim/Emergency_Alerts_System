@@ -92,10 +92,7 @@ class MainActivity : AppCompatActivity() {
                     if (text=="user") {
                         val intent = Intent(this@MainActivity, user_Login::class.java)
                         startActivity(intent);
-                       Intent(applicationContext,LocationService::class.java).apply {
-                           action=LocationService.ActionStart
-                           startService(this)
-                       }
+
 
                     }
                     else if (text=="doctor")

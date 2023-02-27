@@ -13,18 +13,22 @@
         <item
             android:id="@+id/medicines2"
             android:title="Medicine"
+            android:icon="@drawable/recommended_medicne"
             />
         <item
             android:id="@+id/alerts"
             android:title="Alerts"
+            android:icon="@drawable/alert"
             />
         <item
             android:id="@+id/editInfo"
             android:title="Edit"
+            android:icon="@drawable/edit"
             />
         <item
             android:id="@+id/choose_doctor"
             android:title="Assign Doctor"
+            android:icon="@drawable/ic_baseline_search_24"
             />
 
 

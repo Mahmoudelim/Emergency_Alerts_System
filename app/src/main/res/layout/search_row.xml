@@ -13,6 +13,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:text="doctor_name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,6 +27,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:text="Specialization"
+        android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/doctor_name" />
