@@ -1,118 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.emergency_alert_system.EMP.creation.ep_Signup">
+    android:background="@drawable/background2"
+    >
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        <TextView
-            android:id="@+id/started_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Create Account ..."
-            android:layout_marginTop="30dp"
-            android:textColor="@color/primaryColor"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="51dp"
-            tools:layout_editor_absoluteY="39dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-        <EditText
-            android:id="@+id/EP_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/started_title"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:hint="Enter Emergency point Name"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="20dp"
-            />
-        <EditText
-            android:id="@+id/EP_Email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/EP_name"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:hint="Enter your Email"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="20dp"
-            />
-        <EditText
-            android:id="@+id/EP_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/EP_Email"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:hint="Enter your Phone"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="20dp"
-            />
+        android:layout_height="wrap_content"
+        android:paddingTop="60dp"
+        android:paddingBottom="30dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:background="@drawable/curve_box_final"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <EditText
-            android:id="@+id/EP_neghiporhood"
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:hint="Enter your neighborhood"
-            android:textSize="20dp"
+            android:gravity="start"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/EP_phone" />
-        <EditText
-            android:id="@+id/building_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/EP_neghiporhood"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:hint="Enter your building_number"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="20dp"
-            />
-        <EditText
-            android:id="@+id/EP_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/building_number"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:hint="Enter your password"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="20dp"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/btn_style"
-            app:layout_constraintTop_toBottomOf="@id/EP_password"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="Sign Up"
-            android:textColor="@color/white"
-            android:layout_marginTop="30dp"
-            />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/ep_signup"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/signUpHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:textColor="@color/black"
+                android:textSize="35sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.105"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/signUph2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Create an account"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/signUpHeader"
+                app:layout_constraintTop_toBottomOf="@+id/signUpHeader" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/btn_style"
-            app:layout_constraintTop_toBottomOf="@id/EP_password"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="20dp"
+            android:gravity="end"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="Sign Up"
-            android:textColor="@color/white"
-            android:layout_marginTop="30dp"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+            <EditText
+                android:id="@+id/EP_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/editfield"
+                android:ems="10"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            <EditText
+                android:id="@+id/EP_Email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/editfield"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:paddingLeft="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/SignUp_Name"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/EP_name"
+                app:layout_constraintTop_toBottomOf="@+id/EP_name" />
+
+            <EditText
+                android:id="@+id/EP_phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/editfield"
+                android:ems="10"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/SignUp_Email"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/EP_Email"
+                app:layout_constraintTop_toBottomOf="@+id/EP_Email" />
+            <EditText
+                android:id="@+id/building_number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/editfield"
+                android:ems="10"
+                android:hint="Buildin Number"
+                android:inputType="phone"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/SignUp_Email"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/EP_phone"
+                app:layout_constraintTop_toBottomOf="@+id/EP_phone" />
+            <EditText
+                android:id="@+id/EP_neghiporhood"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/editfield"
+                android:ems="10"
+                android:hint="Enter your neighborhood"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/SignUp_Email"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/building_number"
+                app:layout_constraintTop_toBottomOf="@+id/building_number" />
+
+            <EditText
+                android:id="@+id/EP_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/editfield"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:paddingStart="20dp"
+                android:longClickable="false"
+                android:textColor="@color/black"
+                android:drawableRight="@drawable/visibility_off"
+                android:paddingRight="15dp"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/SignUp_Email"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/EP_neghiporhood"
+                app:layout_constraintTop_toBottomOf="@+id/EP_neghiporhood" />
+
+            <Button
+                android:id="@+id/ep_signup"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/primary_button"
+                android:text="Create account"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/EP_password" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/createAccount"
+                app:layout_constraintStart_toStartOf="@+id/createAccount"
+                app:layout_constraintTop_toBottomOf="@+id/createAccount"
+                app:layout_constraintVertical_bias="0.529">
+
+                <TextView
+                    android:id="@+id/sign_in_suggestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account?"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    tools:layout_editor_absoluteX="131dp"
+                    tools:layout_editor_absoluteY="680dp" />
+
+                <TextView
+                    android:id="@+id/toSignIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="Sign In"
+                    android:textColor="@color/light_blue"
+                    android:textSize="15sp"
+                    tools:layout_editor_absoluteX="266dp"
+                    tools:layout_editor_absoluteY="676dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

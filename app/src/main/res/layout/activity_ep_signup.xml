@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <EditText
-                android:id="@+id/ep_Name"
+                android:id="@+id/EP_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/editfield"
@@ -80,32 +80,10 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/menu_doctorType"
-                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:visibility="gone"
-                android:layout_marginTop="20dp"
-                android:paddingLeft="10dp"
-                android:background="@drawable/editfield"
-                android:textColorHint="@android:color/darker_gray"
-                app:boxBackgroundColor="#F5F8FA"
-                app:layout_constraintEnd_toEndOf="@+id/select_time"
-                app:layout_constraintStart_toStartOf="@+id/select_time"
-                app:layout_constraintTop_toBottomOf="@+id/select_time">
 
-                <AutoCompleteTextView
-                    android:id="@+id/SignUp_type_of_doctor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:textColor="@color/black" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
-                android:id="@+id/ep_Email"
+                android:id="@+id/EP_Email"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
@@ -118,8 +96,8 @@
                 android:textColorHint="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="@+id/SignUp_Name"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/ep_Name"
-                app:layout_constraintTop_toBottomOf="@+id/ep_Name" />
+                app:layout_constraintStart_toStartOf="@+id/EP_name"
+                app:layout_constraintTop_toBottomOf="@+id/EP_name" />
 
             <EditText
                 android:id="@+id/EP_phone"
@@ -135,8 +113,40 @@
                 android:textColorHint="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="@+id/SignUp_Email"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/ep_Email"
-                app:layout_constraintTop_toBottomOf="@+id/ep_Email" />
+                app:layout_constraintStart_toStartOf="@+id/EP_Email"
+                app:layout_constraintTop_toBottomOf="@+id/EP_Email" />
+            <EditText
+                android:id="@+id/building_number"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/editfield"
+                android:ems="10"
+                android:hint="Buildin Number"
+                android:inputType="phone"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/SignUp_Email"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/EP_phone"
+                app:layout_constraintTop_toBottomOf="@+id/EP_phone" />
+            <EditText
+                android:id="@+id/EP_neghiporhood"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/editfield"
+                android:ems="10"
+                android:hint="Enter your neighborhood"
+                android:inputType="phone"
+                android:paddingStart="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="@+id/SignUp_Email"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/building_number"
+                app:layout_constraintTop_toBottomOf="@+id/building_number" />
 
             <EditText
                 android:id="@+id/EP_password"
@@ -155,11 +165,11 @@
                 android:textColorHint="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="@+id/SignUp_Email"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/EP_phone"
-                app:layout_constraintTop_toBottomOf="@+id/EP_phone" />
+                app:layout_constraintStart_toStartOf="@+id/EP_neghiporhood"
+                app:layout_constraintTop_toBottomOf="@+id/EP_neghiporhood" />
 
             <Button
-                android:id="@+id/createAccount"
+                android:id="@+id/ep_signup"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
