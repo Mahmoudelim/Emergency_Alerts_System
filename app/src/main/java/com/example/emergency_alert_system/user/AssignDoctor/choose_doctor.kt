@@ -1,5 +1,4 @@
 package com.example.emergency_alert_system.user.AssignDoctor
-import com.example.emergency_alert_system.user.AssignDoctor.searchAdapter
 
 
 import android.content.ContentValues
@@ -20,7 +19,6 @@ import com.example.emergency_alert_system.user.creation.user_Login
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_assign_doctor.*
 import kotlinx.android.synthetic.main.fragment_choose_doctor.*
 
 // TODO: Rename parameter arguments, choose names that match

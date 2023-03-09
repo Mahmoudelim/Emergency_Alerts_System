@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/user_editTextTextEmailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/editfield"
@@ -81,7 +81,7 @@
                 app:layout_constraintTop_toTopOf="@id/linearLayout" />
 
             <EditText
-                android:id="@+id/password"
+                android:id="@+id/user_editTextTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="16dp"
@@ -97,9 +97,18 @@
                 android:textColorHint="@android:color/darker_gray"
                 app:layout_constraintEnd_toEndOf="@+id/SignIn_Email"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/username"
-                app:layout_constraintTop_toBottomOf="@+id/username" />
-
+                app:layout_constraintStart_toStartOf="@+id/user_editTextTextEmailAddress"
+                app:layout_constraintTop_toBottomOf="@+id/user_editTextTextEmailAddress" />
+            <CheckBox
+                android:id="@+id/rememberMe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Remember me"
+                android:textColor="@color/light_blue"
+                android:buttonTint="@color/light_blue"
+                />
             <TextView
                 android:id="@+id/forgotPassword"
                 android:layout_width="wrap_content"
@@ -109,8 +118,9 @@
                 android:textColor="@color/light_blue"
                 android:textSize="15dp" />
 
+
             <Button
-                android:id="@+id/login"
+                android:id="@+id/user_log"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,8 +140,8 @@
                 android:layout_marginBottom="64dp"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/password"
-                app:layout_constraintStart_toStartOf="@+id/password"
+                app:layout_constraintEnd_toEndOf="@+id/user_editTextTextPassword"
+                app:layout_constraintStart_toStartOf="@+id/user_editTextTextPassword"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.3" />
 
@@ -142,8 +152,8 @@
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="@+id/loginButton"
-                app:layout_constraintStart_toStartOf="@+id/loginButton"
-                app:layout_constraintTop_toBottomOf="@+id/loginButton"
+                app:layout_constraintStart_toStartOf="@+id/user_log"
+                app:layout_constraintTop_toBottomOf="@+id/user_log"
                 app:layout_constraintVertical_bias="0.384">
 
                 <TextView

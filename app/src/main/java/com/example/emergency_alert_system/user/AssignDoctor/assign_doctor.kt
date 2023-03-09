@@ -2,19 +2,13 @@ package com.example.emergency_alert_system.user.AssignDoctor
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
-import android.icu.text.StringSearch
-import android.nfc.Tag
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Doctor.Creation.Doctor
 import com.example.emergencyalertsystem.R
@@ -40,11 +34,11 @@ class assign_doctor : Fragment() {
         //recyclerView control
 
         val text: String=doc_search.text.toString()
-        betn.setOnClickListener(object :View.OnClickListener {
+       /* betn.setOnClickListener(object :View.OnClickListener {
             override fun onClick(v: View?) {
             searcInFirestore(text)
             Toast.makeText(context,"tmam",Toast.LENGTH_SHORT)
-            }})
+            }})*/
 
 
     }
