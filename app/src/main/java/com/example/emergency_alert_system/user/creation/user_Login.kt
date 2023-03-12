@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.emergency_alert_system.track_location.LocationService
 import com.example.emergency_alert_system.user.UserDachboard
 import com.example.emergency_alert_system.user.home.home
 import com.example.emergencyalertsystem.R
@@ -51,6 +52,11 @@ val currentuser=getcurrentuser()
                         Toast.makeText(this@user_Login," ${currentuser.toString()} ",Toast.LENGTH_SHORT).show()
 val intent=Intent(this@user_Login,UserDachboard().javaClass)
                        startActivity(intent)
+
+                        Intent(applicationContext, LocationService::class.java).apply {
+                            action= LocationService.ActionStart
+                            startService(this)
+                        }
                         finish()
                     }
                     else{

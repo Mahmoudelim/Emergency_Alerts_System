@@ -87,6 +87,13 @@ var medicine1:medicine= medicine()
         var medicine2:medicine=medicine()
         var medicine3:medicine=medicine()
         medicineList = arrayListOf<medicine>()
+        val layoutManager = LinearLayoutManager(context)
+        recyclerView = view.findViewById(R.id.medicines_recycler)
+        recyclerView.layoutManager = layoutManager
+        recyclerView.setHasFixedSize(true)
+        medicineAdapter = medicineAdapter(medicineList!!)
+        recyclerView.adapter = medicineAdapter
+        Toast.makeText(context, "${medicineList}", Toast.LENGTH_LONG).show()
         var mAuth:FirebaseAuth
         var firestore:FirebaseFirestore
         mAuth= FirebaseAuth.getInstance()
@@ -146,7 +153,7 @@ var medicine1:medicine= medicine()
  */
 
 
-                            Toast.makeText(context, "${medicineList}", Toast.LENGTH_LONG).show()
+
                        }
                     }
                 }
@@ -174,12 +181,7 @@ medicineList!!.add(medicine1)
 
 
 
-    val layoutManager = LinearLayoutManager(context)
-        recyclerView = view.findViewById(R.id.medicines_recycler)
-        recyclerView.layoutManager = layoutManager
-        recyclerView.setHasFixedSize(true)
-        medicineAdapter = medicineAdapter(medicineList!!)
-        recyclerView.adapter = medicineAdapter
+
 
     }
 
