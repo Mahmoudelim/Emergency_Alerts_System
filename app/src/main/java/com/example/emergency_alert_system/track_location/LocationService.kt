@@ -60,8 +60,8 @@ class LocationService :android.app.Service() {
         locationClient.getLocationUpdate(1800000L)
             .catch { e ->e.printStackTrace()}
             .onEach { location ->
-                val lat=location.latitude.toString()
-                val long=location.longitude.toString()
+                val lat=location.latitude.toDouble()
+                val long=location.longitude.toDouble()
 
                 val location:CurrentLocation=CurrentLocation(lat,long)
                 var firestore:FirebaseFirestore
@@ -72,7 +72,7 @@ class LocationService :android.app.Service() {
                     val nm = document.data!!["username".trim()].toString()
 
                     firestore.collection("USERS Adresses").document("$nm:Address")
-                        .update("longitude", "$long", "latitude", "$lat")
+                        .update("longitude", long, "latitude", lat)
                       firestore.collection("USERS Adresses").add(location)
                 }
             }

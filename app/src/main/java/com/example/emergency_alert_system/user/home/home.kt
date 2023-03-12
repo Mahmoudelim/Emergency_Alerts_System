@@ -5,8 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import com.example.emergency_alert_system.user.AlertMaking.MakeAlert
 import com.example.emergencyalertsystem.R
+import kotlinx.android.synthetic.main.fragment_home2.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,6 +23,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class home : Fragment() {
     // TODO: Rename and change types of parameters
+    val makeAlert=MakeAlert()
     private var param1: String? = null
     private var param2: String? = null
    lateinit var recyclerView:RecyclerView
@@ -35,6 +39,7 @@ class home : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home2, container, false)
@@ -58,5 +63,13 @@ class home : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val button = view.findViewById<Button>(R.id.alert1)
+        button.setOnClickListener {
+            makeAlert.AlertToEp()
+        }
     }
 }

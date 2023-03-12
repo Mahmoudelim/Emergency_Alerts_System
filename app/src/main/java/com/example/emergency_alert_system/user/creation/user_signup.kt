@@ -27,6 +27,7 @@ class user_signup : AppCompatActivity() {
     lateinit var medicine_3:EditText
     lateinit var username_text:EditText
     lateinit var useremail_text:EditText
+    lateinit var userAge:EditText
     lateinit var userphone_text:EditText
     lateinit var userpass_text:EditText
     lateinit var userfirst_relative_text:EditText
@@ -38,6 +39,7 @@ class user_signup : AppCompatActivity() {
 
     //address
     lateinit var naighbourhood:EditText
+    lateinit var state:EditText
     lateinit var sigin:TextView
     lateinit var buildingnum_text:EditText
     lateinit var streetname_text:EditText
@@ -60,6 +62,8 @@ mAuth=FirebaseAuth.getInstance()
         sigin=findViewById(R.id.toSignIn)
 
         //address
+        state=findViewById(R.id.user_state)
+        userAge=findViewById(R.id.user_age)
         flatnum_text=findViewById(R.id.flatnum)
         streetname_text=findViewById(R.id.stretname)
         buildingnum_text=findViewById(R.id.Buildnum)
@@ -108,6 +112,8 @@ mAuth=FirebaseAuth.getInstance()
             override fun onClick(v: View?) {
                 val fullname=username_text.text.toString().trim()
                 val email=userpass_text.text.toString().trim()
+                val age=userAge.text.toString().trim()
+                val state=state.text.toString().trim()
                 val phone_num=userphone_text.text.toString().trim()
                 val password =userpass_text.text.toString().trim()
                 val relativies: MutableList<String> = mutableListOf()
@@ -128,6 +134,7 @@ mAuth=FirebaseAuth.getInstance()
                 addr.flatingnumb=flatingnumb
                 addr.naighbourrhood=naighbourrhood
                 addr.streetname=streetname
+                addr.state=state
 
                 val medicines: MutableList<medicine>
                 medicines=mutableListOf()
@@ -162,6 +169,7 @@ mAuth=FirebaseAuth.getInstance()
                 usermedical.username=fullname.trim()
                 user.username=fullname.trim()
                 user.email = email
+                user.age=age.toInt()
                 user.phone_num = phone_num
                 user.password = password
                 user.relatives = relativies
