@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Doctor.Creation.Doctor
@@ -104,7 +105,10 @@ class choose_doctor : Fragment() {
                         "you clicked on item no $doc_name && user $nm",
                         Toast.LENGTH_SHORT
                     ).show()
-                    req.create_request(doc_name, nm)
+                    val bundle=Bundle()
+                    bundle.putString("docName",doc_name)
+                    bundle.putString("userName",nm)
+                    view!!.findNavController().navigate(R.id.action_choose_doctor_to_selectDoctor,bundle)
                 }
             }
 

@@ -77,7 +77,7 @@ class MakeAlert {
         {
           if(userLocation.naighbourrhood=="Badr City".trim())
           {
-              //nearestEp=nearestGPSCoridnate(userLocation,"Badr City")
+              nearestEp=nearestGPSCoridnate(userLocation,"Badr City")
               nearestEp="Badr"
           }
             else if (userLocation.naighbourrhood=="Elmarg")

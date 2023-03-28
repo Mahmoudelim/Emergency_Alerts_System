@@ -29,5 +29,14 @@
         android:id="@+id/choose_doctor"
         android:name="com.example.emergency_alert_system.user.AssignDoctor.choose_doctor"
         android:label="fragment_choose_doctor"
-        tools:layout="@layout/fragment_choose_doctor" />
+        tools:layout="@layout/fragment_choose_doctor" >
+        <action
+            android:id="@+id/action_choose_doctor_to_selectDoctor"
+            app:destination="@id/selectDoctor" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectDoctor"
+        android:name="com.example.emergency_alert_system.user.chooseDoctor.selectDoctor"
+        android:label="fragment_select_doctor"
+        tools:layout="@layout/fragment_select_doctor" />
 </navigation>

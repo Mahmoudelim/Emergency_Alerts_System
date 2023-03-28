@@ -1,0 +1,97 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.emergency_alert_system.user.chooseDoctor.selectDoctor">
+
+
+    <TextView
+        android:id="@+id/doc_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:text="Doctor Name :"
+        android:textSize="25sp"
+        />
+    <TextView
+        android:id="@+id/d_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toEndOf="@+id/doc_label"
+    app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="20dp"
+        android:text="Mohamed Salah"
+        android:textSize="25sp"
+        android:layout_marginLeft="20sp"
+
+    />
+    <TextView
+        android:id="@+id/spec_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/doc_label"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:text="Specialization :"
+        android:textSize="25sp"
+        />
+    <TextView
+        android:id="@+id/spec_doc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/doc_label"
+        app:layout_constraintTop_toBottomOf="@+id/d_name"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="20dp"
+        android:text="Mohamed Salah"
+        android:textSize="25sp"
+        android:layout_marginLeft="20sp"
+        />
+    <TextView
+        android:id="@+id/quali_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spec_label"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="20sp"
+        android:layout_marginLeft="20sp"
+        android:text="Qualification:"
+        android:textSize="25sp"
+        />
+    <TextView
+        android:id="@+id/quali_doc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/quali_label"
+        app:layout_constraintTop_toBottomOf="@+id/spec_doc"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="20dp"
+        android:text="Mohamed Salah"
+        android:textSize="25sp"
+        android:layout_marginLeft="20sp"
+        />
+    <Button
+        android:id="@+id/doc_choose"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/primary_button"
+        android:text="Select Doctor"
+        app:layout_constraintTop_toBottomOf="@+id/quali_doc"
+        android:textSize="20sp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
