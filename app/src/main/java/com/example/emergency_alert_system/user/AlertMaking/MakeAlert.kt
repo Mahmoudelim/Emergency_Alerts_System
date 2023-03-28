@@ -7,6 +7,7 @@ import com.example.emergency_alert_system.user.creation.user_location
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 
 var nm :String = ""
@@ -31,40 +32,59 @@ class MakeAlert {
                 val documentSnapshot = task.result
                 if (documentSnapshot != null) {
                     userLocation = documentSnapshot.toObject(user_location::class.java)!!
+                    Log.i("userLoc", userLocation.toString())
                 }
             }
         }
     }
+    val result=ArrayList<Emergency_point>()
+
         fun nearestGPSCoridnate(userLocation: user_location,neighborhood:String):String{
+
             //find nearest in neighborhood
             //array take all EP in this neighborhood
             var nearestEP =Emergency_point()
-            val neighborhoodRef: CollectionReference = firestore.collection("Emergency point".trim())
-            neighborhoodRef.whereArrayContains("naighbourhood".trim(), neighborhood)
-          neighborhoodRef.get().addOnCompleteListener{ task ->
-              if (task.isSuccessful) {
-                  val documentSnapshot = task.result
-                  Log.i("fef", "sucssed")
-                  if (documentSnapshot != null) {
-                      negihborhoodEP = documentSnapshot.toObjects(Emergency_point::class.java)!!
-                     Log.i("nearest", negihborhoodEP.toString())
+            Log.i("neeee",neighborhood.toString())
+            val neighborhoodRef= firestore.collection("Emergency point")
+                .whereEqualTo("naighbourhood".trim(), neighborhood)
+                .addSnapshotListener{ snapshot,exception ->
+                    if(exception !=null)
+                    {
+                        Log.e("snapshotException",exception.toString())
+                        return@addSnapshotListener
+                    }
+                    if (snapshot!=null){
+                        for (document in snapshot.documents){
+                            var doc=document.toObject(Emergency_point::class.java)
+                            result.add(doc!!)
+                            Log.i("neArray",result.toString())
 
-                  }
+                        }
+                    }
+
+
+
+
+                     Log.i("nearest", result.toString())
+
+
               }
-          }
+
+            Log.i("nearest", result.toString())
+
             // iterate in this list
-            for(EP in negihborhoodEP!!)
+            for(EP in result!!)
             {
 
-                 var smallestLat :Double = 0.0
-                 var smallestLong:Double =0.0
-                var lat = userLocation.latitude?.minus(EP.latitude!!)
-                var long= userLocation.longitude?.minus(EP.longitude!!)
-                if (lat!! <=smallestLat && long!!<=smallestLong)
+                var lat = userLocation.latitude
+                var long= userLocation.longitude
+                var targetlat=EP.latitude
+                var targetLong=EP.longitude
+                if (lat!!.minus(targetlat!!) < nearestEP.latitude!!.minus(targetlat!!)
+                    &&long!!.minus(targetLong!!) < nearestEP.longitude!!.minus(targetLong))
                 {
                     nearestEP =EP
-                    smallestLat=lat
-                    smallestLong=long
+
                 }
             }
         return nearestEP!!.EPName!!
@@ -78,12 +98,12 @@ class MakeAlert {
           if(userLocation.naighbourrhood=="Badr City".trim())
           {
               nearestEp=nearestGPSCoridnate(userLocation,"Badr City")
-              nearestEp="Badr"
+             // nearestEp="Badr"
           }
             else if (userLocation.naighbourrhood=="Elmarg")
           {
               nearestEp=nearestGPSCoridnate(userLocation,"Elmarg")
-             // nearestEp="Elmarg"
+             //  nearestEp="Elmarg"
             }
 
         }
