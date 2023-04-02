@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -16,8 +18,8 @@
         app:layout_constraintTop_toTopOf="parent">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
-            android:layout_width="124dp"
-            android:layout_height="124dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             app:civ_border_color="#FFFFFF"
@@ -28,11 +30,11 @@
             android:id="@+id/editInfo_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="120dp"
+            android:paddingLeft="150dp"
             android:textAlignment="center"
             android:text="Profile Info"
             android:textColor="@color/black"
-            android:textSize="35sp"
+            android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.105"
             app:layout_constraintStart_toStartOf="parent"
@@ -234,19 +236,13 @@
         </LinearLayout>
 <LinearLayout
     android:layout_width="300dp"
-    android:layout_height="wrap_content"
+    android:layout_height="50dp"
     android:layout_gravity="center"
     android:layout_marginBottom="10dp"
     android:orientation="horizontal">
-    <ImageView
-        android:id="@+id/messageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_gravity="center_vertical"
-        app:srcCompat="@drawable/ic_email" />
 
-        <EditText
+
+        <TextView
             android:id="@+id/docname_edit_textori"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -254,7 +250,6 @@
             android:background="@drawable/editfield"
             android:ems="10"
             android:hint="Doctor Name"
-            android:inputType="phone"
             android:paddingStart="20dp"
             android:textColor="@color/black"
             android:textColorHint="@android:color/darker_gray"
@@ -262,25 +257,26 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/flat_number_edit_text"
             app:layout_constraintTop_toBottomOf="@+id/flat_number_edit_text" />
-
 </LinearLayout>
-
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginRight="150dp">
         <Button
             android:id="@+id/submit"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/primary_button"
             android:text=" submit"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/docname_edit_textori" />
-
-
-
+       </LinearLayout>
 
     </LinearLayout>
 

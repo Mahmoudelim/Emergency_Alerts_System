@@ -30,7 +30,7 @@ class user_Login : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_login2)
+        setContentView(R.layout.activity_user_login)
         mAuth=FirebaseAuth.getInstance()
 
 
