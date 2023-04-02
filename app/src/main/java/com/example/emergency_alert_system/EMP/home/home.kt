@@ -1,6 +1,7 @@
 package com.example.emergency_alert_system.EMP.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.emergency_alert_system.EMP.creation.Emergency_point
 import com.example.emergency_alert_system.EMP.model.Alerts
+import com.example.emergency_alert_system.user.AlertMaking.nm
+import com.example.emergency_alert_system.user.creation.user_location
 import com.example.emergencyalertsystem.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,6 +27,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [home.newInstance] factory method to
  * create an instance of this fragment.
  */
+var Ep_name=""
 class home : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -29,7 +35,7 @@ class home : Fragment() {
     lateinit var recyclerView: RecyclerView
   var RequestsList: ArrayList<Alerts>?= null
     lateinit var RequestAdapter: RequestAdapter
-    lateinit var firestore: FirebaseFirestore
+     val firestore: FirebaseFirestore =FirebaseFirestore.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -82,8 +88,29 @@ class home : Fragment() {
 
     }
     private fun RequetsFromFirestore() {
-        firestore=FirebaseFirestore.getInstance()
-        firestore.collection("EP_Request".trim()).addSnapshotListener(
+
+        val mAuth=FirebaseAuth.getInstance()
+         val uid =mAuth.currentUser!!.uid
+        Log.i("displayNamee",uid)
+       val DocRef=   firestore.collection("Emergency point".trim()).document(uid)
+       .get().addOnSuccessListener{ document->
+
+               Log.i("doccc",document.data.toString())
+               if (document !=null)
+               {
+                    Ep_name=document.getString("epname").toString()
+                   if (Ep_name !=null){
+
+                       Log.i("EppName", Ep_name)
+                   }
+               }
+
+               Log.i("EppName2", Ep_name)
+       }
+            Log.i("currentEP", Ep_name)
+
+
+        firestore.collection("$Ep_name requests").addSnapshotListener(
             object : EventListener<QuerySnapshot> {
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                     if (error!=null)
@@ -96,6 +123,7 @@ class home : Fragment() {
                         if (dc.type==DocumentChange.Type.ADDED)
                         {
                             RequestsList!!.add(dc.document.toObject(Alerts::class.java))
+                            Log.i("catched",RequestsList.toString())
 
                         }
                     }

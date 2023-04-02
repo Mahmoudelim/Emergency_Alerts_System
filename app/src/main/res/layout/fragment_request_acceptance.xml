@@ -172,6 +172,7 @@
         app:layout_constraintStart_toStartOf="parent"
         />
     <TextView
+        android:id="@+id/neighborhoodtxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1000 Maskn"
@@ -196,6 +197,7 @@
         app:layout_constraintStart_toStartOf="parent"
         />
     <TextView
+        android:id="@+id/street_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ahmed Essmat"
@@ -220,6 +222,7 @@
         app:layout_constraintStart_toStartOf="parent"
         />
     <TextView
+        android:id="@+id/building_numbertxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="14"

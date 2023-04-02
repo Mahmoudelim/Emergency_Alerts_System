@@ -70,7 +70,8 @@ lateinit var  signup:Button
          mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener { task->
              if (task.isSuccessful){
              val eps=db.collection("Emergency point")
-             eps.document(EPName).set(ep)
+                 val uid=mAuth.uid
+             eps.document(uid!!).set(ep)
                  .addOnSuccessListener {
                      Toast.makeText(this@ep_Signup,"successfuly added the ep", Toast.LENGTH_SHORT).show()
                  }

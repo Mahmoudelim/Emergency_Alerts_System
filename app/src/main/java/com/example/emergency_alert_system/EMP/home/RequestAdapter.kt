@@ -42,6 +42,8 @@ class RequestAdapter(var AlertList: ArrayList<Alerts>):RecyclerView.Adapter<Requ
         holder.acceptBtn.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
                 val bundle=Bundle()
+                bundle.putString("street name",holder.street_name.text.toString())
+                bundle.putString("age",holder.age.text.toString())
                 bundle.putString("userName",holder.Alert_name.text.toString())
                v!!.findNavController().navigate(R.id.action_home4_to_requestAcceptance,bundle)
 

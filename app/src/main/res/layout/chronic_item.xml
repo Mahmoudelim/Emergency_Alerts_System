@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <TextView
+    android:id="@+id/chronics"
     app:layout_constraintTop_toTopOf="parent"
     android:layout_margin="20dp"
     android:layout_width="match_parent"

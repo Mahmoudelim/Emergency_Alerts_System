@@ -123,6 +123,7 @@ var medicine1:medicine= medicine()
                             userInfo.medicines!!.forEach {
                                 Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
                                 medicineList!!.add(it)
+
                             }
 /*
                             val usermedicine=userInfo.medicines
