@@ -1,21 +1,17 @@
 package com.example.emergency_alert_system.user.creation
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.emergency_alert_system.track_location.LocationService
 import com.example.emergency_alert_system.user.UserDachboard
-import com.example.emergency_alert_system.user.home.home
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.activity_map.*
 
 class user_Login : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
@@ -33,8 +29,22 @@ class user_Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_login)
         mAuth=FirebaseAuth.getInstance()
+       /* val sharedPref = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val rememberMeCheckBox = findViewById<CheckBox>(R.id.rememberMe)
+        val emailEditText = findViewById<EditText>(R.id.user_editTextTextEmailAddress)
+        val passwordEditText = findViewById<EditText>(R.id.user_editTextTextPassword)
 
+// Load saved email and password from shared preferences
+        val savedEmail = sharedPref.getString("email", "")
+        val savedPassword = sharedPref.getString("password", "")
 
+        emailEditText.setText(savedEmail)
+        passwordEditText.setText(savedPassword)
+
+        rememberMeCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            sharedPref.edit().putBoolean("rememberMe", isChecked).apply()
+        }
+*/
         login_user=findViewById(R.id.user_log)
 
        useremail_text=findViewById(R.id.user_editTextTextEmailAddress)
@@ -43,23 +53,19 @@ class user_Login : AppCompatActivity() {
 
         login_user.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
-
                 val email=useremail_text.text.toString().trim()
                 val password=userpassword_text.text.toString().trim()
-              //  if (email=="a"&&password=="a"){
-                   // val intent = Intent(this, map::class.java)
-                    //startActivity(intent)
-               // }
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task->
                     if (task.isSuccessful){
-
-
-                     val intent2=Intent(applicationContext,LocationService::class.java).apply { action=LocationService.ActionStart
-                         startService(this)
-
-                     }
-
-val intent=Intent(this@user_Login,UserDachboard().javaClass)
+                        getcurrentuser()
+                         val currentuser=getcurrentuser()
+                       /* val rememberMe = sharedPref.getBoolean("rememberMe", false)
+                        if (rememberMe) {
+                            sharedPref.edit().putString("email", emailEditText.text.toString()).apply()
+                            sharedPref.edit().putString("password", passwordEditText.text.toString()).apply()
+                        }*/
+                        Toast.makeText(this@user_Login," ${currentuser.toString()} ",Toast.LENGTH_SHORT).show()
+                       val intent=Intent(this@user_Login,UserDachboard().javaClass)
                        startActivity(intent)
 
                         Intent(applicationContext, LocationService::class.java).apply {
