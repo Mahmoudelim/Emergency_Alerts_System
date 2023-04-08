@@ -6,6 +6,7 @@ import com.example.emergency_alert_system.Doctor.Creation.Doctor
 import com.example.emergency_alert_system.Doctor.model.Mypatients
 import com.example.emergency_alert_system.user.creation.user
 import com.example.emergency_alert_system.user.model.medicine
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 
@@ -36,14 +37,13 @@ class Request( var uid:String?=null ,var status:String ?=null,var usern: String?
 
     }
     fun approved(username: String?,doc_name: String?){
+
         var db = FirebaseFirestore.getInstance()
+        //db.collection("Doctor patients").document("sherif PATIENTS").delete()
          val User:user=user()
         User.fullname=username
-         var Patients: MutableList<String> ?=null
-        val patient:Mypatients= Mypatients()
-        patient.PATIENTS= arrayListOf()
-        patient.PATIENTS!!.add(username!!)
        //update stutus on user side
+
         db.collection("User_Request").document("$username:requests").update("status" ,"Approved")
 //uid doc user
 
@@ -60,12 +60,10 @@ class Request( var uid:String?=null ,var status:String ?=null,var usern: String?
         }
 
 
-        // add patient to my patient list
-
-
+        // add patiet to my patient list
 
         if (username != null) {
-            db.collection("Doctor patients").document("$doc_name PATIENTS").set( patient)
+            db.collection("Doctor patients").document("$doc_name PATIENTS").update("PATIENTS",FieldValue.arrayUnion(username.trim()))
         }
         //move patient to list  of patients in doctor view
         }
@@ -79,6 +77,7 @@ class Request( var uid:String?=null ,var status:String ?=null,var usern: String?
 
             val doctor=db.collection("Doctor:$$doc_name _Request_list".trim()).document("$username:requests").delete()
         }
+
 
 
 

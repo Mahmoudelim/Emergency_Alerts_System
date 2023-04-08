@@ -73,7 +73,7 @@ class LocationService :android.app.Service() {
 
                     firestore.collection("USERS Adresses").document("$nm:Address")
                         .update("longitude", long, "latitude", lat)
-                      firestore.collection("USERS Adresses").add(location)
+                    firestore.collection("USERS Adresses").add(location)
                 }
             }
             .launchIn(serviceScope)
@@ -86,9 +86,9 @@ class LocationService :android.app.Service() {
     }
 
     companion object{
-       const val ActionStart="Action Start"
-       const val ActionStop="Action Stop"
+        const val ActionStart="Action Start"
+        const val ActionStop="Action Stop"
 
-   }
+    }
 
 }

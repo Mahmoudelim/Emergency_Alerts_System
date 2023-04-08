@@ -11,6 +11,7 @@ import com.example.emergency_alert_system.MIddle_Layer.Request
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_select_doctor.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,11 +66,34 @@ class selectDoctor : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<Button>(R.id.doc_choose)
-        button.setOnClickListener {
-            val doc_name :String=requireArguments().getString("docName".trim()).toString()
-            val user_name :String=requireArguments().getString("userName".trim()).toString()
+        val doc_name :String=requireArguments().getString("docName".trim()).toString()
+        val user_name :String=requireArguments().getString("userName".trim()).toString()
+        val db = FirebaseFirestore.getInstance()
+        val collectionRef = db.collection("Doctor")
 
+        val query = collectionRef.whereEqualTo("name", doc_name)
+
+        query.get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val data = document.data
+                    val qualification=data["qualification"]as String
+                    val spicialization=data["spicialization"]as String
+                    d_name.text=(doc_name)
+                    spec_doc.text=(spicialization)
+                    quali_doc.text=(qualification)
+
+                }
+            }
+            .addOnFailureListener { exception ->
+
+            }
+        button.setOnClickListener {
                 req.create_request(doc_name, user_name)
+            button.setText("Doctor selected")
+            Toast.makeText(context, "Request has been sent to Dr. $doc_name", Toast.LENGTH_SHORT).show()
+
+
         }
     }
 }

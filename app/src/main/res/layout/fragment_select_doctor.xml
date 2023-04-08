@@ -26,7 +26,7 @@
     app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="70dp"
         android:layout_marginRight="20dp"
-        android:text="Mohamed Salah"
+
         android:textSize="25sp"
         android:layout_marginLeft="20sp"
 
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/d_name"
         android:layout_marginTop="70dp"
         android:layout_marginRight="20dp"
-        android:text="Mohamed Salah"
+
         android:textSize="25sp"
         android:layout_marginLeft="20sp"
         />
@@ -75,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spec_doc"
         android:layout_marginTop="70dp"
         android:layout_marginRight="20dp"
-        android:text="Mohamed Salah"
+
         android:textSize="25sp"
         android:layout_marginLeft="20sp"
         />

@@ -25,12 +25,7 @@ class AlertNotificationService (private val context:Context){
             .setContentIntent(activityPendingIntent)
             .build()
         notificationManager.notify(1,notification)
-        
-
     }
-
-
-
     companion object{
         const val Alert_Channel_Id="Alert_channel"
 

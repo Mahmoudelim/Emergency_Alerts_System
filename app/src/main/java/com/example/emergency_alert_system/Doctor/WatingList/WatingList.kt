@@ -56,7 +56,7 @@ class WatingList : Fragment() {
     companion object {
         @JvmField
         var pname: String = "defaultValue"
-        var nm:String?="hi"
+
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
@@ -85,10 +85,12 @@ class WatingList : Fragment() {
         var request_deticion:Request=Request()
         var mAuth: FirebaseAuth
         mAuth= FirebaseAuth.getInstance()
+
         firestore=FirebaseFirestore.getInstance()
+       // firestore .collection("Doctor patients").document("sherif PATIENTS").delete()
         val UID =mAuth.currentUser!!.uid
         val docref=firestore.collection("/Doctor").document(UID).get().addOnSuccessListener { document ->
-            WatingList.nm= document.data!!["name"].toString().trim()
+            val nm= document.data!!["name"].toString().trim()
 
             val mylist =  firestore.collection("/Doctor:$nm _Request_list")
                 .get().addOnSuccessListener {
@@ -107,9 +109,10 @@ class WatingList : Fragment() {
 
          waitingListAdapter.setOnItemClickListner(object:waitingListAdapter.onItemClickListner{
                         override fun onClick(position: Int) {
-                          val pname2= (watingList as ArrayList<String?>)[position].toString()
-                            Toast.makeText(context, "$pname2 ", Toast.LENGTH_SHORT).show()
-                            pname=pname2
+                            val pname2= (watingList as ArrayList<String?>)[position].toString()
+                            Toast.makeText(context, "$pname2 and $nm ", Toast.LENGTH_SHORT).show()
+                            request_deticion.approved(pname2,nm)
+
 
                         }
 

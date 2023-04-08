@@ -15,6 +15,7 @@ import com.example.emergency_alert_system.user.home.home
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_map.*
 
 class user_Login : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
@@ -42,14 +43,22 @@ class user_Login : AppCompatActivity() {
 
         login_user.setOnClickListener(object : View.OnClickListener{
             override fun onClick(v: View?) {
+
                 val email=useremail_text.text.toString().trim()
                 val password=userpassword_text.text.toString().trim()
+              //  if (email=="a"&&password=="a"){
+                   // val intent = Intent(this, map::class.java)
+                    //startActivity(intent)
+               // }
                 mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener { task->
                     if (task.isSuccessful){
-                        getcurrentuser()
-val currentuser=getcurrentuser()
 
-                        Toast.makeText(this@user_Login," ${currentuser.toString()} ",Toast.LENGTH_SHORT).show()
+
+                     val intent2=Intent(applicationContext,LocationService::class.java).apply { action=LocationService.ActionStart
+                         startService(this)
+
+                     }
+
 val intent=Intent(this@user_Login,UserDachboard().javaClass)
                        startActivity(intent)
 

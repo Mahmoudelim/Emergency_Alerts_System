@@ -104,7 +104,9 @@ var medicine1:medicine= medicine()
         val userref=firestore.collection("USERS".trim()).document(UID).get().addOnSuccessListener { document ->
 
             val nm: String? = document.data!!["username".trim()].toString()
+/*
 
+ */
 
 
        val docref= db.collection("/USERS MEDICAL INFO").document("/$nm:medical info")
@@ -125,6 +127,7 @@ var medicine1:medicine= medicine()
                                 medicineList!!.add(it)
 
                             }
+                            medicineAdapter.notifyDataSetChanged()
 /*
                             val usermedicine=userInfo.medicines
                             val m1=userInfo.medicines?.get(0)
@@ -198,11 +201,6 @@ medicineList!!.add(medicine1)
                      docRef.addSnapshotListener(EventListener<DocumentSnapshot> { documentSnapshot, e ->
 
     if (e != null) {
-            Log.w(TAG, "Listen failed.", e)
-            return@EventListener
-        }
-
-        if (documentSnapshot != null && documentSnapshot.exists()) {
 
             docRef.get().addOnSuccessListener { documentSnapshot ->
                 val userInfo = documentSnapshot.toObject(UserInfo::class.java)
@@ -212,5 +210,10 @@ medicineList!!.add(medicine1)
 
             }}
                }
+            Log.w(TAG, "Listen failed.", e)
+            return@EventListener
+        }
+
+        if (documentSnapshot != null && documentSnapshot.exists()) {
     */
 }

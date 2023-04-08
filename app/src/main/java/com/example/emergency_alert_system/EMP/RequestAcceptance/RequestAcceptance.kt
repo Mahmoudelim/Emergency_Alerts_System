@@ -12,7 +12,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.findNavController
+import com.example.emergency_alert_system.user.AlertMaking.nm
 import com.example.emergencyalertsystem.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_user_signup.*
 import kotlinx.android.synthetic.main.fragment_request_acceptance.*
@@ -76,6 +78,7 @@ class RequestAcceptance : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         var AlertName =view.findViewById<TextView>(R.id.patientname)
         var street_name =view.findViewById<TextView>(R.id.street_name)
         var relative1 =view.findViewById<TextView>(R.id.relativeName1)
@@ -86,6 +89,7 @@ class RequestAcceptance : Fragment() {
         var relativePhone3 =view.findViewById<TextView>(R.id.phonenumber)
         var neighborhood1 =view.findViewById<TextView>(R.id.neighborhoodtxt)
         var buildingNumber=view.findViewById<TextView>(R.id.building_numbertxt)
+
         val userName :String=requireArguments().getString("userName".trim()).toString()
         val collectionRef =firestore.collection("USERS")
 
@@ -145,7 +149,6 @@ class RequestAcceptance : Fragment() {
                 val bundle=Bundle()
                 bundle.putString("username",userName)
                 v?.findNavController()?.navigate(R.id.action_requestAcceptance_to_medicalInfoForAcceptance,bundle)
-            }
-        })
-    }
-}
+
+
+    }})}}

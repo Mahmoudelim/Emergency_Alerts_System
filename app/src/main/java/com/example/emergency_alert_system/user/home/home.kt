@@ -1,5 +1,6 @@
 package com.example.emergency_alert_system.user.home
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
+import com.example.emergency_alert_system.Dialogesandmaps.EmergencyDialogFragment
 import com.example.emergency_alert_system.user.AlertMaking.MakeAlert
 import com.example.emergencyalertsystem.R
 import kotlinx.android.synthetic.main.fragment_home2.*
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class home : Fragment() {
     // TODO: Rename and change types of parameters
-    val makeAlert=MakeAlert()
+
     private var param1: String? = null
     private var param2: String? = null
    lateinit var recyclerView:RecyclerView
@@ -69,7 +72,9 @@ class home : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val button = view.findViewById<Button>(R.id.alert1)
         button.setOnClickListener {
-            makeAlert.AlertToEp()
+            val dialog = EmergencyDialogFragment.newInstance()
+            dialog.show(parentFragmentManager, "emergency_dialog")
+
         }
     }
 }

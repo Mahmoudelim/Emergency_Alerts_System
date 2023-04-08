@@ -51,6 +51,7 @@ class Emergency_alert {
     return user.username!!
     }
 
+
     fun get_user_lastreport(username:String) {
 
     }

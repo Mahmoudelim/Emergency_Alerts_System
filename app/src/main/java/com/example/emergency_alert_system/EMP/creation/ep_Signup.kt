@@ -66,7 +66,7 @@ lateinit var  signup:Button
                  ep.passwords = pass
 
 
-
+// address /uer/epname
          mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener { task->
              if (task.isSuccessful){
              val eps=db.collection("Emergency point")

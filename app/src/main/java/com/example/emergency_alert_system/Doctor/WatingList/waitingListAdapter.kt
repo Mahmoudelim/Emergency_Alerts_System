@@ -49,6 +49,7 @@ class waitingListAdapter (var waitingList: List<String?>): RecyclerView.Adapter<
         val watingList:String? =waitingList[position]
         holder.patientName.text=watingList.toString()
 
+
     }
 
     override fun getItemCount(): Int {

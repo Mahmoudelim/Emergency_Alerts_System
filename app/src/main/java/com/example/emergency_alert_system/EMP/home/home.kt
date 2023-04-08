@@ -33,9 +33,9 @@ class home : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     lateinit var recyclerView: RecyclerView
-  var RequestsList: ArrayList<Alerts>?= null
+    var RequestsList: ArrayList<Alerts>? = null
     lateinit var RequestAdapter: RequestAdapter
-     val firestore: FirebaseFirestore =FirebaseFirestore.getInstance()
+    val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -74,63 +74,59 @@ class home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       RequestsList= arrayListOf<Alerts>()
-        val alert=Alerts("Mahmoud selim","22","sakn masr")
-        RequestsList!!.add(alert)
-        val layoutManager= LinearLayoutManager(context)
-        recyclerView=view.findViewById(R.id.requests_recycler)
-        recyclerView.layoutManager=layoutManager
+        RequestsList = arrayListOf<Alerts>()
+
+        val layoutManager = LinearLayoutManager(context)
+        recyclerView = view.findViewById(R.id.requests_recycler)
+        recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
-        RequestAdapter= RequestAdapter(RequestsList!!)
-        recyclerView.adapter=RequestAdapter
+        RequestAdapter = RequestAdapter(RequestsList!!)
+        recyclerView.adapter = RequestAdapter
 
         RequetsFromFirestore()
-
     }
+
     private fun RequetsFromFirestore() {
+        val mAuth = FirebaseAuth.getInstance()
+        val uid = mAuth.currentUser!!.uid
+        Log.i("displayNamee", uid)
 
-        val mAuth=FirebaseAuth.getInstance()
-         val uid =mAuth.currentUser!!.uid
-        Log.i("displayNamee",uid)
-       val DocRef=   firestore.collection("Emergency point".trim()).document(uid)
-       .get().addOnSuccessListener{ document->
+        val DocRef = firestore.collection("Emergency point").document(uid)
+            .get().addOnSuccessListener { document ->
+                Log.i("doccc", document.data.toString())
+                if (document != null) {
+                    Ep_name = document.getString("epname").toString()
+                    if (Ep_name != null) {
+                        Log.i("EppName", Ep_name)
 
-               Log.i("doccc",document.data.toString())
-               if (document !=null)
-               {
-                    Ep_name=document.getString("epname").toString()
-                   if (Ep_name !=null){
-
-                       Log.i("EppName", Ep_name)
-                   }
-               }
-
-               Log.i("EppName2", Ep_name)
-       }
-            Log.i("currentEP", Ep_name)
-
-
-        firestore.collection("$Ep_name requests").addSnapshotListener(
-            object : EventListener<QuerySnapshot> {
-                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                    if (error!=null)
-                    {
-                        Toast.makeText(context, "fire store error", Toast.LENGTH_SHORT).show()
-                        return
+                        // Move the Firestore listener to this block to make sure it's only added once
+                        firestore.collection("$Ep_name requests").addSnapshotListener(
+                            object : EventListener<QuerySnapshot> {
+                                override fun onEvent(
+                                    value: QuerySnapshot?,
+                                    error: FirebaseFirestoreException?
+                                ) {
+                                    context?.let {
+                                        if (error != null) {
+                                            Toast.makeText(
+                                                it,
+                                                "fire store error",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                            return
+                                        }
+                                    }
+                                    for (dc: DocumentChange in value?.documentChanges!!) {
+                                        if (dc.type == DocumentChange.Type.ADDED) {
+                                            RequestsList!!.add(dc.document.toObject(Alerts::class.java))
+                                            Log.i("catched", RequestsList.toString())
+                                        }
+                                    }
+                                    RequestAdapter.notifyDataSetChanged()
+                                }
+                            })
                     }
-                    for (dc : DocumentChange in value?.documentChanges!!)
-                    {
-                        if (dc.type==DocumentChange.Type.ADDED)
-                        {
-                            RequestsList!!.add(dc.document.toObject(Alerts::class.java))
-                            Log.i("catched",RequestsList.toString())
-
-                        }
-                    }
-                    RequestAdapter.notifyDataSetChanged()
                 }
-            })
-
-    }
-
-}
+            }
+        Log.i("currentEP", Ep_name)
+    }}

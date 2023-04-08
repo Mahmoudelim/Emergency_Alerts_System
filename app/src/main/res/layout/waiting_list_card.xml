@@ -9,85 +9,57 @@
         android:id="@+id/patient_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
         android:text="Patient Name  "
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="32dp"
-        />
-    <TextView
-        android:id="@+id/patient_status"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Status"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_name"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="32dp"
-        />
-
-    <TextView
-        android:id="@+id/patient_uid"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="30dp"
-        android:text="Patient Uid "
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/approve_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/patient_status" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/approve_btn"
         style="@style/btn_style"
 
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="30dp"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:backgroundTint="#28A745"
         android:drawableLeft="@drawable/ic_check"
+        android:text="Accept"
         android:textAllCaps="false"
         android:textColor="#FFF"
-        android:text="Accept"
+        app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/decline_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/patient_uid" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_name" />
 
     <Button
         android:id="@+id/decline_btn"
 
         android:layout_width="105dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:backgroundTint="#f44336"
         android:drawableLeft="@drawable/ic_close"
+        android:text="Decline"
         android:textAllCaps="false"
         android:textColor="#FFF"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="40dp"
-        android:text="Decline"
+        app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/approve_btn"
-        app:layout_constraintTop_toBottomOf="@+id/patient_uid" />
+        app:layout_constraintTop_toBottomOf="@+id/patient_name" />
 
     <View
         android:id="@+id/view"
