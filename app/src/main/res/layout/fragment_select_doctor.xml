@@ -1,89 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/myFrameLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
-
-
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
-        android:background="@drawable/doctor"
-        android:layout_width="124dp"
-        android:layout_height="124dp"
-        app:civ_border_color="#FFFFFF"
-        app:civ_border_width="2dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="60dp"
-        android:layout_marginTop="0dp"/>
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/doctor"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
         android:gravity="center"
-        android:layout_marginTop="60dp">
+        android:orientation="vertical"
+        android:layout_marginTop="200dp">
+
         <TextView
             android:id="@+id/doc_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:textSize="28sp" />
+
         <TextView
             android:id="@+id/d_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="60dp">
         <TextView
             android:id="@+id/spec_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:textSize="28sp" />
+
+
         <TextView
             android:id="@+id/spec_doc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="60dp">
         <TextView
             android:id="@+id/quali_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28sp"
-            android:layout_marginBottom="10dp"/>
-        <TextView
-            android:id="@+id/quali_doc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+            android:textSize="28sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="100dp"

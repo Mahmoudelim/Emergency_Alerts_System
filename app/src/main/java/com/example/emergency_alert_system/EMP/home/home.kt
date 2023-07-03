@@ -9,9 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.emergency_alert_system.EMP.creation.Emergency_point
 import com.example.emergency_alert_system.EMP.model.Alerts
-import com.example.emergency_alert_system.user.AlertMaking.nm
 import com.example.emergency_alert_system.user.creation.user_location
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth

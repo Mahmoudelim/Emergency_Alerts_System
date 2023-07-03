@@ -1,40 +1,29 @@
 package com.example.emergency_alert_system.user.home
 
-import android.Manifest.permission.SCHEDULE_EXACT_ALARM
-import android.app.AlertDialog
-import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.ContentValues.TAG
-import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Dialogesandmaps.EmergencyDialogFragment
-import com.example.emergency_alert_system.notifications.AlertNotificationService.Companion.Alert_Channel_Id
-import com.example.emergency_alert_system.notifications.MedicationReminderService
 import com.example.emergency_alert_system.user.AlertMaking.MakeAlert
-
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.RemoteMessage
-
 import kotlinx.android.synthetic.main.fragment_home2.*
+import org.checkerframework.checker.nullness.qual.NonNull
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,7 +41,7 @@ class home : Fragment() {
 
     private var param1: String? = null
     private var param2: String? = null
-   lateinit var recyclerView:RecyclerView
+    lateinit var recyclerView:RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -93,16 +82,13 @@ class home : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val button = view.findViewById<Button>(R.id.alert1)
-        val intent = Intent(requireContext(), MedicationReminderService::class.java)
-        val oxi= view.findViewById<TextView>(R.id.oxi)
-            val heartrete=view.findViewById<TextView>(R.id.heartRATE)
-                val temp=view.findViewById<TextView>(R.id.body_temp)
-        requireContext().startService(intent)
-       /* val database = FirebaseDatabase.getInstance().getReference("Blood Oxygen (%)")
+
+
+
+        val database = FirebaseDatabase.getInstance().getReference("Blood Oxygen (%)")
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val bloodOxygen = dataSnapshot.value as String
+                val bloodOxygen = dataSnapshot.value
                 val oxi = view.findViewById<TextView>(R.id.oxi)
                 oxi.text = "${bloodOxygen}%"
             }
@@ -115,9 +101,9 @@ class home : Fragment() {
         val database2 = FirebaseDatabase.getInstance().getReference("Heart Rate (BPM)")
         database2.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val heartRate = dataSnapshot.value as String
-                val heartrete = view.findViewById<TextView>(R.id.heartRATE)
-                heartrete.text = "${heartRate} BPM"
+                val heartRate = dataSnapshot.value
+                val heartrete = view.findViewById<TextView>(R.id.heartrate)
+                heartrete.text = "${heartRate}"
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -128,8 +114,8 @@ class home : Fragment() {
         val database3 = FirebaseDatabase.getInstance().getReference("Body Temperature (°C)")
         database3.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val bodyTemperature = dataSnapshot.value as String
-                val temp = view.findViewById<TextView>(R.id.body_temp)
+                val bodyTemperature = dataSnapshot.value
+                val temp = view.findViewById<TextView>(R.id.bodytempretrure)
                 temp.text = "${bodyTemperature} °C"
             }
 
@@ -137,12 +123,11 @@ class home : Fragment() {
                 Log.w(TAG, "Failed to read value.", error.toException())
             }
         })
-
-        */
-
-
+        checkSeverityAndAlert()
+/*        button=view.findViewById(R.id.alert1)
         button.setOnClickListener {
             val dialog = EmergencyDialogFragment.newInstance()
+
             dialog.show(parentFragmentManager, "emergency_dialog")
             var mAuth: FirebaseAuth
             var firestore: FirebaseFirestore
@@ -161,14 +146,14 @@ class home : Fragment() {
                                     val token = documents.documents[0].get("fcm_token") as String?
                                     if (token !=null){
 
-                                    val message = RemoteMessage.Builder(token)
-                                        .setMessageId(UUID.randomUUID().toString())
-                                        .setData(mapOf("username" to "$nm in emergency situation"))
+                                        val message = RemoteMessage.Builder(token)
+                                            .setMessageId(UUID.randomUUID().toString())
+                                            .setData(mapOf("username" to "$nm in emergency situation"))
 
-                                        .build()
+                                            .build()
 
 // Send the notification message
-                                    FirebaseMessaging.getInstance().send(message)}
+                                        FirebaseMessaging.getInstance().send(message)}
 
                                 }
                             }.addOnFailureListener { exception ->
@@ -181,9 +166,31 @@ class home : Fragment() {
             }.addOnFailureListener { exception ->
                 // Handle any errors
             }
-                    }
+        }*/
 
     }
+    fun checkSeverityAndAlert() {
+        val severityRef = FirebaseDatabase.getInstance().getReference("severity")
+
+        severityRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val severity = dataSnapshot.getValue(String::class.java)
+                val Alert=MakeAlert()
+                if (severity == "Very High") {
+                    val dialog = EmergencyDialogFragment.newInstance()
+                    dialog.show(parentFragmentManager, "emergency_dialog")
+                } else if (severity == "High") {
+                    Alert.AlertToDoc()
+                    Alert.AlertToRelatives()
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
 
 
 }

@@ -2,16 +2,14 @@ package com.example.emergency_alert_system.user
 
 import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewConfiguration
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -19,14 +17,17 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.emergency_alert_system.MainActivity
 import com.example.emergencyalertsystem.R
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_user_dachboard.*
 import kotlinx.android.synthetic.main.activity_user_dachboard.view.*
 import kotlinx.android.synthetic.main.nav_header.*
 
-class UserDachboard : AppCompatActivity() {
+
+class UserDachboard : AppCompatActivity()  {
     lateinit var appBarConfiguration: AppBarConfiguration
      lateinit var navController: NavController
      lateinit var drawerLayout: DrawerLayout
@@ -48,12 +49,14 @@ class UserDachboard : AppCompatActivity() {
                 val userName: String? = document.getString("username")
                 val userEmail: String? = document.getString("email")
                 Toast.makeText(this, "$userEmail and $userName", Toast.LENGTH_SHORT).show()
-                if (useremail != null && nusername != null) {
-                    user_email_navview.text=userEmail
-                    user_name_navview.text=userName
-                } else {
-                    Log.d(TAG, "TextView is null")
-                }
+                     if (nusername !=null && useremail !=null) {
+                         Log.i("uyuy", userName.toString())
+
+                         nusername.text=userName
+                         useremail.text=userEmail
+                     }
+
+
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting user document: ", exception)
@@ -69,7 +72,10 @@ class UserDachboard : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController=findNavController(R.id.user_nav_host_fragment)
         return navController.navigateUp(appBarConfiguration)|| super.onSupportNavigateUp()
+
     }
+
+
 }
 
 

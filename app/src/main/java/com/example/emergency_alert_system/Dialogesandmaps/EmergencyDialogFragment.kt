@@ -11,6 +11,7 @@ import com.example.emergency_alert_system.user.AlertMaking.MakeAlert
 import com.example.emergencyalertsystem.R
 import kotlinx.android.synthetic.main.fragment_emergency_dialog.*
 
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"

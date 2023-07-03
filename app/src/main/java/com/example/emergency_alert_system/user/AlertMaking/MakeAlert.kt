@@ -1,14 +1,24 @@
 package com.example.emergency_alert_system.user.AlertMaking
 
+import android.content.ContentValues
 import android.util.Log
+import android.widget.TextView
 import android.widget.Toast
 import com.example.emergency_alert_system.EMP.creation.Emergency_point
+import com.example.emergency_alert_system.user.creation.user
+import com.example.emergency_alert_system.user.creation.user_general_info
 import com.example.emergency_alert_system.user.creation.user_location
+import com.example.emergency_alert_system.user.creation.user_midical_info
+import com.example.emergency_alert_system.user.model.medicine
+import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.*
+import com.google.firebase.firestore.auth.User
 
 var nm :String = ""
 var Nearest_EP:String=""
+var streetName=""
+var age:Number=2
 class MakeAlert {
     //login user name
     var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -86,11 +96,27 @@ class MakeAlert {
         }
         return nearestEp
     }
+    fun checkseverity(){}
+
     fun AlertToEp() {
+
+        firestore.collection("USERS Adresses").document("${nm}:Address ".trim()).get().addOnSuccessListener {document->
+            streetName=document.getString("streetname").toString()
+            Log.i("streeetName",streetName)
+
+        }
+        firestore.collection("USERS").document(UID).get().addOnSuccessListener {document->
+            age = document.getLong("age") ?: 0 // Use getLong() to retrieve the age as a number
+            Log.i("agee", age.toString())
+
+        }
+
+        Log.i("streetname",streetName)
+
         val alertMap = hashMapOf(
             "user_name" to nm,
-            "user_age" to "44" ,
-            "street_name" to "Ahmed Essmat"
+            "user_age" to age ,
+            "street_name" to streetName
 
 
 
@@ -100,6 +126,63 @@ class MakeAlert {
 
     }
 
-    fun AlertToRelatives() {}
-    fun AlertToDoc() {}
-}
+
+
+    fun AlertToRelatives() {
+        var mAuth:FirebaseAuth
+        var firestore:FirebaseFirestore
+        mAuth= FirebaseAuth.getInstance()
+        firestore=FirebaseFirestore.getInstance()
+        val UID =mAuth.currentUser!!.uid
+        val userref=firestore.collection("USERS".trim()).document(UID).get().addOnSuccessListener { document ->
+            val nm: String? = document.data!!["username".trim()].toString()
+
+
+                        val userInfo = document.toObject(user_general_info::class.java)
+            val         list=ArrayList<String>()
+                        if (userInfo != null) {
+                            userInfo.relatives!!.forEach {
+
+                                val relative:String
+                                for (relative in userInfo.relatives!!)
+                                {
+                                    list.add(relative)
+
+                                }
+                               Log.i("relativeees",list.toString())
+                                val emergencyData = mapOf("Relatives1" to list[0],"Relatives2" to list[1],"Relatives3" to list[2],)
+
+
+                            }
+
+                            val emergencyData = mapOf("Relatives1" to list[0],"Relatives2" to list[1],"Relatives3" to list[2],)
+                            if (nm != null) {
+                                firestore.collection("RelativesEmergencies").document(nm).set(emergencyData)
+                            }
+                        }
+                    }
+
+                }
+
+
+
+    fun AlertToDoc() {
+        var mAuth:FirebaseAuth
+        var firestore:FirebaseFirestore
+        mAuth= FirebaseAuth.getInstance()
+        firestore=FirebaseFirestore.getInstance()
+        val UID =mAuth.currentUser!!.uid
+
+
+        val userref=firestore.collection("USERS".trim()).document(UID).get().addOnSuccessListener { document ->
+
+            val nm: String? = document.data!!["username".trim()].toString()
+            val docnm: String? = document.data!!["user_docname".trim()].toString()
+            if (docnm != null) {
+                if (nm != null) {
+                    val emergencyData = mapOf("UserName" to nm, "severity" to "high")
+                    firestore.collection("doctorEmergencies").document(docnm).set(emergencyData)
+                }
+            }
+    }
+}}

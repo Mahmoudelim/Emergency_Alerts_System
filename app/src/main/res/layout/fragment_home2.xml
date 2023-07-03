@@ -1,3 +1,4 @@
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -47,12 +48,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/bodytempretrure"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="10dp"
                     android:text="37"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/imageView"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -93,6 +95,7 @@
                     android:layout_width="70dp"
                     android:layout_height="70dp"
 
+
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:src="@drawable/heart"
@@ -100,12 +103,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/heartrate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="10dp"
                     android:text="105"
-                    android:textSize="30sp"
+                    android:textSize="22sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/heart_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -145,7 +149,6 @@
                     android:id="@+id/pressure_imageView"
                     android:layout_width="60dp"
                     android:layout_height="70dp"
-
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:src="@drawable/pressure"
@@ -199,7 +202,6 @@
                     android:id="@+id/Spo_imageView"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
                     android:src="@drawable/o"
@@ -207,12 +209,13 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/oxi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:layout_marginEnd="10dp"
                     android:text="56%"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/Spo_imageView"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -234,13 +237,6 @@
         </androidx.cardview.widget.CardView>
     </GridLayout>
 
-    <Button
-        android:id="@+id/alert1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="2dp"
-        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

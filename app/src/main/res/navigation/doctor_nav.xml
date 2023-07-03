@@ -24,4 +24,8 @@
         android:name="com.example.emergency_alert_system.Doctor.medicineRecomendation.MedicineRecommendation"
         android:label="fragment_medicine_recommendation"
         tools:layout="@layout/fragment_medicine_recommendation" />
+    <fragment
+        android:id="@+id/doctorAlerts"
+        android:name="com.example.emergency_alert_system.Doctor.doctorAlerts.DoctorAlerts"
+        android:label="DoctorAlerts" />
 </navigation>

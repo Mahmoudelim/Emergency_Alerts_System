@@ -45,11 +45,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <service
-            android:name="com.example.emergency_alert_system.notifications.MedicationReminderService"
-            android:enabled="true"
-            android:exported="false" />
         <!--
      Set custom default icon. This is used when no icon is set for incoming notification messages.
      See README(https://goo.gl/l4GJaQ) for more.
@@ -99,16 +94,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-        <receiver
-            android:name="com.example.emergency_alert_system.notifications.MedicationReceiver"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.example.emergency_alert_system.ACTION_TAKE_MEDICATION" />
-            </intent-filter>
-        </receiver>
-
         <activity
             android:name="com.example.emergency_alert_system.EMP.creation.ep_Signup"
             android:exported="false"

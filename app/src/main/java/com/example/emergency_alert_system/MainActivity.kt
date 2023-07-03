@@ -26,7 +26,7 @@ import com.example.emergency_alert_system.Doctor.Creation.doctor_login
 import com.example.emergency_alert_system.EMP.creation.EP_login
 import com.example.emergency_alert_system.EMP.creation.ep_Signup
 import com.example.emergency_alert_system.notifications.AlertNotificationService
-import com.example.emergency_alert_system.notifications.MedicationReminderService
+
 import com.example.emergency_alert_system.track_location.LocationService
 import com.example.emergency_alert_system.user.UserDachboard
 import com.example.emergency_alert_system.user.creation.user

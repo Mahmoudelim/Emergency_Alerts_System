@@ -81,7 +81,7 @@ class selectDoctor : Fragment() {
                     val spicialization=data["spicialization"]as String
                     d_name.text=(doc_name)
                     spec_doc.text=(spicialization)
-                    quali_doc.text=(qualification)
+
 
                 }
             }

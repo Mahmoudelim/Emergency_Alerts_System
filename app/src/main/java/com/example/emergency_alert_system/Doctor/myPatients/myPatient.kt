@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Doctor.WatingList.waitingListAdapter
 import com.example.emergency_alert_system.Doctor.model.Mypatients
 import com.example.emergency_alert_system.Doctor.patientofdr
+
 import com.example.emergency_alert_system.user.creation.user_midical_info
 import com.example.emergency_alert_system.user.medicines.medicineAdapter
 import com.example.emergencyalertsystem.R
@@ -91,12 +92,12 @@ class myPatient : Fragment() {
                 val bundle=Bundle()
                 val pname2= (patientList as ArrayList<String?>)[position].toString()
 
-               // bundle.putString("patientname", pname2)
+               bundle.putString("patientname", pname2)
 
                 val intent = Intent(requireContext(), patientofdr::class.java)
                 intent.putExtra("pat", pname2)
                 startActivity(intent)
-                //startActivity(myIntent2)
+
     }})}
   private fun getpatientlist(){
       var mAuth:FirebaseAuth

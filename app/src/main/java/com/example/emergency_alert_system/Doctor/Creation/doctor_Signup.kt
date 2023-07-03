@@ -54,11 +54,14 @@ var dooc:Doctor=Doctor()
 
 
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
-                if (task.isSuccessful){
-                val doctors= db.collection("Doctor")
-                    if (dooc.PATIENTS!=null){
-                    val patients=  db.collection("Doctor patients").document("$doctorname PATIENTS").set(dooc.PATIENTS!!)}
-                    val uid=mAuth.uid!!
+                if (task.isSuccessful) {
+                    val doctors = db.collection("Doctor")
+                    if (dooc.PATIENTS != null) {
+                        val patients =
+                            db.collection("Doctor patients").document("$doctorname PATIENTS")
+                                .set(dooc.PATIENTS!!)
+                    }
+                val uid=mAuth.uid!!
                 doctors.document(uid).set(dooc)
                     .addOnSuccessListener {
                         Toast.makeText(this@doctor_Signup,"successfuly added the doc", Toast.LENGTH_SHORT).show()
