@@ -1,6 +1,7 @@
 package com.example.emergency_alert_system.Doctor.myPatients
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.emergency_alert_system.Doctor.WatingList.waitingListAdapter
 import com.example.emergency_alert_system.Doctor.model.Mypatients
+import com.example.emergency_alert_system.Doctor.patientofdr
 import com.example.emergency_alert_system.user.creation.user_midical_info
+import com.example.emergency_alert_system.user.medicines.medicineAdapter
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
@@ -35,6 +38,7 @@ class myPatient : Fragment() {
     private var param2: String? = null
     var patientList: MutableList<String>?=null
     lateinit var recyclerView: RecyclerView
+    lateinit var patientAdapter: patientAdapter
      lateinit var ptientlistadapter:patientAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,8 +84,20 @@ class myPatient : Fragment() {
         recyclerView.setHasFixedSize(true)
         ptientlistadapter= patientAdapter(patientList!!)
         recyclerView.adapter=ptientlistadapter
-getpatientlist()
-    }
+        getpatientlist()
+
+        ptientlistadapter.setOnItemClickListner(object:patientAdapter.onItemClickListner{
+            override fun onClick(position: Int) {
+                val bundle=Bundle()
+                val pname2= (patientList as ArrayList<String?>)[position].toString()
+
+               // bundle.putString("patientname", pname2)
+
+                val intent = Intent(requireContext(), patientofdr::class.java)
+                intent.putExtra("pat", pname2)
+                startActivity(intent)
+                //startActivity(myIntent2)
+    }})}
   private fun getpatientlist(){
       var mAuth:FirebaseAuth
       var firestore:FirebaseFirestore
@@ -91,7 +107,7 @@ getpatientlist()
       val currentdocref=firestore.collection("Doctor".trim()).document(UID).get().addOnSuccessListener { document ->
 
           val nm: String? = document.data!!["name".trim()].toString()
-      val docref= firestore.collection("/Doctor patients").document("/$nm PATIENTS")
+      val docref= firestore.collection("Doctor").document(UID)
            docref.addSnapshotListener(EventListener<DocumentSnapshot> { documentSnapshot, e ->
 
               if (e != null) {
@@ -108,11 +124,14 @@ getpatientlist()
                               Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
                               patientList!!.add(it)
 
+
                           }
+                          ptientlistadapter.notifyDataSetChanged()
 
 
 
       }
+
 
 
 }}})}}}

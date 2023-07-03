@@ -32,7 +32,7 @@ class medicineAdapter(var medicineList: List<medicine>):
     override fun onBindViewHolder(holder: medicineViewHolder, position: Int) {
     val medicine:medicine=medicineList[position]
         holder.medicineName.text=medicine.medicine_name
-        holder.medicineTime.text=medicine.medicine_time
+        holder.medicineTime.text=medicine.medicine_time.toString()
         holder.attachedWith.text=medicine.assignedWith
 
     }

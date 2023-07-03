@@ -5,7 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import com.example.emergency_alert_system.user.AlertMaking.nm
 import com.example.emergencyalertsystem.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,6 +65,31 @@ class ForwardRequest : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val edit= view.findViewById<EditText>(R.id.EP_forward)
+        val fepname=edit.text.toString()
+        val button = view.findViewById<Button>(R.id.EP_forward_btn)
 
-    }
+        button.setOnClickListener(object :View.OnClickListener{
+            override fun onClick(v: View?) {
+                /*
+                val bundle=Bundle()
+                bundle.putString("street name",holder.street_name.text.toString())
+                bundle.putString("age",holder.age.text.toString())
+                bundle.putString("userName",holder.Alert_name.text.toString())
+
+                 */
+                var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
+                var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+                val userName :String=requireArguments().getString("userName").toString()
+                val streetname :String=requireArguments().getString("street name".trim()).toString()
+                val age :String=requireArguments().getString("age".trim()).toString()
+                val alertMap = hashMapOf(
+                    "user_name" to userName,
+                    "user_age" to age ,
+                    "street_name" to streetname
+                )
+                firestore.collection("$fepname requests").document("$userName request").set(alertMap)
+            }
+
+        })}
 }

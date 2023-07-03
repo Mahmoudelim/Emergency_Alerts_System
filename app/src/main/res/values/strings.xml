@@ -45,4 +45,6 @@
     <string name="no" />
     <string name="cancel" />
     <string name="confirm" />
+    <string name="notification_title" />
+    <string name="notification_text" />
 </resources>

@@ -1,19 +1,29 @@
 package com.example.emergency_alert_system.user.creation
-
 import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
+import android.widget.TimePicker.OnTimeChangedListener
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.example.emergency_alert_system.user.model.medicine
 import com.example.emergencyalertsystem.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_user_signup.*
+import java.time.LocalTime
+
 
 class user_signup : AppCompatActivity() {
     var db = FirebaseFirestore.getInstance()
+    lateinit var firestore2:FirebaseFirestore
     lateinit var diabetes: CheckBox
     lateinit var heart_d:CheckBox
     lateinit var blood_press:CheckBox
@@ -36,31 +46,44 @@ class user_signup : AppCompatActivity() {
     lateinit var userfirst_relative_num:EditText
     lateinit var usersecond_relative_num:EditText
     lateinit var userthird_relative_num:EditText
+//time
 
-    //address
+    lateinit var timePicker1:TimePicker
+    lateinit var timePicker2:TimePicker
+    lateinit var timePicker3:TimePicker
+
     lateinit var naighbourhood:EditText
     lateinit var state:EditText
     lateinit var sigin:TextView
     lateinit var buildingnum_text:EditText
     lateinit var streetname_text:EditText
     lateinit var flatnum_text:EditText
-
+    lateinit var  med2Layout:LinearLayout
+    lateinit var  med3Layout:LinearLayout
 
 var usermedical:user_midical_info= user_midical_info()
     var  mymedicines : medicine=medicine()
     var  mymedicines2 : medicine=medicine()
     var  mymedicines3 : medicine=medicine()
     var user :user_general_info= user_general_info()
+
+    private var selectedHour1: Int = 0
+    private var selectedMinute1: Int = 0
+    private var selectedHour2: Int = 0
+    private var selectedMinute2: Int = 0
+    private var selectedHour3: Int = 0
+    private var selectedMinute3: Int = 0
     @SuppressLint("WrongViewCast", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_signup)
 
-mAuth=FirebaseAuth.getInstance()
+        mAuth=FirebaseAuth.getInstance()
         val uid=mAuth.currentUser?.uid
 //sign in
         sigin=findViewById(R.id.toSignIn)
-
+        med2Layout = findViewById(R.id.med2_layout);
+        med3Layout = findViewById(R.id.med3_layout);
         //address
         state=findViewById(R.id.user_state)
         userAge=findViewById(R.id.user_age)
@@ -73,6 +96,8 @@ mAuth=FirebaseAuth.getInstance()
         blood_press=findViewById(R.id.bpd)
         signup=findViewById(R.id.signup_user)
         username_text=findViewById(R.id.user_name)
+        firestore2=FirebaseFirestore.getInstance()
+
         useremail_text=findViewById(R.id.user_Email)
         userphone_text=findViewById(R.id.user_phone)
          btn = findViewById(R.id.add_btn1)
@@ -89,26 +114,66 @@ mAuth=FirebaseAuth.getInstance()
         userthird_relative_text=findViewById(R.id.third_relative)
         userthird_relative_num=findViewById(R.id.third_relative_phone)
 
+
+
+        timePicker1 = findViewById<TimePicker>(R.id.timePicker_medicine1)
+
+var timeMap1: MutableMap<String, Any> = HashMap()
+        timePicker1.setOnTimeChangedListener(OnTimeChangedListener { view, hour_med1,minute_med1 ->
+            selectedHour1 = hour_med1
+            selectedMinute1 = minute_med1
+            timeMap1["hour"] = selectedHour1
+            timeMap1["minute"] =  selectedMinute1
+        })
+
+        timePicker2 = findViewById<TimePicker>(R.id.timePicker_medicine2)
+        var timeMap2: MutableMap<String, Any> = HashMap()
+        timePicker2.setOnTimeChangedListener(OnTimeChangedListener { view, hour_med2,minute_med2 ->
+            selectedHour2 = hour_med2
+            selectedMinute2 = minute_med2
+            timeMap2["hour"] = selectedHour2
+            timeMap2["minute"] =  selectedMinute2
+          //  Toast.makeText(this, "$timeMap1", Toast.LENGTH_SHORT).show()
+        })
+
+         timePicker3 = findViewById<TimePicker>(R.id.timePicker_medicine3)
+        var timeMap3: MutableMap<String, Any> = HashMap()
+
+        timePicker3.setOnTimeChangedListener(OnTimeChangedListener { view, hour_med3,minute_med3 ->
+            selectedHour3 = hour_med3
+            selectedMinute3 = minute_med3
+            timeMap3["hour"] = selectedHour3
+            timeMap3["minute"] = selectedMinute3
+        })
+
+
+
+
+
+
         sigin.setOnClickListener {
             val myIntent = Intent(this,user_Login::class.java)
             startActivity(myIntent)
         }
+
+
+
+
         btn.setOnClickListener(object : View.OnClickListener {
             override fun onClick(v: View?) {
-                medicine_2.visibility=View.VISIBLE
-                 btn2.visibility=View.VISIBLE
+
+                med2Layout.setVisibility(View.VISIBLE)
 
             }
-
         })
         btn2.setOnClickListener(object :View.OnClickListener{
             override fun onClick(v: View?) {
-                medicine_3.visibility=View.VISIBLE
-                btn3.visibility=View.VISIBLE
+                med3Layout.setVisibility(View.VISIBLE);
             }
 
         })
         signup.setOnClickListener(object :View.OnClickListener{
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onClick(v: View?) {
                 val fullname=username_text.text.toString().trim()
                 val email=userpass_text.text.toString().trim()
@@ -144,13 +209,13 @@ mAuth=FirebaseAuth.getInstance()
 
                 mymedicines.medicine_name =medicine_1.text.toString().trim()
                 mymedicines.assignedWith="ME"
-                mymedicines.medicine_time="22 PM"
+                mymedicines.medicine_time=timeMap1
                 mymedicines2.medicine_name =medicine_2.text.toString().trim()
                 mymedicines2.assignedWith="ME"
-                mymedicines2.medicine_time="20 PM"
+                mymedicines2.medicine_time=timeMap2
                 mymedicines3.medicine_name =medicine_3.text.toString().trim()
                 mymedicines3.assignedWith="ME"
-                mymedicines3.medicine_time="21 PM"
+                mymedicines3.medicine_time=timeMap3
                 medicines.add(mymedicines)
                 medicines.add(mymedicines2)
                 medicines.add(mymedicines3)
@@ -179,6 +244,21 @@ mAuth=FirebaseAuth.getInstance()
 
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                     if (task.isSuccessful){
+                        FirebaseMessaging.getInstance().getToken().addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                val token = task.result
+                                if (token != null) {
+                                    // Store the token, medicine name, and time in Firestore
+                                    val medicineAlarm = hashMapOf(
+                                        "user_name" to fullname,
+                                        "fcm_token" to token
+                                    )
+                                    db.collection("User_Token").document().set(medicineAlarm).addOnSuccessListener {
+                                        Toast.makeText(this@user_signup,"successfuly added the user tokin", Toast.LENGTH_SHORT).show()
+                                    }
+                                        .addOnFailureListener{
+                                            Toast.makeText(this@user_signup,"failed  added user tokins", Toast.LENGTH_SHORT).show()
+                                        }
                         //val myIntent2:Intent = Intent(this@user_signup,user_Login::javaClass)
                         //startActivity(myIntent2)
                         val users=db.collection("USERS")
@@ -193,6 +273,12 @@ mAuth=FirebaseAuth.getInstance()
                                 Toast.makeText(this@user_signup,"failed  added user", Toast.LENGTH_SHORT).show()
                             }
 
+
+
+
+
+
+
                         usersmedicalpath.document("${user.username}:medical info ".trim()).set(usermedical)
                             .addOnSuccessListener {
                                 Toast.makeText(this@user_signup,"successfuly added the user medical_info", Toast.LENGTH_SHORT).show()
@@ -200,6 +286,27 @@ mAuth=FirebaseAuth.getInstance()
                             .addOnFailureListener{
                                 Toast.makeText(this@user_signup,"failed  added user medical info", Toast.LENGTH_SHORT).show()
                             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         useraddresspath.document("${user.username}:Address ".trim()).set(addr)
                             .addOnSuccessListener {
@@ -228,80 +335,9 @@ mAuth=FirebaseAuth.getInstance()
 
             }
 
-        })
+        }
 
 
     }
-}
-/*
-  fun write_general_info(){
-   db.collection("user")
-   .add(userinfoo)
-   .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-       @Override
-       public void onSuccess(DocumentReference documentReference) {
-           Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-       }
-   })
-   .addOnFailureListener(new OnFailureListener() {
-       @Override
-       public void onFailure(@NonNull Exception e) {
-           Log.w(TAG, "Error adding document", e);
-       }
-   });
-}
-    */
-/* fun write_medical_data(){
-   db.collection("user")
-   .add(usermedicaldata)
-   .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-       @Override
-       public void onSuccess(DocumentReference documentReference) {
-           Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-       }
-   })
-   .addOnFailureListener(new OnFailureListener() {
-       @Override
-       public void onFailure(@NonNull Exception e) {
-           Log.w(TAG, "Error adding document", e);
-       }
-   });
-}
- /*
-    fun write_useraddres(){
- */
-    db.collection("user")
-    .add(user_location)
-    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-        @Override
-        public void onSuccess(DocumentReference documentReference) {
-            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-        }
-    })
-    .addOnFailureListener(new OnFailureListener() {
-        @Override
-        public void onFailure(@NonNull Exception e) {
-            Log.w(TAG, "Error adding document", e);
-        }
-    });
-}
-     */
-/*
-   fun reading_and_write_VITALDATA()
-   //from package vitaldataclass reading
-   db.collection("user")
-   .add(user_vitaldata)
-   .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-       @Override
-       public void onSuccess(DocumentReference documentReference) {
-           Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-       }
-   })
-   .addOnFailureListener(new OnFailureListener() {
-       @Override
-       public void onFailure(@NonNull Exception e) {
-           Log.w(TAG, "Error adding document", e);
-       }
-   });
+}})}}
 
-    */

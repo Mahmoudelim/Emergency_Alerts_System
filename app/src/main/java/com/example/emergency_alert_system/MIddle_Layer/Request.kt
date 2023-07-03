@@ -6,6 +6,7 @@ import com.example.emergency_alert_system.Doctor.Creation.Doctor
 import com.example.emergency_alert_system.Doctor.model.Mypatients
 import com.example.emergency_alert_system.user.creation.user
 import com.example.emergency_alert_system.user.model.medicine
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
@@ -39,6 +40,10 @@ class Request( var uid:String?=null ,var status:String ?=null,var usern: String?
     fun approved(username: String?,doc_name: String?){
 
         var db = FirebaseFirestore.getInstance()
+        var mAuth: FirebaseAuth
+
+        mAuth= FirebaseAuth.getInstance()
+        val UID =mAuth.currentUser!!.uid
         //db.collection("Doctor patients").document("sherif PATIENTS").delete()
          val User:user=user()
         User.fullname=username
@@ -63,7 +68,7 @@ class Request( var uid:String?=null ,var status:String ?=null,var usern: String?
         // add patiet to my patient list
 
         if (username != null) {
-            db.collection("Doctor patients").document("$doc_name PATIENTS").update("PATIENTS",FieldValue.arrayUnion(username.trim()))
+            db.collection("Doctor").document(UID).update("patients",FieldValue.arrayUnion(username.trim()))
         }
         //move patient to list  of patients in doctor view
         }

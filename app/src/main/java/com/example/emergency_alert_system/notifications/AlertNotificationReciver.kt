@@ -9,6 +9,9 @@ import com.example.emergency_alert_system.user.model.Alert
 class AlertNotificationReciver :BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         val service=AlertNotificationService(context)
-        service.showNotification(user("mahmoud"), Alert("critical","his heart rate in dangerous case"))
+
+
+
+        service.showNotification(user(""), Alert("critical","Emergencycas case"))
     }
 }

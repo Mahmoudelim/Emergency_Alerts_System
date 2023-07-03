@@ -108,7 +108,7 @@ var reque:Request=Request()
 
 
                        val userref=firestore.collection("USERS".trim()).document(UID).update("email".trim(),newemail)
-                   Toast.makeText(context, " your email set to : $newemail ", Toast.LENGTH_SHORT).show()
+                  // Toast.makeText(context, " your email set to : $newemail ", Toast.LENGTH_SHORT).show()
               }
 
           }
@@ -128,7 +128,7 @@ var reque:Request=Request()
             override fun afterTextChanged(s: Editable?) {
                 val newphone: String?=phone_edit_text.text.toString()
                 val userref=firestore.collection("USERS".trim()).document(UID).update("phone_num".trim(),newphone)
-                Toast.makeText(context, " your phone set to : $newphone ", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(context, " your phone set to : $newphone ", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -153,11 +153,7 @@ var reque:Request=Request()
                         val newemail: String? =flat_number_edit_text.text.toString()
                         val userref =firestore .collection("USERS Adresses").document("${nm}:Address ".trim())
                             .update("flatingnumb".trim(), newemail)
-                        Toast.makeText(
-                            context,
-                            " your streetname set to : $newemail ",
-                            Toast.LENGTH_SHORT
-                        ).show()
+
                     }
             }
         }
@@ -182,11 +178,11 @@ var reque:Request=Request()
                         val newemail: String? =  building_number_edit_text.text.toString()
                         val userref =firestore .collection("USERS Adresses").document("${nm}:Address ".trim())
                             .update("buildingnumb".trim(), newemail)
-                        Toast.makeText(
-                            context,
-                            " your streetname set to : $newemail ",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                    //    Toast.makeText(
+                      //      context,
+                        //    " your streetname set to : $newemail ",
+                          //  Toast.LENGTH_SHORT
+                        //).show()
                     }
             }
         }
@@ -212,11 +208,14 @@ var reque:Request=Request()
                         val userref =firestore .collection("USERS Adresses").document("${nm}:Address ".trim())
 
                             .update("streetname".trim(), newstreet)
-                        Toast.makeText(
+                       /* Toast.makeText(
                             context,
                             " your naighbrhoood set to : $newstreet ",
                             Toast.LENGTH_SHORT
                         ).show()
+
+                        */
+
                     }
             }
         }
@@ -241,11 +240,13 @@ var reque:Request=Request()
                         val newemail: String? = neighborhood_edit_text.text.toString()
                         val userref =firestore .collection("USERS Adresses").document("${nm}:Address ".trim())
                             .update("naighbourrhood".trim(), newemail)
-                        Toast.makeText(
+                        /*Toast.makeText(
                             context,
                             " your naighbrhoood set to : $newemail ",
                             Toast.LENGTH_SHORT
                         ).show()
+
+                         */
                     }
             }
         }
@@ -262,8 +263,8 @@ var reque:Request=Request()
             val phone: String? = document.data!!["phone_num".trim()].toString()
             phone_edit_text.setText(phone,TextView.BufferType.EDITABLE)
             val doc: String? = document.data!!["user_docname".trim()].toString()
-            docname_edit_textori.setText(doc,TextView.BufferType.EDITABLE)
-            if (doc !=null || doc!=""){
+            docname_edit_textori.setText("Dr.$doc")
+            if (doc ==null || doc==""){
                 docname_edit_textori.setVisibility(View.INVISIBLE);
             }
 
@@ -280,18 +281,7 @@ var reque:Request=Request()
 
         }
 //if theres no doctor assign hidden the edittext
-                val newdoc: String?=docname_edit_textori.text.toString()
 
 
-            Toast.makeText(context, "new doc is $newdoc", Toast.LENGTH_SHORT).show()
-            val userref2 = firestore.collection("USERS".trim()).document(UID).get()
-                .addOnSuccessListener { document ->
 
-                    val nm: String? = document.data!!["username".trim()].toString()
-                    // check if(newdoc.is exisit in firestore)
-                    reque.create_request(newdoc, nm)
-
-                    Toast.makeText(context, " Request sending to Dr: $newdoc ", Toast.LENGTH_SHORT)
-                        .show()
-                }
          }}

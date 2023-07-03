@@ -56,7 +56,8 @@ var dooc:Doctor=Doctor()
             mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task->
                 if (task.isSuccessful){
                 val doctors= db.collection("Doctor")
-                    val patients=  db.collection("Doctor patients").document("$doctorname PATIENTS").set(dooc.PATIENTS!!)
+                    if (dooc.PATIENTS!=null){
+                    val patients=  db.collection("Doctor patients").document("$doctorname PATIENTS").set(dooc.PATIENTS!!)}
                     val uid=mAuth.uid!!
                 doctors.document(uid).set(dooc)
                     .addOnSuccessListener {

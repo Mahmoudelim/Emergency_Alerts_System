@@ -379,99 +379,105 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     />
-                <TextView
-                    android:id="@+id/medicine"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/bpd"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:text="Your Medicine "
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold"/>
-                <EditText
-                    android:id="@+id/mid1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/medicine"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="120dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:hint="Enter your first medicine "
-                    android:textColorHint="@android:color/darker_gray"
-                     android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:visibility="visible"
-                    android:textSize="17dp"
-                    />
-                <ImageButton
-                    android:id="@+id/add_btn1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="250dp"
+                    android:orientation="horizontal">
 
-                    android:src="@drawable/ic_baseline_add_24"
-                    app:layout_constraintStart_toEndOf="@+id/mid1"
-                    app:layout_constraintTop_toBottomOf="@id/medicine"
+                    <EditText
+                        android:id="@+id/mid1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Enter your first medicine"
+                        android:textColorHint="@android:color/darker_gray"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"/>
+                    <TimePicker
+                        android:id="@+id/timePicker_medicine1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                       />
 
-                    />
-                <EditText
-                    android:id="@+id/mid2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/mid1"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="120dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/white_gray"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:hint="Enter your second medicine "
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:visibility="gone"
-                    android:textSize="16dp"
 
-                    />
-                <ImageButton
-                    android:id="@+id/add_btn2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="250dp"
-                    android:visibility="gone"
-                    android:src="@drawable/ic_baseline_add_24"
-                    app:layout_constraintStart_toEndOf="@+id/mid2"
-                    app:layout_constraintTop_toBottomOf="@id/mid1"
+                    <ImageButton
+                        android:id="@+id/add_btn1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:layout_marginLeft="8dp"
 
-                    />
-                <EditText
-                    android:id="@+id/mid3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/mid2"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="120dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/white_gray"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:hint="Enter your third medicine "
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:visibility="gone"
-                    android:textSize="17dp"
-                    />
-                <ImageButton
-                    android:id="@+id/add_btn3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="250dp"
-                    android:src="@drawable/ic_baseline_add_24"
-                    app:layout_constraintStart_toEndOf="@+id/mid3"
-                    app:layout_constraintTop_toBottomOf="@id/mid2"
-                    android:visibility="gone"
 
-                    />
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/med2_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/mid2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Enter your second medicine"
+                        android:textColorHint="@color/white_gray"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"/>
+
+                    <TimePicker
+                        android:id="@+id/timePicker_medicine2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/add_btn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:layout_marginLeft="8dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/med3_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/mid3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="Enter your third medicine"
+                        android:textColorHint="@color/white_gray"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"/>
+
+                    <TimePicker
+                        android:id="@+id/timePicker_medicine3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        />
+
+                    <ImageButton
+                        android:id="@+id/add_btn3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_add_24"
+                        android:layout_marginLeft="8dp"
+                        android:visibility="gone"/>
+                </LinearLayout>
 
 
                 <EditText

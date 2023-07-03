@@ -42,7 +42,7 @@ class choose_doctor : Fragment() {
     var searchAdapter=searchAdapter(searchList)
     private var req:Request= Request()
     private var currentuser:user_Login= user_Login()
-    private var cur:String=currentuser.getcurrentuser()
+    //private var cur:String=currentuser.getcurrentuser()
     private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

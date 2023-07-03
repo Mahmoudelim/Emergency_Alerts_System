@@ -18,7 +18,7 @@ add_medicine()
 
     }
 
-    private fun add_medicine( username:String?=null,medicinename:String?=null,medicine_time:String?=null ,doc:String?=null) {
+    private fun add_medicine( username:String?=null,medicinename:String?=null,medicine_time:MutableMap<String, Any>?=null ,doc:String?=null) {
         var db = FirebaseFirestore.getInstance()
         val medicines: MutableList<medicine>?= mutableListOf()
         val medicine:medicine=medicine()
