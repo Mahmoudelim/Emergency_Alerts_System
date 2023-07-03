@@ -38,20 +38,7 @@
 
         />
 
-    <TextView
-        android:id="@+id/disease"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Broken hand"
-        android:padding="5dp"
-        android:layout_marginLeft="5dp"
-        android:drawableLeft="@drawable/healthcareplus"
-        android:drawablePadding="5dp"
-        android:gravity="center_vertical"
-        android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/patientname"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+
 
     <TextView
         android:id="@+id/relatives"
@@ -63,7 +50,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/disease" />
+        app:layout_constraintTop_toBottomOf="@+id/patientname" />
 
     <TextView
         android:layout_margin="10dp"

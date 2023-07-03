@@ -32,11 +32,13 @@
             android:icon="@drawable/edit"
             />
         <item
-            android:id="@+id/Logout"
+            android:id="@+id/action_logout"
             android:title="Logout"
-            android:icon="@drawable/logout">
+            android:icon="@drawable/logout"
 
-        </item>
+            />
+
+
 
 
 

@@ -2,15 +2,26 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<TextView
+    android:id="@+id/medi_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Medicine Name"
+    android:textSize="20dp"
+    android:textColor="@color/black"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    android:layout_margin="20dp"
+    android:padding="10dp"
+    />
     <TextView
         android:id="@+id/med_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/medi_name"
         android:layout_margin="20dp"
         android:padding="10dp"
         android:textSize="20sp"
@@ -18,11 +29,24 @@
         android:text="medicine name"
         />
     <TextView
+        android:id="@+id/addi_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Assigned with "
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/med_name"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        />
+    <TextView
         android:id="@+id/med_doc"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/med_name"
         android:layout_margin="20dp"
+        app:layout_constraintStart_toEndOf="@+id/addi_name"
         android:padding="10dp"
         android:textSize="20sp"
         android:textColor="@color/black"

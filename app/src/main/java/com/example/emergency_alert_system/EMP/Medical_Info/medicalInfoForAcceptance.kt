@@ -1,5 +1,4 @@
 package com.example.emergency_alert_system.EMP.Medical_Info
-
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
@@ -17,7 +16,6 @@ import com.example.emergency_alert_system.EMP.home.RequestAdapter
 import com.example.emergency_alert_system.EMP.model.Alerts
 import com.example.emergencyalertsystem.R
 import com.google.firebase.firestore.FirebaseFirestore
-
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"

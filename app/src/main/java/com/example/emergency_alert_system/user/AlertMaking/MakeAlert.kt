@@ -9,6 +9,8 @@ import com.google.firebase.firestore.*
 
 var nm :String = ""
 var Nearest_EP:String=""
+var streetName=""
+var age:Number=2
 class MakeAlert {
     //login user name
     var mAuth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -86,11 +88,26 @@ class MakeAlert {
         }
         return nearestEp
     }
+
     fun AlertToEp() {
+
+        firestore.collection("USERS Adresses").document("${nm}:Address ".trim()).get().addOnSuccessListener {document->
+            streetName=document.getString("streetname").toString()
+            Log.i("streeetName",streetName)
+
+        }
+        firestore.collection("USERS").document(UID).get().addOnSuccessListener {document->
+            age = document.getLong("age") ?: 0 // Use getLong() to retrieve the age as a number
+            Log.i("agee", age.toString())
+
+        }
+
+        Log.i("streetname",streetName)
+
         val alertMap = hashMapOf(
             "user_name" to nm,
-            "user_age" to "44" ,
-            "street_name" to "Ahmed Essmat"
+            "user_age" to age ,
+            "street_name" to streetName
 
 
 
