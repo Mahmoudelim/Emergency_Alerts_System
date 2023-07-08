@@ -9,7 +9,7 @@
         android:layout_height="80dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/user"
+        android:src="@drawable/profile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/RoundCorner" />
@@ -29,7 +29,21 @@
         android:layout_marginStart="12dp"
         android:layout_marginEnd="32dp"
         />
-
+    <TextView
+        android:id="@+id/age22"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Age : 22  "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/alert_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patient_name22"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="32dp"
+        />
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"

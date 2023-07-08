@@ -110,7 +110,6 @@ class WatingList : Fragment() {
          waitingListAdapter.setOnItemClickListner(object:waitingListAdapter.onItemClickListner{
                         override fun onClick(position: Int) {
                             val pname2= (watingList as ArrayList<String?>)[position].toString()
-                            Toast.makeText(context, "$pname2 and $nm ", Toast.LENGTH_SHORT).show()
                             request_deticion.approved(pname2,nm)
 
 

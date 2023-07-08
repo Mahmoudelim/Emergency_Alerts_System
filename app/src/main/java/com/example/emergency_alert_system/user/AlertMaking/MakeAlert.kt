@@ -87,47 +87,79 @@ class MakeAlert {
         if (userLocation.state == "Cairo".trim()) {
             Log.i("iiiii", userLocation.state.toString())
             when (userLocation.naighbourrhood) {
-                "Elmarg" -> nearestEp = nearestGPSCoridnate(userLocation, "Elmarg")
+                "EL Marg" -> nearestEp = nearestGPSCoridnate(userLocation, "EL Marg")
                 "Badr City"->nearestEp=nearestGPSCoridnate(userLocation,"Badr City")
-                "ainshams" -> nearestEp = nearestGPSCoridnate(userLocation, "ainshams")
+                "Ain Shams" -> nearestEp = nearestGPSCoridnate(userLocation, "Ain Shams")
+                "Helmeya" -> nearestEp = nearestGPSCoridnate(userLocation, "Helmeya")
+                "Haddayek Al-Qubbah" -> nearestEp = nearestGPSCoridnate(userLocation, "Haddayek Al-Qubbah")
+                "Abdeen" -> nearestEp =nearestGPSCoridnate(userLocation, "Abdeen")
+                "Zamalek" -> nearestEp = nearestGPSCoridnate(userLocation, "Zamalek")
+                "Maadi" -> nearestEp = nearestGPSCoridnate(userLocation, "Maadi")
+                "Dokki" -> nearestEp = nearestGPSCoridnate(userLocation, "Dokki")
+                "Heliopolis" -> nearestEp = nearestGPSCoridnate(userLocation, "Heliopolis")
+                "Mohandessin" -> nearestEp = nearestGPSCoridnate(userLocation, "Mohandessin")
+                "Fifth Settlement" -> nearestEp = nearestGPSCoridnate(userLocation, "Fifth Settlement")
+                "Giza" -> nearestEp =nearestGPSCoridnate(userLocation, "Giza")
+                "Zeitoun" -> nearestEp = nearestGPSCoridnate(userLocation, "Zeitoun")
+                "El Marg" -> nearestEp = nearestGPSCoridnate(userLocation, "El Marg")
+                "Helwan" -> nearestEp = nearestGPSCoridnate(userLocation, "Helwan")
+                "Matariya" -> nearestEp = nearestGPSCoridnate(userLocation, "Matariya")
+                "Badr" -> nearestEp = nearestGPSCoridnate(userLocation, "Badr")
+                "Shorouk City" -> nearestEp = nearestGPSCoridnate(userLocation, "Shorouk City")
+                "Raml Station" -> nearestEp = nearestGPSCoridnate(userLocation, "Raml Station")
+                "Mansheya" -> nearestEp = nearestGPSCoridnate(userLocation, "Mansheya")
+                "Helmeya" -> nearestEp = nearestGPSCoridnate(userLocation, "Helmeya")
+                "Garden City" -> nearestEp = nearestGPSCoridnate(userLocation, "Garden City")
+                "Kasr El Nil" -> nearestEp = nearestGPSCoridnate(userLocation, "Kasr El Nil")
+                "Nasr City" -> nearestEp =nearestGPSCoridnate(userLocation, "Nasr City")
+                "Waily" -> nearestEp = nearestGPSCoridnate(userLocation, "Waily")
+                "Abbaseya" -> nearestEp = nearestGPSCoridnate(userLocation, "Abbaseya")
+                "Basateen" -> nearestEp = nearestGPSCoridnate(userLocation, "Basateen")
+                "Ain Shams" -> nearestEp = nearestGPSCoridnate(userLocation, "Ain Shams")
+                // Add the rest of the neighborhoods here
             }
+
         } else if (userLocation.state == "Alex") {
 
         }
         return nearestEp
     }
-    fun checkseverity(){}
+
 
     fun AlertToEp() {
+        val userref = firestore.collection("USERS".trim()).document(UID).get()
+            .addOnSuccessListener { document ->
+                val nm2 = document.data!!["username".trim()].toString()
+                firestore.collection("USERS Adresses").document("${nm2}:Address ".trim()).get()
+                    .addOnSuccessListener { document ->
+                        streetName = document.getString("streetname").toString()
+                        Log.i("streeetName", streetName)
 
-        firestore.collection("USERS Adresses").document("${nm}:Address ".trim()).get().addOnSuccessListener {document->
-            streetName=document.getString("streetname").toString()
-            Log.i("streeetName",streetName)
 
-        }
-        firestore.collection("USERS").document(UID).get().addOnSuccessListener {document->
-            age = document.getLong("age") ?: 0 // Use getLong() to retrieve the age as a number
-            Log.i("agee", age.toString())
-
-        }
-
-        Log.i("streetname",streetName)
-
-        val alertMap = hashMapOf(
-            "user_name" to nm,
-            "user_age" to age ,
-            "street_name" to streetName
+                firestore.collection("USERS").document(UID).get().addOnSuccessListener { document ->
+                    age = document.getLong("age")
+                        ?: 0 // Use getLong() to retrieve the age as a number
+                    Log.i("agee", age.toString())
 
 
 
-        )
-        val nearestEp: String? = userLocation?.let { findNearestEP(it) }
-        firestore.collection("$nearestEp requests").document("$nm request").set(alertMap)
+                    Log.i("streetname", streetName)
+
+                    val alertMap = hashMapOf(
+                        "user_name" to nm2,
+                        "user_age" to age,
+                        "street_name" to streetName
+
+
+                    )
+                    val nearestEp: String? = userLocation?.let { findNearestEP(it) }
+                    firestore.collection("$nearestEp requests").document("$nm2 request")
+                        .set(alertMap)
+                }}
+            }
+
 
     }
-
-
-
     fun AlertToRelatives() {
         var mAuth:FirebaseAuth
         var firestore:FirebaseFirestore
@@ -139,7 +171,7 @@ class MakeAlert {
 
 
                         val userInfo = document.toObject(user_general_info::class.java)
-            val         list=ArrayList<String>()
+                        val list=ArrayList<String>()
                         if (userInfo != null) {
                             userInfo.relatives!!.forEach {
 

@@ -1,5 +1,4 @@
 package com.example.emergency_alert_system.user.home
-
 import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
@@ -85,7 +84,7 @@ class home : Fragment() {
 
 
 
-        val database = FirebaseDatabase.getInstance().getReference("Blood Oxygen (%)")
+        val database = FirebaseDatabase.getInstance().getReference("spo2")
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val bloodOxygen = dataSnapshot.value
@@ -97,6 +96,8 @@ class home : Fragment() {
                 Log.w(TAG, "Failed to read value.", error.toException())
             }
         })
+
+
 
         val database2 = FirebaseDatabase.getInstance().getReference("Heart Rate (BPM)")
         database2.addValueEventListener(object : ValueEventListener {
@@ -123,6 +124,19 @@ class home : Fragment() {
                 Log.w(TAG, "Failed to read value.", error.toException())
             }
         })
+        val database4 = FirebaseDatabase.getInstance().getReference("severity")
+        database4.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val severity = dataSnapshot.value
+                val temp = view.findViewById<TextView>(R.id.sev12)
+                temp.text = "${severity.toString()} "
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
         checkSeverityAndAlert()
 /*        button=view.findViewById(R.id.alert1)
         button.setOnClickListener {

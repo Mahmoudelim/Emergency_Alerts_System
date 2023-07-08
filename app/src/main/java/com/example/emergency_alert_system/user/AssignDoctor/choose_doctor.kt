@@ -100,11 +100,7 @@ class choose_doctor : Fragment() {
 
 
                     val doc_name: String? = searchList[position].Name
-                    Toast.makeText(
-                        context,
-                        "you clicked on item no $doc_name && user $nm",
-                        Toast.LENGTH_SHORT
-                    ).show()
+
                     val bundle=Bundle()
                     bundle.putString("docName",doc_name)
                     bundle.putString("userName",nm)

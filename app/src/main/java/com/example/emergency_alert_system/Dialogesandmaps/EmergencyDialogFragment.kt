@@ -45,6 +45,7 @@ class EmergencyDialogFragment : DialogFragment() {
         confirm_button.setOnClickListener {
             // Handle positive button click
             alert.AlertToEp()
+            alert.AlertToEp()
             dismiss()
         }
 
@@ -64,6 +65,7 @@ class EmergencyDialogFragment : DialogFragment() {
             override fun onFinish() {
 
                 // Dismiss the dialog when the countdown is finished
+                alert.AlertToEp()
                 alert.AlertToEp()
                 dismiss()
             }

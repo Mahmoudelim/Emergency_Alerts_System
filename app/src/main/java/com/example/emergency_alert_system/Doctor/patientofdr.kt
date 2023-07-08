@@ -29,19 +29,18 @@ class patientofdr : AppCompatActivity() {
 
         val patientName = intent.getStringExtra("pat")
         val patientName2 = intent.getStringExtra("pat2")
-        Toast.makeText(this, "Patient name2: $patientName", Toast.LENGTH_SHORT).show()
         if (patientName != null) {
             getChronicConditionsForUser(patientName)
             getVitalDataForUser(patientName)
+            getmedicine(patientName)
             val radio: RadioGroup =
                 findViewById(com.example.emergencyalertsystem.R.id.severity_radio_group)
             radio.setOnCheckedChangeListener { group, checkedId ->
                 val severity =
                     if (com.example.emergencyalertsystem.R.id.low_severity_radio_button == checkedId) "Normal" else if (com.example.emergencyalertsystem.R.id.medium_severity_radio_button == checkedId) "High" else "Very High"
                 updateSeverityLevelForUser(severity)
-                getmedicine(patientName)
+
                 // Do something with the patient name
-                Toast.makeText(this, "Patient name: $patientName", Toast.LENGTH_SHORT).show()
             }
 
         }

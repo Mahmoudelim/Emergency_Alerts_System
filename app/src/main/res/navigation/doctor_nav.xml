@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/doctor_nav"
-    app:startDestination="@id/home2">
+    app:startDestination="@id/myPatient">
     <fragment
         android:id="@+id/home2"
         android:name="com.example.emergency_alert_system.Doctor.home.home"

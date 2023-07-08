@@ -121,10 +121,14 @@ var medicine1:medicine= medicine()
 
                     docref.get().addOnSuccessListener { documentSnapshot ->
                         val userInfo = documentSnapshot.toObject(user_midical_info::class.java)
+                        var timeMap1: MutableMap<String, Any> = HashMap()
+
                         if (userInfo != null) {
                             userInfo.medicines!!.forEach {
-                                Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
                                 medicineList!!.add(it)
+
+
+                                //val formattedTime = "${time["hours"]}:${time["minutes"].toString().padStart(2, '0')}"
 
                             }
                             medicineAdapter.notifyDataSetChanged()

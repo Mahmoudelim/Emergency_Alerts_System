@@ -122,7 +122,6 @@ class myPatient : Fragment() {
                       val userInfo = documentSnapshot.toObject(Mypatients::class.java)
                       if (userInfo != null) {
                           userInfo.PATIENTS!!.forEach {
-                              Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
                               patientList!!.add(it)
 
 

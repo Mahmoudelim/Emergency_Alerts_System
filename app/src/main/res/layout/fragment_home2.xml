@@ -151,11 +151,12 @@
                     android:layout_height="70dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="30dp"
-                    android:src="@drawable/pressure"
+                    android:src="@drawable/sev"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:id="@+id/sev12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
@@ -170,7 +171,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Blood pressure"
+                    android:text="Severity"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
